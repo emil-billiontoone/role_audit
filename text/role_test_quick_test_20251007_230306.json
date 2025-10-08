@@ -1,0 +1,18 @@
+{
+  "role": "Quick Test",
+  "server": "dev",
+  "timestamp": "2025-10-07T23:02:57.794283",
+  "tests": [
+    {
+      "test_name": "Can View Lab Stream Entries",
+      "passed": true,
+      "description": "Checks if user can see lab stream entries",
+      "details": {
+        "entries_found": 10
+      },
+      "execution_time": 0.03213191032409668,
+      "error": null
+    }
+  ],
+  "username": "emilusertest"
+}

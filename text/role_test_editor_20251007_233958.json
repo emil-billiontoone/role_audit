@@ -1,0 +1,224 @@
+{
+  "role": "Editor",
+  "server": "dev",
+  "timestamp": "2025-10-07T23:38:43.958529",
+  "tests": [
+    {
+      "test_name": "Can Edit Completed Steps",
+      "passed": true,
+      "description": "Checks if user gets confirmation when editing completed steps",
+      "details": {
+        "total_entries": 10,
+        "entries_checked": 10,
+        "entries_with_permission": 3,
+        "entries_without_permission": 1
+      },
+      "raw_results": {
+        "passed": true,
+        "total_entries": 10,
+        "entries_checked": 10,
+        "entries_with_edit_button": 4,
+        "entries_without_edit_button": [
+          4,
+          7,
+          10
+        ],
+        "entries_with_matching_popup": [
+          {
+            "entry": 3,
+            "popup_info": {
+              "popup_type": "modal",
+              "has_save_button": true,
+              "has_ok_button": true,
+              "has_cancel_button": true,
+              "editable_fields": 0,
+              "modal_title": "Edit Completed Step?",
+              "visible_text": [
+                "Are",
+                "you",
+                "sure",
+                "you",
+                "want",
+                "to",
+                "edit",
+                "a",
+                "completed",
+                "step?"
+              ],
+              "captured_text": "Are you sure you want to edit a completed step?",
+              "form_labels": [
+                "Started",
+                "Completed",
+                "Samples"
+              ]
+            },
+            "match_details": [
+              "Popup type matches: modal",
+              "OK button found",
+              "Cancel button found",
+              "Has 0 editable fields",
+              "Found required text: 'Are you sure'",
+              "Found required text: 'edit'",
+              "Found required text: 'completed step'",
+              "Modal title matches: Edit Completed Step?"
+            ]
+          },
+          {
+            "entry": 5,
+            "popup_info": {
+              "popup_type": "modal",
+              "has_save_button": true,
+              "has_ok_button": true,
+              "has_cancel_button": true,
+              "editable_fields": 0,
+              "modal_title": "Edit Completed Step?",
+              "visible_text": [
+                "Are",
+                "you",
+                "sure",
+                "you",
+                "want",
+                "to",
+                "edit",
+                "a",
+                "completed",
+                "step?"
+              ],
+              "captured_text": "Are you sure you want to edit a completed step?",
+              "form_labels": [
+                "Started",
+                "Completed",
+                "REAGENT LOT TRACKING",
+                "Plate Layout",
+                "Loading Operator(s)",
+                "DWP A (Verification)",
+                "DWP D (Verification)",
+                "SLB Incubation Temperature (Celsius)",
+                "Qubit 1x dsDNA HS Standard 1 (RFU)",
+                "Unloading Operator(s)"
+              ]
+            },
+            "match_details": [
+              "Popup type matches: modal",
+              "OK button found",
+              "Cancel button found",
+              "Has 0 editable fields",
+              "Found required text: 'Are you sure'",
+              "Found required text: 'edit'",
+              "Found required text: 'completed step'",
+              "Modal title matches: Edit Completed Step?"
+            ]
+          },
+          {
+            "entry": 6,
+            "popup_info": {
+              "popup_type": "modal",
+              "has_save_button": true,
+              "has_ok_button": true,
+              "has_cancel_button": true,
+              "editable_fields": 0,
+              "modal_title": "Edit Completed Step?",
+              "visible_text": [
+                "Are",
+                "you",
+                "sure",
+                "you",
+                "want",
+                "to",
+                "edit",
+                "a",
+                "completed",
+                "step?"
+              ],
+              "captured_text": "Are you sure you want to edit a completed step?",
+              "form_labels": [
+                "Started",
+                "Completed",
+                "REAGENT LOT TRACKING",
+                "Plate Layout",
+                "Loading Operator(s)",
+                "DWP A (Verification)",
+                "DWP D (Verification)",
+                "SLB Incubation Temperature (Celsius)",
+                "Qubit 1x dsDNA HS Standard 1 (RFU)",
+                "Unloading Operator(s)"
+              ]
+            },
+            "match_details": [
+              "Popup type matches: modal",
+              "OK button found",
+              "Cancel button found",
+              "Has 0 editable fields",
+              "Found required text: 'Are you sure'",
+              "Found required text: 'edit'",
+              "Found required text: 'completed step'",
+              "Modal title matches: Edit Completed Step?"
+            ]
+          }
+        ],
+        "entries_with_non_matching_popup": [
+          {
+            "entry": 1,
+            "popup_info": {
+              "popup_type": "modal",
+              "has_save_button": true,
+              "has_ok_button": true,
+              "has_cancel_button": true,
+              "editable_fields": 0,
+              "modal_title": "Cannot Edit Step",
+              "visible_text": [
+                "Cannot",
+                "edit",
+                "this",
+                "completed",
+                "step,",
+                "the",
+                "configuration",
+                "of",
+                "custom",
+                "field",
+                "'Flag'",
+                "was",
+                "modified",
+                "after",
+                "this",
+                "step",
+                "was",
+                "executed."
+              ],
+              "captured_text": "Cannot edit this completed step, the configuration of custom field 'Flag' was modified after this step was executed.",
+              "form_labels": [
+                "Started",
+                "Completed",
+                "Operator(s)",
+                "Verifying Operator(s)",
+                "CSP Thermocycler",
+                "ECP Thermocycler",
+                "Comments"
+              ]
+            },
+            "mismatch_reason": [
+              "Required text 'Are you sure' not found",
+              "Modal title 'Cannot Edit Step' doesn't match expected 'Edit Completed Step'"
+            ]
+          }
+        ],
+        "details": [],
+        "final_result": "PASSED: Found 3 matching popup(s)"
+      },
+      "execution_time": 61.985416889190674,
+      "error": null
+    },
+    {
+      "test_name": "Can Navigate to Entry Details",
+      "passed": false,
+      "description": "Checks if user can click and view entry details",
+      "details": {
+        "reason": "No entries found to click"
+      },
+      "execution_time": 0.0016949176788330078,
+      "error": null
+    }
+  ],
+  "username": "emilusertest"
+}

@@ -1,0 +1,42 @@
+{
+  "role": "Editor",
+  "server": "dev",
+  "timestamp": "2025-10-07T23:51:03.630086",
+  "tests": [
+    {
+      "test_name": "Debug Entry Structure",
+      "passed": true,
+      "description": "Analyzes the structure of lab stream entries",
+      "details": {
+        "entry_count": 10,
+        "html_preview": "<li class=\"lab-stream-entry\"><div class=\"photo-block\"><img class=\"photo\" data-user-id=\"2009\" src=\"/clarity/profile/avatar/2059\"></div><div class=\"body-block-upper\"><p class=\"vcard\"><span class=\"fn\">Jerald Nyam</span>&nbsp;<span class=\"success\">Finished</span>&nbsp;<span class=\"fn\">Step 4 \u00bb&nbsp;ECS - Enrichment TC </span>&nbsp;<span class=\"escalation-user\"></span></p></div><div class=\"body-block-lower\"><p><span class=\"protocol\">ECS Library Prep v1.2</span></p><span class=\"updated-time\">68 days a",
+        "text_preview": "Jerald Nyam\u00a0Finished\u00a0Step 4 \u00bb\u00a0ECS - Enrichment TC \u00a0ECS Library Prep v1.268 days ago",
+        "element_counts": {
+          "all links (a)": 0,
+          "all buttons": 0,
+          "all divs": 3,
+          "all spans": 6,
+          "clickable divs": 0,
+          "elements with href": 0,
+          "elements with data-action": 0,
+          "elements with role=button": 0,
+          "elements with role=link": 0,
+          "input elements": 0,
+          "images": 1,
+          "icons": 0
+        },
+        "cursor_style": "pointer",
+        "has_onclick": false,
+        "element_details": {
+          "onclick": "no",
+          "hasAttribute_onclick": false,
+          "className": "lab-stream-entry",
+          "tagName": "LI"
+        }
+      },
+      "execution_time": 0.08271384239196777,
+      "error": null
+    }
+  ],
+  "username": "emilusertest"
+}
