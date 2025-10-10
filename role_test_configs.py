@@ -5,7 +5,7 @@ Define which tests to run for each role.
 """
 
 # Test suite configurations for different roles
-ROLE_TEST_SUITES = {
+MAIN_ROLE_TEST_SUITES = {
     "Editor": [
         "permissions_edit_completed_steps",
         "permissions_view",  
@@ -36,8 +36,7 @@ ROLE_TEST_SUITES = {
     ],
 
     "Limited": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
+        "clarity_login",
     ],
 
     "Review Escalations": [
