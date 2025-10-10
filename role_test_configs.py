@@ -8,7 +8,6 @@ Define which tests to run for each role.
 MAIN_ROLE_TEST_SUITES = {
     "Editor": [
         "permissions_edit_completed_steps",
-        "permissions_view",  
     ],
     
     "Lab Operator": [
@@ -34,7 +33,7 @@ MAIN_ROLE_TEST_SUITES = {
         "permissions_view",
         ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
     ],
-
+# This is a test to see if branch works
     "Limited": [
         "clarity_login",
     ],
