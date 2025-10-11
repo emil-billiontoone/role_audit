@@ -70,15 +70,14 @@ class RolePermissionTester:
         self.results["tests"].append(result)
         return result
     
-    def run_test_suite(self, test_modules):
+    def run_test_suite(self, test_modules_with_expected):
         """
-        Run a suite of tests.
+        Run a suite of tests with expected outcomes.
         
         Args:
-            test_modules: List of test modules or (module, function_name) tuples
-                         Examples: 
-                         - ["test_edit_completed_steps"]
-                         - [("test_edit_completed_steps", "test_can_edit_completed_steps")]
+            test_modules_with_expected: Dict mapping test module/function to expected outcome.
+                                        Key can be module string or (module, function) tuple.
+                                        Value is expected result (True/False)
         """
         print("=" * 60)
         print(f"ROLE PERMISSION TEST SUITE")
@@ -88,49 +87,46 @@ class RolePermissionTester:
         print("=" * 60)
         
         with sync_playwright() as playwright:
-            browser = playwright.chromium.launch(
-                headless=False,
-                slow_mo=200
-            )
+            browser = playwright.chromium.launch(headless=False, slow_mo=200)
             context = browser.new_context()
             page = context.new_page()
             
             try:
-                
-                # Run each test
-                for i, test_spec in enumerate(test_modules):
+                for i, (test_spec, expected) in enumerate(test_modules_with_expected.items()):
                     # Navigate back to main page before each test (except the first)
                     if i > 0:
                         print("\nNavigating back to main page...")
                         page.goto(f"{self.base_url}/clarity")
                         page.wait_for_load_state("networkidle")
-                        page.wait_for_timeout(2000)  # Give page time to fully load
+                        page.wait_for_timeout(2000)
                     
+                    # Determine the test function
                     if isinstance(test_spec, str):
-                        # Import module and find test function
-                        module_name = test_spec
-                        module = importlib.import_module(f"permissions.{module_name}")
-                        # Look for function starting with "test_"
-                        test_funcs = [getattr(module, name) for name in dir(module) 
-                                     if name.startswith("test_") and callable(getattr(module, name))]
+                        module = importlib.import_module(f"permissions.{test_spec}")
+                        test_funcs = [
+                            getattr(module, name) for name in dir(module)
+                            if name.startswith("test_") and callable(getattr(module, name))
+                        ]
                         if test_funcs:
-                            self.run_test(page, test_funcs[0])
+                            result = self.run_test(page, test_funcs[0])
                     elif isinstance(test_spec, tuple):
-                        # Specific module and function
                         module_name, func_name = test_spec
-                        module = importlib.import_module(module_name)
+                        module = importlib.import_module(f"permissions.{module_name}")
                         test_func = getattr(module, func_name)
-                        self.run_test(page, test_func)
+                        result = self.run_test(page, test_func)
                     else:
                         # Direct function reference
-                        self.run_test(page, test_spec)
+                        result = self.run_test(page, test_spec)
+                    
+                    # Compare test result with expected
+                    actual_passed = result.get("passed", False)
+                    result["passed"] = actual_passed == expected  # True if matches expectation
+                    result["expected"] = expected
                 
-                # Print summary
+                # Print summary and save
                 self.print_summary()
-                
-                # Save results
                 self.save_results()
-                
+            
             except Exception as e:
                 print(f"\nCRITICAL ERROR: {e}")
                 import traceback

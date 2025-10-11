@@ -6,42 +6,76 @@ Simple script to run role-based permission tests.
 """
 
 import sys
+import argparse
 from role_permission_tester import RolePermissionTester
 from role_test_configs import MAIN_ROLE_TEST_SUITES, QUICK_TEST, FULL_TEST_SUITE
 
 def main():
     """Main entry point for role testing."""
     
-    # Parse command line arguments
-    if len(sys.argv) < 2:
-        print("\nUsage: python run_role_tests.py <role_name> [server]")
-        print("\nAvailable roles:")
-        for role in MAIN_ROLE_TEST_SUITES.keys():
-            print(f"  - {role}")
-        print("\nSpecial options:")
-        print("  - quick  : Run quick test suite")
-        print("  - full   : Run full test suite")
-        print("\nExamples:")
-        print("  python run_role_tests.py Editor")
-        print("  python run_role_tests.py Editor dev")
-        print("  python run_role_tests.py quick")
-        sys.exit(1)
+    # Set up argument parser
+    parser = argparse.ArgumentParser(
+        description="Run role-based permission tests",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Available roles:
+{}
+
+Special options:
+  quick  : Run quick test suite
+  full   : Run full test suite
+
+Examples:
+  python run_role_tests.py "Lab Operator"
+  python run_role_tests.py "Lab Operator" --server dev
+  python run_role_tests.py "System Admin" -s test
+  python run_role_tests.py quick
+""".format("\n".join(f"  - {role}" for role in MAIN_ROLE_TEST_SUITES.keys()))
+    )
     
-    role_name = sys.argv[1]
-    server = sys.argv[2] if len(sys.argv) > 2 else "dev"
+    parser.add_argument("role", 
+                       help="Role name to test (use quotes for names with spaces)")
+    parser.add_argument("-s", "--server", 
+                       default="dev",
+                       choices=["dev", "test", "prod", "stage"],
+                       help="Server environment (default: dev)")
+    
+    args = parser.parse_args()
+    
+    role_name = args.role
+    server = args.server
     
     # Determine which tests to run
     if role_name.lower() == "quick":
-        test_suite = QUICK_TEST
+        # Convert list to dict with expected outcomes
+        if isinstance(QUICK_TEST, list):
+            test_suite = {}
+            for test in QUICK_TEST:
+                if isinstance(test, tuple):
+                    test_suite[test] = True
+                else:
+                    test_suite[test] = True
+        else:
+            test_suite = QUICK_TEST
         role_name = "Quick Test"
     elif role_name.lower() == "full":
-        test_suite = FULL_TEST_SUITE
+        # Convert list to dict with expected outcomes
+        if isinstance(FULL_TEST_SUITE, list):
+            test_suite = {}
+            for test in FULL_TEST_SUITE:
+                if isinstance(test, tuple):
+                    test_suite[test] = True
+                else:
+                    test_suite[test] = True
+        else:
+            test_suite = FULL_TEST_SUITE
         role_name = "Full Test"
     elif role_name in MAIN_ROLE_TEST_SUITES:
         test_suite = MAIN_ROLE_TEST_SUITES[role_name]
     else:
         print(f"\nWarning: Unknown role '{role_name}'. Running default test suite.")
-        test_suite = ["permissions_clarity_login"]
+        # Ensure it's a dict with expected outcomes
+        test_suite = {"permissions_clarity_login": True}
     
     # Create tester and run tests
     print(f"\nTesting role: {role_name} on server: {server}")

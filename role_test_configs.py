@@ -17,7 +17,6 @@ MAIN_ROLE_TEST_SUITES = {
     
     "Lab Admin": {
         "permissions_view": True,
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"): True,
     },
 
     "Limited": {

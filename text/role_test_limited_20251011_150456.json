@@ -1,0 +1,16 @@
+{
+  "role": "Limited",
+  "server": "dev",
+  "timestamp": "2025-10-11T15:04:43.996561",
+  "tests": [
+    {
+      "test_name": "Clarity Login",
+      "passed": false,
+      "description": "Checks if user can login to Clarity LIMS",
+      "result": "pass",
+      "execution_time": 11.731029033660889,
+      "error": null,
+      "expected": false
+    }
+  ]
+}
