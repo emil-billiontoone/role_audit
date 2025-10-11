@@ -1,6 +1,10 @@
 # Sensitive files - NEVER commit these!
 store_creds.py
 
+# Test Results
+test_results/
+text/
+
 # Python
 __pycache__/
 *.py[cod]

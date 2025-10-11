@@ -9,7 +9,7 @@ import time
 
 def test_entry_interaction(page: Page) -> dict:
     """
-    Comprehensive test of lab stream entry interactions.
+    Checks if user can view and interact with lab stream entries
     
     Args:
         page: Playwright page object (already logged in)

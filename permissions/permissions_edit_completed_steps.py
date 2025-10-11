@@ -10,7 +10,7 @@ import re
 
 def test_can_edit_completed_steps(page: Page) -> dict:
     """
-    Test if the current user can edit completed steps.
+    Checks if user can edit completed steps
     
     Args:
         page: Playwright page object (already logged in)

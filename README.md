@@ -47,17 +47,22 @@ Each test module contains one or more test functions:
 
 ### Basic Usage
 ```bash
-# Test a specific role
-python run_role_tests.py Editor
+# Test a specific role (use quotes for roles with spaces)
+python run_role_tests.py "Lab Operator"
+python run_role_tests.py "System Admin"
 
 # Test on different server
-python run_role_tests.py Editor test
+python run_role_tests.py "Lab Operator" --server test
+python run_role_tests.py Editor -s dev
 
 # Quick test (for development)
 python run_role_tests.py quick
 
 # Full test suite
 python run_role_tests.py full
+
+# Show help
+python run_role_tests.py --help
 ```
 
 ### Advanced Usage
@@ -245,61 +250,92 @@ FULL_TEST_SUITE = [
 
 Results are:
 1. Displayed in console with pass/fail status
-2. Saved to JSON files in `text/` directory with timestamp
+2. Saved to a single JSON file (`test_results/all_role_tests.json`) that gets updated after each test run
 3. Include timing information and error details
 4. Provide detailed debugging information for failures
 
 ### JSON Output Format
+
+All test results are stored in a single consolidated file that groups tests by role:
+
 ```json
 {
-  "role": "Editor",
   "server": "dev",
-  "timestamp": "2025-10-07T23:45:20.089321",
-  "username": "testuser",
-  "tests": [
-    {
-      "test_name": "Comprehensive Entry Interaction",
-      "passed": true,
-      "description": "Tests multiple ways to interact with lab stream entries",
-      "details": {
-        "tests_performed": [...],
-        "element_counts": {...}
+  "timestamp": "2025-10-11 15:30:45",
+  "tests": {
+    "Lab Operator": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 5.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass"
       },
-      "execution_time": 45.2
-    }
-  ]
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "Checks if user can edit completed steps",
+        "execution_time": 12.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass"
+      }
+    ],
+    "System Admin": [
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "Checks if user can edit completed steps",
+        "execution_time": 10.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass"
+      }
+    ]
+  }
 }
 ```
+
+**Key Features:**
+- **Single File**: All results in `test_results/all_role_tests.json`
+- **Append Mode**: New test runs update the file with their role's results
+- **Human-Readable Timestamp**: Format: "YYYY-MM-DD HH:MM:SS"
+- **Expected vs Actual**: Shows both what was expected and what actually happened
+- **Result Status**: "pass" if test behaved as expected, "fail" if not, "error" if exception occurred
 
 Example output:
 ```
 ============================================================
 ROLE PERMISSION TEST SUITE
-Role: Editor
+Role: Lab Operator
 Server: dev
+Started: 2025-10-11T15:30:45.123456
 ============================================================
 
-Running test: test_can_edit_completed_steps
+Running test: Clarity Login
 ----------------------------------------
-TEST: Can Edit Completed Steps
-...
+[Test execution details...]
+
+Running test: Edit Completed Steps
+----------------------------------------
+[Test execution details...]
 
 ============================================================
 TEST SUMMARY
 ============================================================
-Role: Editor
+
+Role: Lab Operator
 Total Tests: 2
-Passed: 1
-Failed: 1
+Passed (as expected): 1
+Failed (as expected): 1
+Errors: 0
 
 Test Results:
-  [PASS] Can Edit Completed Steps (45.2s)
-  [FAIL] Can Delete Entries (12.3s)
-        Error: No delete button found
+  [PASS] Clarity Login (5.6s) Expected:✓ Actual:✓
+  [PASS] Edit Completed Steps (12.3s) Expected:✗ Actual:✗
 
-Overall Result: FAILED
+Overall Result: ALL TESTS PASSED
 
-Results saved to: text/role_test_editor_20231024_143022.json
+Results saved to: test_results/all_role_tests.json
 ```
 
 ## Troubleshooting

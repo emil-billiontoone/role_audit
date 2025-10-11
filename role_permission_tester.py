@@ -11,6 +11,8 @@ import time
 from datetime import datetime
 import importlib
 import sys
+import os
+import os
 
 # Configuration
 SERVICE_NAME = "user_tester_app"
@@ -29,15 +31,11 @@ class RolePermissionTester:
         self.server = server
         self.role_name = role_name
         self.base_url = f"https://clarity-{server}.btolims.com"
-        self.results = {
-            "role": role_name,
-            "server": server,
-            "timestamp": datetime.now().isoformat(),
-            "tests": []
-        }
+        self.results_file = "test_results/all_role_tests.json"
+        self.current_test_results = []
     
     
-    def run_test(self, page, test_function, test_name=None):
+    def run_test(self, page, test_function, test_name=None, expected=True):
         """
         Run a specific test function.
         
@@ -45,30 +43,61 @@ class RolePermissionTester:
             page: Playwright page object
             test_function: Function that takes a page and returns test results
             test_name: Optional name for the test
+            expected: Expected outcome (True/False)
         
         Returns:
             dict: Test results
         """
-        test_name = test_name or test_function.__name__
-        print(f"\nRunning test: {test_name}")
+        # Format test name from function name
+        raw_test_name = test_name or test_function.__name__
+        # Convert from snake_case to Title Case
+        formatted_name = raw_test_name.replace("test_", "").replace("_", " ").title()
+        # Special replacements for common terms
+        formatted_name = formatted_name.replace("Clarity Login", "Clarity Login")
+        formatted_name = formatted_name.replace("Can ", "")
+        
+        print(f"\nRunning test: {formatted_name}")
         print("-" * 40)
+        
+        # Try to get test description from function docstring
+        description = test_function.__doc__.strip() if test_function.__doc__ else "No description available"
+        if description:
+            # Take only the first line of the docstring
+            description = description.split('\n')[0].strip()
         
         start_time = time.time()
         try:
             result = test_function(page)
-            result["execution_time"] = time.time() - start_time
-            result["error"] = None
+            execution_time = round(time.time() - start_time, 1)
+            passed = result.get("passed", False)
+            
+            # Determine if test result matches expectation
+            result_status = "pass" if passed == expected else "fail"
+            
+            test_result = {
+                "test_name": formatted_name,
+                "description": description,
+                "execution_time": execution_time,
+                "expected": expected,
+                "passed": passed,
+                "result": result_status,
+            }
+            
         except Exception as e:
-            result = {
-                "test_name": test_name,
+            execution_time = round(time.time() - start_time, 1)
+            test_result = {
+                "test_name": formatted_name,
+                "description": description,
+                "execution_time": execution_time,
+                "expected": expected,
                 "passed": False,
-                "error": str(e),
-                "execution_time": time.time() - start_time
+                "result": "error",
+                "error": str(e)
             }
             print(f"ERROR in test: {e}")
         
-        self.results["tests"].append(result)
-        return result
+        self.current_test_results.append(test_result)
+        return test_result
     
     def run_test_suite(self, test_modules_with_expected):
         """
@@ -83,7 +112,7 @@ class RolePermissionTester:
         print(f"ROLE PERMISSION TEST SUITE")
         print(f"Role: {self.role_name}")
         print(f"Server: {self.server}")
-        print(f"Started: {self.results['timestamp']}")
+        print(f"Started: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
         print("=" * 60)
         
         with sync_playwright() as playwright:
@@ -108,20 +137,15 @@ class RolePermissionTester:
                             if name.startswith("test_") and callable(getattr(module, name))
                         ]
                         if test_funcs:
-                            result = self.run_test(page, test_funcs[0])
+                            result = self.run_test(page, test_funcs[0], expected=expected)
                     elif isinstance(test_spec, tuple):
                         module_name, func_name = test_spec
                         module = importlib.import_module(f"permissions.{module_name}")
                         test_func = getattr(module, func_name)
-                        result = self.run_test(page, test_func)
+                        result = self.run_test(page, test_func, expected=expected)
                     else:
                         # Direct function reference
-                        result = self.run_test(page, test_spec)
-                    
-                    # Compare test result with expected
-                    actual_passed = result.get("passed", False)
-                    result["passed"] = actual_passed == expected  # True if matches expectation
-                    result["expected"] = expected
+                        result = self.run_test(page, test_spec, expected=expected)
                 
                 # Print summary and save
                 self.print_summary()
@@ -142,39 +166,75 @@ class RolePermissionTester:
         print("TEST SUMMARY")
         print("=" * 60)
         
-        total_tests = len(self.results["tests"])
-        passed_tests = sum(1 for t in self.results["tests"] if t.get("passed", False))
-        failed_tests = total_tests - passed_tests
+        total_tests = len(self.current_test_results)
+        passed_tests = sum(1 for t in self.current_test_results if t.get("result") == "pass")
+        failed_tests = sum(1 for t in self.current_test_results if t.get("result") == "fail")
+        error_tests = sum(1 for t in self.current_test_results if t.get("result") == "error")
         
         print(f"\nRole: {self.role_name}")
         print(f"Total Tests: {total_tests}")
-        print(f"Passed: {passed_tests}")
-        print(f"Failed: {failed_tests}")
+        print(f"Passed (as expected): {passed_tests}")
+        print(f"Failed (as expected): {failed_tests}")
+        print(f"Errors: {error_tests}")
         
         print("\nTest Results:")
-        for test in self.results["tests"]:
-            status = "PASS" if test.get("passed", False) else "FAIL"
+        for test in self.current_test_results:
+            result_status = test.get("result", "unknown").upper()
             name = test.get("test_name", "Unknown")
             time_taken = test.get("execution_time", 0)
-            print(f"  [{status}] {name} ({time_taken:.1f}s)")
+            expected = "✓" if test.get("expected") else "✗"
+            passed = "✓" if test.get("passed") else "✗"
+            print(f"  [{result_status}] {name} ({time_taken:.1f}s) Expected:{expected} Actual:{passed}")
             if test.get("error"):
                 print(f"        Error: {test['error']}")
         
-        overall = "PASSED" if failed_tests == 0 else "FAILED"
+        overall = "ALL TESTS PASSED" if error_tests == 0 and (passed_tests + failed_tests == total_tests) else "SOME TESTS FAILED"
         print(f"\nOverall Result: {overall}")
     
     def save_results(self, filename=None):
-        """Save results to JSON file."""
+        """Save/append results to JSON file."""
         if not filename:
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-            filename = f"text/role_test_{self.role_name.lower().replace(' ', '_')}_{timestamp}.json"
+            filename = self.results_file
         
+        # Create directory if it doesn't exist
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        
+        # Load existing data or create new structure
+        if os.path.exists(filename):
+            try:
+                with open(filename, "r") as f:
+                    data = json.load(f)
+            except (json.JSONDecodeError, FileNotFoundError):
+                data = self._create_new_data_structure()
+        else:
+            data = self._create_new_data_structure()
+        
+        # Update server and timestamp
+        data["server"] = self.server
+        data["timestamp"] = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+        
+        # Add or update tests for this role
+        if "tests" not in data:
+            data["tests"] = {}
+        
+        # Store results under the role name
+        data["tests"][self.role_name] = self.current_test_results
+        
+        # Save updated data
         try:
             with open(filename, "w") as f:
-                json.dump(self.results, f, indent=2)
+                json.dump(data, f, indent=2)
             print(f"\nResults saved to: {filename}")
         except Exception as e:
             print(f"\nFailed to save results: {e}")
+    
+    def _create_new_data_structure(self):
+        """Create a new data structure for the JSON file."""
+        return {
+            "server": self.server,
+            "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+            "tests": {}
+        }
 
 
 # Example usage functions

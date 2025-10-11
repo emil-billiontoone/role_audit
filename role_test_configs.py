@@ -7,7 +7,7 @@ Define which tests to run for each role.
 # Test suite configurations for different roles
 MAIN_ROLE_TEST_SUITES = {
     "Lab Operator": {
-        "permissions_clarity_login": True,
+        "permissions_clarity_login": False,
     },
     
     "System Admin": {
