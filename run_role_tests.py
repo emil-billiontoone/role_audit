@@ -41,7 +41,7 @@ def main():
         test_suite = MAIN_ROLE_TEST_SUITES[role_name]
     else:
         print(f"\nWarning: Unknown role '{role_name}'. Running default test suite.")
-        test_suite = ["clarity_login"]
+        test_suite = ["permissions_clarity_login"]
     
     # Create tester and run tests
     print(f"\nTesting role: {role_name} on server: {server}")

@@ -36,38 +36,6 @@ class RolePermissionTester:
             "tests": []
         }
     
-    def login(self, page, username=None, password=None):
-        """
-        Login to the application.
-        
-        Args:
-            page: Playwright page object
-            username: Username (optional, will get from keyring if not provided)
-            password: Password (optional, will get from keyring if not provided)
-        """
-        if not username:
-            username = keyring.get_password(SERVICE_NAME, "USERNAME_KEY")
-            password = keyring.get_password(SERVICE_NAME, username) if username else None
-        
-        if not username or not password:
-            raise ValueError("Credentials not found. Please run store_creds.py first.")
-        
-        print("\nLogging in...")
-        page.goto(f"{self.base_url}/clarity/login/auth?unauthenticated=1")
-        page.fill("#username", username)
-        page.fill("#password", password) 
-        page.click("#sign-in")
-        page.wait_for_load_state("domcontentloaded")
-        print(f"Logged in as: {username}")
-        
-        # Navigate to main page
-        page.goto(f"{self.base_url}/clarity")
-        page.wait_for_load_state("networkidle")  # Wait for all network requests to finish
-        page.wait_for_timeout(2000)  # Additional wait for JavaScript rendering
-        
-        # Optional: Print current URL to confirm we're on the right page
-        print(f"Currently on: {page.url}")
-        return username
     
     def run_test(self, page, test_function, test_name=None):
         """
@@ -128,9 +96,6 @@ class RolePermissionTester:
             page = context.new_page()
             
             try:
-                # Login once
-                username = self.login(page)
-                self.results["username"] = username
                 
                 # Run each test
                 for i, test_spec in enumerate(test_modules):
