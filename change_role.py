@@ -54,7 +54,7 @@ for r in current_user[0].roles:
     print(f"  - {r.name}")
 
 # Change the function here to add or remove the role
-add_role_to_user(current_user[0], role, username, role_name)
+remove_role_from_user(current_user[0], role, username, role_name)
 
 print(f"Current roles for {username}:")
 for r in current_user[0].roles:

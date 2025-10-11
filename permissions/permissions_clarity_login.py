@@ -114,7 +114,7 @@ from playwright.sync_api import Page
 import keyring
 import time
 
-SERVICE_NAME = "user_tester_app"
+SERVICE_NAME = "role_audit_app"
 BASE_URL = f"https://clarity-dev.btolims.com"  # Can parameterize if needed
 
 def test_clarity_login(page: Page) -> dict:
@@ -138,9 +138,9 @@ def test_clarity_login(page: Page) -> dict:
 
     # Go to login page and submit credentials
     page.goto(f"{BASE_URL}/clarity/login/auth?unauthenticated=1")
-    if role_name == "Not Logged In":
-        username = "  "
-        password = "  "
+    # if role_name == "Not Logged In":
+    #     username = "  "
+    #     password = "  "
     
     page.fill("#username", username)
     page.fill("#password", password)
@@ -148,13 +148,13 @@ def test_clarity_login(page: Page) -> dict:
 
     # Wait for redirects and dashboard load
     page.wait_for_load_state("domcontentloaded")
-    page.wait_for_timeout(3000)  # Extra time for JS to render
+    page.wait_for_timeout(5000)  # Extra time for JS to render
 
     # Check for login success by looking for key dashboard elements
     try:
-        user_visible = page.locator("span.navbar-username").is_visible()
-        work_panel_visible = page.locator("#work-available-panel").is_visible()
-        passed = user_visible and work_panel_visible
+        page.wait_for_selector("span.navbar-username", timeout=5000)
+        page.wait_for_selector("#work-available-panel", timeout=5000)
+        passed = True
     except:
         passed = False
 

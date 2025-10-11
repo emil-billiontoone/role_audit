@@ -109,7 +109,7 @@ class RolePermissionTester:
                     if isinstance(test_spec, str):
                         # Import module and find test function
                         module_name = test_spec
-                        module = importlib.import_module(module_name)
+                        module = importlib.import_module(f"permissions.{module_name}")
                         # Look for function starting with "test_"
                         test_funcs = [getattr(module, name) for name in dir(module) 
                                      if name.startswith("test_") and callable(getattr(module, name))]
