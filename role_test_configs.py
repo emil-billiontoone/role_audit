@@ -6,10 +6,6 @@ Define which tests to run for each role.
 
 # Test suite configurations for different roles
 MAIN_ROLE_TEST_SUITES = {
-    "Editor": [
-        "permissions_edit_completed_steps",
-    ],
-    
     "Lab Operator": [
         "permissions_clarity_login",
     ],
@@ -24,18 +20,32 @@ MAIN_ROLE_TEST_SUITES = {
         ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
     ],
 
-    "Reagent Manufacturing": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
+    "Limited": [
+        "permissions_clarity_login",
     ],
 
+      "BTO API": [
+        "permissions_clarity_login",
+    ],  
+
+    "Not Logged In": [
+        "permissions_clarity_login",
+    ],
+}
+
+ADD_ON_ROLE_TEST_SUITES = {
     "Sample Creation": [
         "permissions_view",
         ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
     ],
+    
+    "Editor": [
+        "permissions_edit_completed_steps",
+    ],
 
-    "Limited": [
-        "permissions_clarity_login",
+    "Reagent Manufacturing": [
+        "permissions_view",
+        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
     ],
 
     "Review Escalations": [
@@ -44,6 +54,11 @@ MAIN_ROLE_TEST_SUITES = {
     ],
 
     "Rework": [
+        "permissions_view",
+        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
+    ],
+
+    "No Add-Ons": [
         "permissions_view",
         ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
     ],

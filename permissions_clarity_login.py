@@ -129,8 +129,10 @@ def test_clarity_login(page: Page) -> dict:
     """
 
     # Get credentials
-    username = keyring.get_password(SERVICE_NAME, "USERNAME_KEY")
+    account = "TEST"  
+    username = keyring.get_password(SERVICE_NAME, f"USERNAME_{account}")
     password = keyring.get_password(SERVICE_NAME, username) if username else None
+
     if not username or not password:
         raise ValueError("Credentials not found. Please run store_creds.py first.")
 
