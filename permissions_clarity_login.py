@@ -136,7 +136,7 @@ def test_clarity_login(page: Page) -> dict:
 
     # Go to login page and submit credentials
     page.goto(f"{BASE_URL}/clarity/login/auth?unauthenticated=1")
-    if role == "Not Logged In":
+    if role_name == "Not Logged In":
         username = "  "
         password = "  "
     
