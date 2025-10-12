@@ -21,8 +21,9 @@ MAIN_ROLE_TEST_SUITES = {
     },
 
     "Limited": {
-        "permissions_clarity_login": True,
-        "permissions_edit_completed_steps": False,
+        # "permissions_clarity_login": True,
+        # "permissions_edit_completed_steps": False,
+        "permissions_API_login": False,
     },
 
     "BTO API": {
