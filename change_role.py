@@ -21,7 +21,7 @@ def remove_role_from_user(user, role_obj, username, role_name):
 
 SERVICE_NAME = "role_audit_app"  # must match store_creds.py
 server = "dev"
-role_names = ["Lab Operator (BTO)","Editor"]
+role_names = [f"Lab Operator (BTO)"]
 action = "remove"
 
 CLARITY_SERVERS = {
@@ -31,7 +31,7 @@ CLARITY_SERVERS = {
 }
 
 # Retrieve stored credentials
-account = "MASTER"  # or "TEST"
+account = "MASTER" 
 username = keyring.get_password(SERVICE_NAME, f"USERNAME_{account}")
 password = keyring.get_password(SERVICE_NAME, username)
 
