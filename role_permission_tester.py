@@ -169,14 +169,12 @@ class RolePermissionTester:
         total_tests = len(self.current_test_results)
         passed_tests = sum(1 for t in self.current_test_results if t.get("result") == "pass")
         failed_tests = sum(1 for t in self.current_test_results if t.get("result") == "fail")
-        error_tests = sum(1 for t in self.current_test_results if t.get("result") == "error")
         
         print(f"\nRole: {self.role_name}")
         print(f"Total Tests: {total_tests}")
         print(f"Passed (as expected): {passed_tests}")
         print(f"Failed (as expected): {failed_tests}")
-        print(f"Errors: {error_tests}")
-        
+
         print("\nTest Results:")
         for test in self.current_test_results:
             result_status = test.get("result", "unknown").upper()
@@ -188,7 +186,7 @@ class RolePermissionTester:
             if test.get("error"):
                 print(f"        Error: {test['error']}")
         
-        overall = "ALL TESTS PASSED" if error_tests == 0 and (passed_tests + failed_tests == total_tests) else "SOME TESTS FAILED"
+        overall = "ALL TESTS PASSED" if failed_tests == 0 and (passed_tests + failed_tests == total_tests) else "SOME TESTS FAILED"
         print(f"\nOverall Result: {overall}")
     
     def save_results(self, filename=None):

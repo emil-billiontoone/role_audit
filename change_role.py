@@ -21,7 +21,8 @@ def remove_role_from_user(user, role_obj, username, role_name):
 
 SERVICE_NAME = "role_audit_app"  # must match store_creds.py
 server = "dev"
-role_name = "Lab Operator (BTO)"
+role_names = ["Lab Operator (BTO)","Editor"]
+action = "remove"
 
 CLARITY_SERVERS = {
     "prod": "https://billiontoone-prod.claritylims.com/api/v2",
@@ -47,14 +48,18 @@ current_user = lims.researchers.query(**{
 print(f"Current user: {current_user[0].first_name} {current_user[0].last_name}")
 print(f"Current user: {current_user[0].username}")
 
-role = lims.roles.get_by_name(role_name)
-
 print(f"Current roles for {username}:")
 for r in current_user[0].roles:
     print(f"  - {r.name}")
 
-# Change the function here to add or remove the role
-add_role_to_user(current_user[0], role, username, role_name)
+
+for role_name in role_names:
+    role = lims.roles.get_by_name(role_name)    
+    # Change the function here to add or remove the role
+    if action == "add":
+        add_role_to_user(current_user[0], role, username, role_name)
+    else:
+        remove_role_from_user(current_user[0], role, username, role_name)
 
 print(f"Current roles for {username}:")
 for r in current_user[0].roles:

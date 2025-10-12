@@ -7,7 +7,7 @@ Define which tests to run for each role.
 # Test suite configurations for different roles
 MAIN_ROLE_TEST_SUITES = {
     "Lab Operator": {
-        "permissions_clarity_login": False,
+        "permissions_clarity_login": True,
     },
     
     "System Admin": {
@@ -21,6 +21,7 @@ MAIN_ROLE_TEST_SUITES = {
 
     "Limited": {
         "permissions_clarity_login": True,
+        "permissions_edit_completed_steps": False,
     },
 
     "BTO API": {
