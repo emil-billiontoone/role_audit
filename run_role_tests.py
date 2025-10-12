@@ -8,7 +8,7 @@ Simple script to run role-based permission tests.
 import sys
 import argparse
 from role_permission_tester import RolePermissionTester
-from role_test_configs import MAIN_ROLE_TEST_SUITES, QUICK_TEST, FULL_TEST_SUITE
+from role_test_configs import MAIN_ROLE_TEST_SUITES, ADD_ON_ROLE_TEST_SUITES, QUICK_TEST, FULL_TEST_SUITE
 
 def main():
     """Main entry point for role testing."""
@@ -72,6 +72,8 @@ Examples:
         role_name = "Full Test"
     elif role_name in MAIN_ROLE_TEST_SUITES:
         test_suite = MAIN_ROLE_TEST_SUITES[role_name]
+    elif role_name in ADD_ON_ROLE_TEST_SUITES:
+        test_suite = ADD_ON_ROLE_TEST_SUITES[role_name]
     else:
         print(f"\nWarning: Unknown role '{role_name}'. Running default test suite.")
         # Ensure it's a dict with expected outcomes

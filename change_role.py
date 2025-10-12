@@ -21,7 +21,7 @@ def remove_role_from_user(user, role_obj, username, role_name):
 
 SERVICE_NAME = "role_audit_app"  # must match store_creds.py
 server = "dev"
-role_name = "Limited (BTO)"
+role_name = "Lab Operator (BTO)"
 
 CLARITY_SERVERS = {
     "prod": "https://billiontoone-prod.claritylims.com/api/v2",
@@ -54,7 +54,7 @@ for r in current_user[0].roles:
     print(f"  - {r.name}")
 
 # Change the function here to add or remove the role
-remove_role_from_user(current_user[0], role, username, role_name)
+add_role_to_user(current_user[0], role, username, role_name)
 
 print(f"Current roles for {username}:")
 for r in current_user[0].roles:

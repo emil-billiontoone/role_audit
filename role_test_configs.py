@@ -33,35 +33,30 @@ MAIN_ROLE_TEST_SUITES = {
 }
 
 ADD_ON_ROLE_TEST_SUITES = {
-    "Sample Creation": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-    ],
+    "Sample Creation": {
+        "permissions_view": True,
+    },
     
-    "Editor": [
-        "permissions_edit_completed_steps",
-    ],
+    "Editor": {
+        "permissions_clarity_login": True,
+        "permissions_edit_completed_steps": True,
+    },
 
-    "Reagent Manufacturing": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-    ],
+    "Reagent Manufacturing": {
+        "permissions_view": True,
+    },
 
-    "Review Escalations": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-    ],
+    "Review Escalations": {
+        "permissions_view": True,
+    },
 
-    "Rework": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-    ],
+    "Rework": {
+        "permissions_view": True,
+    },
 
-    "No Add-Ons": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-    ],
-
+    "No Add-Ons": {
+        "permissions_view": True,
+    },
 }
 
 # You can also define test groups for reuse
