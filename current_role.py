@@ -5,7 +5,7 @@ import time
 import keyring
 from s4.clarity import researcher, role
 
-SERVICE_NAME = "role_audit_app"  # must match store_creds.py
+SERVICE_NAME = "role_audit_app"  
 server = "dev"
 
 CLARITY_SERVERS = {
