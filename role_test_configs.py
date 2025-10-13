@@ -12,13 +12,15 @@ MAIN_ROLE_TEST_SUITES = {
     },
     
     "System Admin": {
+        "permissions_clarity_login": True,
         "permissions_edit_completed_steps": True,
-        "permissions_view": True,
-        "permissions_API_login": False,
+        "permissions_API_login": True,
     },
     
     "Lab Admin": {
-        "permissions_view": True,
+        "permissions_clarity_login": True,
+        "permissions_edit_completed_steps": False,
+        "permissions_API_login": True,
     },
 
     "Limited": {
@@ -28,11 +30,15 @@ MAIN_ROLE_TEST_SUITES = {
     },
 
     "BTO API": {
-        "permissions_clarity_login": True,
+        "permissions_clarity_login": False,
+        "permissions_edit_completed_steps": False,
+        "permissions_API_login": True,
     },  
 
     "Not Logged In": {
         "permissions_clarity_login": False,
+        "permissions_edit_completed_steps": False,
+        "permissions_API_login": True,
     },
 }
 
