@@ -9,16 +9,18 @@ MAIN_ROLE_TEST_SUITES = {
     "Lab Operator": {
         "permissions_clarity_login": True,
         "permissions_API_login": True,
-        "permissions_sample_workflow_assignment": True, # still need to create this test
-        "permissions_edit_completed_steps": False,
-        "permissions_move_to_next_step": True, # still need to create this test
-        "permissions_overview_dashboard": True, # still need to create this test
-        "permissions_requeue_sample": True, # still need to create this test
-        "permissions_remove_sample_from_workflow": True, # still need to create this test
-        "permissions_read_user": True, # still need to create this test
-        "permissions_create_user": True, # still need to create this test
-        "permissions_update_user": True, # still need to create this test
-        "permissions_update_sample": True, # still need to create this test
+        "permissions_create_project": False, # still need to create this test
+        "permissions_delete_project": False, # still need to create this test
+        # "permissions_sample_workflow_assignment": True, # still need to create this test
+        # "permissions_edit_completed_steps": False,
+        # "permissions_move_to_next_step": True, # still need to create this test
+        # "permissions_overview_dashboard": True, # still need to create this test
+        # "permissions_requeue_sample": True, # still need to create this test
+        # "permissions_remove_sample_from_workflow": True, # still need to create this test
+        # "permissions_read_user": True, # still need to create this test
+        # "permissions_create_user": True, # still need to create this test
+        # "permissions_update_user": True, # still need to create this test
+        # "permissions_update_sample": True, # still need to create this test
     },
     
     "System Admin": {
@@ -27,8 +29,8 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_API_login": True,
         # "permissions_collaborations_login": True, # still need to create this test & this test is not in the illumina configure role
         # "permissions_operations_login": True, # still need to create this test & this test is not in the illumina configure role
-        "permissions_create_project": True, # still need to create this test
-        "permissions_delete_project": True, # still need to create this test
+        "permissions_create_project": False, # still need to create this test
+        "permissions_delete_project": False, # still need to create this test
         # "permissions_create_sample": True, # still need to create this test
         # "permissions_delete_sample": True, # still need to create this test
         # "permissions_sample_workflow_assignment": True, # still need to create this test
