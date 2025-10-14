@@ -28,7 +28,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_collaborations_login": True, # still need to create this test & this test is not in the illumina configure role
         # "permissions_operations_login": True, # still need to create this test & this test is not in the illumina configure role
         "permissions_create_project": True, # still need to create this test
-        # "permissions_delete_project": True, # still need to create this test
+        "permissions_delete_project": True, # still need to create this test
         # "permissions_create_sample": True, # still need to create this test
         # "permissions_delete_sample": True, # still need to create this test
         # "permissions_sample_workflow_assignment": True, # still need to create this test

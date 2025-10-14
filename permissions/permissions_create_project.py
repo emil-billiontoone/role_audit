@@ -26,6 +26,9 @@ def test_create_project(page):
     Accepts a Playwright 'page' object from the test framework.
     Returns structured JSON result.
     """
+    print("\n===== TEST: Create Project Permission =====")
+    print(f"Project: {PROJECT_NAME}")
+
     result = {
         "test_name": "Create Project",
         "description": "Checks if user can create a new project in Clarity LIMS",
@@ -41,99 +44,70 @@ def test_create_project(page):
 
     for attempt in range(1, RETRIES + 2):
         try:
-
-            # Go to Projects & Samples
+            print(f"\nAttempt {attempt}: Navigating to Projects & Samples...")
             page.get_by_role("link", name=re.compile("PROJECTS & Samples", re.I)).click()
+            page.wait_for_timeout(1000)
 
-            # Type in filter box
+            print(f"Typing project name '{PROJECT_NAME}' in filter box...")
             filter_box = page.get_by_role("textbox", name="Filter...")
             filter_box.wait_for(state="visible", timeout=5000)
-            page.wait_for_timeout(500)  # wait half a second before typing
+            page.wait_for_timeout(500)
             filter_box.type(PROJECT_NAME, delay=100)
 
-            # # Wait for the project row to appear
-            # project_row_selector = f"div.project-list-item-headline-title[data-qtip='{PROJECT_NAME}']"
-            # page.wait_for_selector(project_row_selector, state="visible", timeout=10000)
-
-            # Now click NEW PROJECT button
+            print("Clicking 'NEW PROJECT' button...")
             new_project_btn = page.locator("button", has_text="NEW PROJECT")
             new_project_btn.wait_for(state="visible", timeout=5000)
-
-
-            new_project_btn_count = page.locator("button", has_text="NEW PROJECT").count()
-            if new_project_btn_count == 0:
+            if new_project_btn.count() == 0:
                 raise Exception("NEW PROJECT button not found")
-
-            # Click New Project
             new_project_btn.click()
 
-            # Fill project form
+            print("Filling in project form...")
             page.get_by_role("textbox", name="Enter Project Name").fill(PROJECT_NAME)
 
-
-            # Click the "Choose an account" input
+            print(f"Selecting account '{ACCOUNT_NAME}'...")
             account_input = page.locator("input[placeholder='Choose an account']")
             account_input.click()
-
-            # Wait for the dropdown to appear
             page.wait_for_selector(".x-boundlist-item", state="visible", timeout=5000)
+            page.locator(".x-boundlist-item", has_text=ACCOUNT_NAME).click()
 
-            # Click the correct item in the dropdown
-            page.locator(".x-boundlist-item", has_text="Administrative Lab").click()
-            
-
-            # Click the dropdown trigger to enable input
-            trigger_button = page.locator("#ext-gen1100")  # the div with class x-form-arrow-trigger
+            print(f"Selecting client '{CLIENT_NAME}'...")
+            trigger_button = page.locator("#ext-gen1100")  # dropdown trigger
             trigger_button.click()
-
             client_input = page.locator("input[placeholder='Choose a client']")
             client_input.wait_for(state="visible", timeout=10000)
-
-            # Wait until input is enabled
-            client_input = page.locator("input[placeholder='Choose a client']")
-            client_input.wait_for(state="visible", timeout=10000)
-
-            for _ in range(20):  # retry for ~4 seconds
+            for _ in range(20):
                 if client_input.is_enabled():
                     break
                 page.wait_for_timeout(200)
+            client_input.type(CLIENT_NAME, delay=100)
+            client_input.press("Enter")
 
-            client_input.type("Emil Test", delay=100)
-
-            page.locator(".x-boundlist-item", has_text="Emil Test").click()
-
-            # Click standard drop down
+            print("Setting priority to 'Standard' and saving project...")
             priority_trigger = page.locator("#ext-gen1106")
             priority_trigger.click()
-            page.wait_for_timeout(200)  # small delay to let dropdown appear
-
-            page.get_by_text("Standard").click()  # Priority
+            page.wait_for_timeout(200)
+            page.get_by_text("Standard").click()
             page.get_by_role("button", name="Save").click()
 
-            # Verify project exists
+            print("Verifying project creation...")
             page.goto(f"{BASE_URL}/clarity/samples")
-
-
-            # Type in filter box
             filter_box = page.get_by_role("textbox", name="Filter...")
             filter_box.wait_for(state="visible", timeout=5000)
-            page.wait_for_timeout(500)  # wait half a second before typing
+            page.wait_for_timeout(500)
             filter_box.type(PROJECT_NAME, delay=100)
-
-            # Wait for the project row to appear
             project_row_locator = page.locator(f"div.project-list-item-headline-title[data-qtip='{PROJECT_NAME}']").first
             project_row_locator.wait_for(state="visible", timeout=10000)
 
             if project_row_locator.count() == 0:
                 raise Exception(f"Project '{PROJECT_NAME}' not found after creation")
+            else:
+                print("Project created successfully!")
 
-            # Success
             result["passed"] = True
             result["result"] = "pass"
             break
 
         except Exception as e:
-            # Capture screenshot on failure
             timestamp = int(time.time())
             screenshot_file = os.path.join(SCREENSHOT_DIR, f"create_project_{timestamp}.png")
             try:
@@ -148,17 +122,25 @@ def test_create_project(page):
 
             print(f"Attempt {attempt} failed: {e}")
             if attempt <= RETRIES:
-                print("Retrying...")
+                print("Retrying in 2 seconds...")
                 time.sleep(2)
             else:
+                print("Max retries reached. Failing test.")
                 break
 
         finally:
             try:
                 page.goto(BASE_URL)
+                print("Returned to main page.")
             except:
                 pass
 
     end_time = time.time()
     result["execution_time"] = round(end_time - start_time, 2)
+    print(f"\n===== TEST RESULT: {'PASS' if result['passed'] else 'FAIL'} =====")
+    print(f"Execution time: {result['execution_time']}s")
+    if result["error"]:
+        print(f"Error: {result['error']}")
+    if result["screenshot"]:
+        print(f"Screenshot: {result['screenshot']}")
     return result
