@@ -61,15 +61,20 @@ def test_sample_workflow_assignment(page):
             page.wait_for_timeout(1000)
 
             # Check if there are samples
-            sample_rows = page.locator("div.sample-row")
+            sample_rows = page.locator("div.project-list-item.x-item-selected")
             if sample_rows.count() == 0:
                 raise Exception("No samples found in project")
 
             # Deselect all samples first
-            deselect_btn = page.locator("button#deselect-all-0")
-            if deselect_btn.count() > 0:
-                deselect_btn.click()
-                page.wait_for_timeout(500)
+            print("Looking for 'Select Group' button...")
+            select_group_btn = page.locator("button#select-all-0, button:has-text('Select Group')")
+
+            if select_group_btn.count() > 0:
+                print("Clicking 'Select Group'...")
+                select_group_btn.first.click()
+                page.wait_for_timeout(1000)
+            else:
+                raise Exception("'Select Group' button not found on the page.")
 
             # Click Assign to Workflow
             assign_btn = page.locator("div.rw-input", has_text="Assign To Workflow")
@@ -93,10 +98,13 @@ def test_sample_workflow_assignment(page):
                 raise Exception("Workflow assignment failed")
 
             # Clean up: unassign workflow
-            delete_btn = page.locator("div.delete-btn", has_attr={"data-sample-id": sample_rows.first.get_attribute("data-sample-id")})
-            if delete_btn.count() > 0:
-                delete_btn.click()
-                page.wait_for_timeout(500)
+            sample_id = sample_rows.first.get_attribute("data-sample-id")
+            if sample_id:
+                delete_btn = page.locator(f"div.delete-btn[data-sample-id='{sample_id}']")
+                if delete_btn.count() > 0:
+                    print("Cleaning up: unassigning workflow...")
+                    delete_btn.first.click()
+                    page.wait_for_timeout(500)
 
             break  # Exit retry loop if successful
 
