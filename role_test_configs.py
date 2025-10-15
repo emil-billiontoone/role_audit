@@ -14,9 +14,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_sample_workflow_assignment": True, 
         # "permissions_edit_completed_steps": False,
         # "permissions_move_to_next_step": True, # still need to create this test
-        "permissions_overview_dashboard": True, # still need to create this test
-        # "permissions_requeue_sample": True, # still need to create this test
-        # "permissions_remove_sample_from_workflow": True, 
+        # "permissions_overview_dashboard": True, 
+        "permissions_requeue_sample": True, 
+        # "permissions_remove_sample_from_workflow": True,
         # "permissions_read_user": True, # still need to create this test
         # "permissions_create_user": True, # still need to create this test
         # "permissions_update_user": True, # still need to create this test
@@ -29,11 +29,11 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_API_login": True,
         # "permissions_collaborations_login": True, # still need to create this test & this test is not in the illumina configure role
         # "permissions_operations_login": True, # still need to create this test & this test is not in the illumina configure role
-        "permissions_create_project": False, 
-        "permissions_delete_project": False, 
+        "permissions_create_project": True, 
+        "permissions_delete_project": True, 
         # "permissions_create_sample": True, # still need to create this test
         # "permissions_delete_sample": True, # still need to create this test
-        # "permissions_sample_workflow_assignment": True, # still need to create this test
+        # "permissions_sample_workflow_assignment": True, 
         # "permissions_sample_rework": True, # still need to create this test
         # "permissions_review_escalated_samples": True, # still need to create this test
         # "permissions_move_to_next_step": True, # still need to create this test
@@ -43,7 +43,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_reagent_kit": True, # still need to create this test
         # "permissions_update_reagent_kit": True, # still need to create this test
         # "permissions_delete_reagent_kit": True, # still need to create this test
-        # "permissions_overview_dashboard": True, # still need to create this test
+        # "permissions_overview_dashboard": True, 
         # "permissions_update_configuration": True, # still need to create this test
         # "permissions_requeue_sample": True, # still need to create this test
         # "permissions_remove_sample_from_workflow": True, # still need to create this test
@@ -69,63 +69,68 @@ MAIN_ROLE_TEST_SUITES = {
     
     "Lab Admin": {
         "permissions_clarity_login": True,
-        "permissions_edit_completed_steps": False,
-        "permissions_API_login": True,
-        "permissions_create_sample": True, # still need to create this test
-        "permissions_delete_sample": True, # still need to create this test
-        "permissions_sample_workflow_assignment": True, # still need to create this test
-        "permissions_sample_rework": True, # still need to create this test
-        "permissions_review_escalated_samples": True, # still need to create this test
-        "permissions_move_to_next_step": True, # still need to create this test
-        "permissions_create_control": True, # still need to create this test
-        "permissions_update_control": True, # still need to create this test
-        "permissions_delete_control": True, # still need to create this test
-        "permissions_create_reagent_kit": True, # still need to create this test
-        "permissions_update_reagent_kit": True, # still need to create this test
-        "permissions_delete_reagent_kit": True, # still need to create this test
-        "permissions_overview_dashboard": True, # still need to create this test
-        "permissions_requeue_sample": True, # still need to create this test
-        "permissions_remove_sample_from_workflow": True, # still need to create this test
-        "permissions_read_user": True, # still need to create this test
-        "permissions_create_user": True, # still need to create this test
-        "permissions_update_user": True, # still need to create this test
-        "permissions_read_process": True, # still need to create this test
-        "permissions_update_sample": True, # still need to create this test
+        # "permissions_edit_completed_steps": False,
+        # "permissions_API_login": True,
+        "permissions_create_project": False, 
+        "permissions_delete_project": False, 
+        # "permissions_create_sample": True, # still need to create this test
+        # "permissions_delete_sample": True, # still need to create this test
+        # "permissions_sample_workflow_assignment": True, 
+        # "permissions_sample_rework": True, # still need to create this test
+        # "permissions_review_escalated_samples": True, # still need to create this test
+        # "permissions_move_to_next_step": True, # still need to create this test
+        # "permissions_create_control": True, # still need to create this test
+        # "permissions_update_control": True, # still need to create this test
+        # "permissions_delete_control": True, # still need to create this test
+        # "permissions_create_reagent_kit": True, # still need to create this test
+        # "permissions_update_reagent_kit": True, # still need to create this test
+        # "permissions_delete_reagent_kit": True, # still need to create this test
+        # "permissions_overview_dashboard": 
+        # "permissions_requeue_sample": True, # still need to create this test
+        # "permissions_remove_sample_from_workflow": True, # still need to create this test
+        # "permissions_read_user": True, # still need to create this test
+        # "permissions_create_user": True, # still need to create this test
+        # "permissions_update_user": True, # still need to create this test
+        # "permissions_read_process": True, # still need to create this test
+        # "permissions_update_sample": True, # still need to create this test
     },
 
     "Limited": {
         "permissions_clarity_login": True,
-        "permissions_edit_completed_steps": False,
-        "permissions_API_login": False,
-        "permissions_create_project": True, # still need to create this test
-        "permissions_create_sample": True, # still need to create this test
-        "permissions_sample_workflow_assignment": True, # still need to create this test
-        "permissions_sample_rework": True, # still need to create this test
-        "permissions_review_escalated_samples": True, # still need to create this test
-        "permissions_move_to_next_step": True, # still need to create this test
-        "permissions_create_control": True, # still need to create this test
-        "permissions_update_control": True, # still need to create this test
-        "permissions_create_reagent_kit": True, # still need to create this test
-        "permissions_update_reagent_kit": True, # still need to create this test
-        "permissions_update_configuration": True, # still need to create this test
-        "permissions_requeue_sample": True, # still need to create this test
-        "permissions_remove_sample_from_workflow": True, # still need to create this test
-        "permissions_read_process": True, # still need to create this test
-        "permissions_create_process": True, # still need to create this test
-        "permissions_update_process": True, # still need to create this test
-        "permissions_update_sample": True, # still need to create this test
+        # "permissions_edit_completed_steps": False,
+        # "permissions_API_login": False,
+        # "permissions_create_project": False, 
+        # "permissions_create_sample": False, # still need to create this test
+        # "permissions_sample_workflow_assignment": False,
+        # "permissions_sample_rework": True, # still need to create this test
+        # "permissions_review_escalated_samples": True, # still need to create this test
+        # "permissions_move_to_next_step": True, # still need to create this test
+        # "permissions_create_control": True, # still need to create this test
+        # "permissions_update_control": True, # still need to create this test
+        # "permissions_create_reagent_kit": True, # still need to create this test
+        # "permissions_update_reagent_kit": True, # still need to create this test
+        # "permissions_update_configuration": True, # still need to create this test
+        "permissions_requeue_sample": False,
+        # "permissions_remove_sample_from_workflow": True, # still need to create this test
+        # "permissions_read_process": True, # still need to create this test
+        # "permissions_create_process": True, # still need to create this test
+        # "permissions_update_process": True, # still need to create this test
+        # "permissions_update_sample": True, # still need to create this test
+        # "permissions_overview_dashboard": False, 
     },
 
     "BTO API": {
         "permissions_clarity_login": False,
         "permissions_edit_completed_steps": False,
         "permissions_API_login": True,
+        "permissions_overview_dashboard": False, 
     },  
 
     "Not Logged In": {
         "permissions_clarity_login": False,
         "permissions_edit_completed_steps": False,
         "permissions_API_login": True,
+        "permissions_overview_dashboard": False, 
     },
 }
 

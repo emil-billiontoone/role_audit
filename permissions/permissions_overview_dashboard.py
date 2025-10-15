@@ -11,7 +11,7 @@ import re
 import time
 
 BASE_URL = "https://clarity-dev.btolims.com"
-RETRIES = 2
+RETRIES = 0
 SCREENSHOT_DIR = "screenshots"
 
 # Ensure screenshot directory exists
