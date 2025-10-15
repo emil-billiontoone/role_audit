@@ -15,10 +15,10 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_edit_completed_steps": False,
         # "permissions_move_to_next_step": True, # still need to create this test
         # "permissions_overview_dashboard": True, 
-        "permissions_requeue_sample": True, 
+        # "permissions_requeue_sample": True, 
         # "permissions_remove_sample_from_workflow": True,
-        # "permissions_read_user": True, # still need to create this test
-        # "permissions_create_user": True, # still need to create this test
+        # "permissions_read_user": True, 
+        "permissions_create_user": True, 
         # "permissions_update_user": True, # still need to create this test
         # "permissions_update_sample": True, # still need to create this test
     },
@@ -45,9 +45,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_delete_reagent_kit": True, # still need to create this test
         # "permissions_overview_dashboard": True, 
         # "permissions_update_configuration": True, # still need to create this test
-        # "permissions_requeue_sample": True, # still need to create this test
+        # "permissions_requeue_sample": True,
         # "permissions_remove_sample_from_workflow": True, # still need to create this test
-        # "permissions_read_user": True, # still need to create this test
+        # "permissions_read_user": True,
         # "permissions_create_user": True, # still need to create this test
         # "permissions_update_user": True, # still need to create this test
         # "permissions_delete_user": True, # still need to create this test
@@ -86,9 +86,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_update_reagent_kit": True, # still need to create this test
         # "permissions_delete_reagent_kit": True, # still need to create this test
         # "permissions_overview_dashboard": 
-        # "permissions_requeue_sample": True, # still need to create this test
+        # "permissions_requeue_sample": True,
         # "permissions_remove_sample_from_workflow": True, # still need to create this test
-        # "permissions_read_user": True, # still need to create this test
+        # "permissions_read_user": True,
         # "permissions_create_user": True, # still need to create this test
         # "permissions_update_user": True, # still need to create this test
         # "permissions_read_process": True, # still need to create this test
@@ -110,13 +110,15 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_reagent_kit": True, # still need to create this test
         # "permissions_update_reagent_kit": True, # still need to create this test
         # "permissions_update_configuration": True, # still need to create this test
-        "permissions_requeue_sample": False,
+        # "permissions_requeue_sample": False,
         # "permissions_remove_sample_from_workflow": True, # still need to create this test
         # "permissions_read_process": True, # still need to create this test
         # "permissions_create_process": True, # still need to create this test
         # "permissions_update_process": True, # still need to create this test
         # "permissions_update_sample": True, # still need to create this test
         # "permissions_overview_dashboard": False, 
+        # "permissions_read_user": False, 
+        # "permissions_create_user": False,
     },
 
     "BTO API": {
