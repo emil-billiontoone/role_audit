@@ -15,7 +15,7 @@ role_audit/
 ├── permissions/                   # Individual permission test modules (40+ tests)
 │   ├── permissions_*.py           # Each file tests a specific permission
 ├── test_results/                  # Test execution results
-│   └── all_role_tests.json       # Consolidated test results
+│   └── all_role_tests.json        # Consolidated test results
 └── screenshots/                   # Test failure screenshots
 
 ```
