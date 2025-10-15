@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-15 00:04:11",
+  "timestamp": "2025-10-15 14:26:39",
   "tests": {
     "Limited": [
       {
@@ -24,63 +24,15 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 11.2,
+        "execution_time": 12.7,
         "expected": true,
         "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Api Login",
-        "description": "Checks if user can login to Clarity API",
-        "execution_time": 0.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Create Project",
-        "description": "Checks if user can create a new project in Clarity LIMS",
-        "execution_time": 41.7,
-        "expected": false,
-        "passed": false,
-        "result": "pass"
-      },
-      {
-        "test_name": "Delete Project",
-        "description": "Checks if user can delete a new project in Clarity LIMS",
-        "execution_time": 52.9,
-        "expected": false,
-        "passed": false,
         "result": "pass"
       },
       {
         "test_name": "Sample Workflow Assignment",
         "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
-        "execution_time": 9.7,
-        "expected": true,
-        "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Edit Completed Steps",
-        "description": "No description available",
-        "execution_time": 7.8,
-        "expected": false,
-        "passed": false,
-        "result": "pass"
-      },
-      {
-        "test_name": "Overview Dashboard",
-        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
-        "execution_time": 1.8,
-        "expected": true,
-        "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Requeue Sample",
-        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
-        "execution_time": 5.1,
+        "execution_time": 9.2,
         "expected": true,
         "passed": true,
         "result": "pass"
@@ -88,39 +40,7 @@
       {
         "test_name": "Sample Workflow Removal",
         "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
-        "execution_time": 53.5,
-        "expected": true,
-        "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Permissions Read User",
-        "description": "Checks if a user with the 'permissions_read_user' role can view the",
-        "execution_time": 8.9,
-        "expected": true,
-        "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Permissions Create User",
-        "description": "Checks if a user with the 'permissions_create_user' role can create a new user in Clarity LIMS.",
-        "execution_time": 8.1,
-        "expected": true,
-        "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Permissions Update User",
-        "description": "Checks if a user can update a user in Clarity LIMS.",
-        "execution_time": 17.0,
-        "expected": true,
-        "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Update Sample",
-        "description": "Checks if role can update a sample in Clarity LIMS.",
-        "execution_time": 8.9,
+        "execution_time": 12.7,
         "expected": true,
         "passed": true,
         "result": "pass"

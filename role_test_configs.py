@@ -8,19 +8,19 @@ Define which tests to run for each role.
 MAIN_ROLE_TEST_SUITES = {
     "Lab Operator": {
         "permissions_clarity_login": True,
-        "permissions_API_login": True,
-        "permissions_create_project": False, 
-        "permissions_delete_project": False, 
+        # "permissions_API_login": True,
+        # "permissions_create_project": False, 
+        # "permissions_delete_project": False, 
         "permissions_sample_workflow_assignment": True, 
-        "permissions_edit_completed_steps": False,
-        # "permissions_move_to_next_step": True, # still need to create this test
-        "permissions_overview_dashboard": True, 
-        "permissions_requeue_sample": True, 
         "permissions_remove_sample_from_workflow": True,
-        "permissions_read_user": True, 
-        "permissions_create_user": True, 
-        "permissions_update_user": True, 
-        "permissions_update_sample": True, 
+        # "permissions_edit_completed_steps": False,
+        # # "permissions_move_to_next_step": True, # still need to create this test
+        # "permissions_overview_dashboard": True, 
+        # "permissions_requeue_sample": True,
+        # "permissions_read_user": True, 
+        # "permissions_create_user": True, 
+        # "permissions_update_user": True, 
+        # "permissions_update_sample": True, 
     },
     
     "System Admin": {

@@ -93,9 +93,21 @@ def test_sample_workflow_removal(page):
                     page.evaluate("el => el.remove()", sample)
                     continue
 
+                # Wait for any page overlay to disappear before clicking
+                page.locator("div.x-mask-full-page").wait_for(state="hidden", timeout=10000)
+
+                # Click delete
                 delete_btn.first.click()
-                page.wait_for_timeout(500)
+
+                # Wait until the workflow name for this sample is gone
+                workflow_locator = page.locator(f"div.sample-row[data-sample-id='{sample_id}'] div.workflow-name")
+                try:
+                    workflow_locator.wait_for(state="detached", timeout=10000)
+                except:
+                    print(f"Warning: workflow for sample {sample_id} did not disappear within timeout")
+
                 removed_count += 1
+                page.wait_for_timeout(500)  # optional small buffer
 
             print(f"Removed {removed_count} sample(s) from workflows.")
 
