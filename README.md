@@ -1,59 +1,143 @@
-# Modular Role Permission Testing System
+# Clarity LIMS Role Permission Testing System
 
 ## Overview
-A clean, modular system for testing role-based permissions in Clarity. Each permission test is self-contained, and the runner is completely generic.
+A comprehensive, modular testing framework for validating role-based permissions in Clarity LIMS. The system provides automated testing of 40+ different permissions across multiple user roles, with expected outcome validation and detailed reporting.
 
-## Recent Updates (October 2025)
-- **Enhanced `permissions_view.py`**: Now includes comprehensive entry interaction testing with multiple methods (click, double-click, hover, JavaScript) in the `test_entry_interaction` function
-- **Improved diagnostics**: Tests provide detailed debugging information when interactions fail
-- **Better fallback handling**: Tests can pass if viewing is successful even when clicking fails (permission-based)
-- **Module naming**: Standardized to `permissions_` prefix for test modules
-- **Extended role coverage**: Added test configurations for 9 different roles (Editor, Lab Operator, System Admin, Lab Admin, Reagent Manufacturing, Sample Creation, Limited, Review Escalations, Rework)
-
-## Architecture
+## Project Structure
 
 ```
-run_role_tests.py           # Main entry point
-    ↓
-role_permission_tester.py   # Generic test runner
-    ↓
-Individual test modules:     # Self-contained tests
-  - permissions_edit_completed_steps.py
-  - permissions_view.py
-  - (add more as needed)
+role_audit/
+├── run_role_tests.py              # Main CLI entry point
+├── role_permission_tester.py      # Core test framework and runner
+├── role_test_configs.py           # Role-specific test configurations
+├── change_role.py                 # Role switching utility
+├── store_creds.py                 # Secure credential storage
+├── permissions/                   # Individual permission test modules (40+ tests)
+│   ├── permissions_*.py           # Each file tests a specific permission
+├── test_results/                  # Test execution results
+│   └── all_role_tests.json       # Consolidated test results
+└── screenshots/                   # Test failure screenshots
+
 ```
 
-## File Structure
+## Available Permission Tests
 
-### Core Files
-- `run_role_tests.py` - Simple command-line runner
-- `role_permission_tester.py` - Generic test framework
-- `role_test_configs.py` - Configuration for different roles
+### Authentication & Access Tests
+- `permissions_clarity_login` - Tests basic Clarity LIMS login
+- `permissions_API_login` - Tests API authentication
+- `permissions_collaborations_login` - Tests collaborations access
+- `permissions_operations_login` - Tests operations module access
 
-### Test Modules
-Each test module contains one or more test functions:
-- `permissions_edit_completed_steps.py` - Tests editing completed steps in lab stream entries
-  - Function: `test_can_edit_completed_steps` - Checks if Edit buttons appear and work
-- `permissions_view.py` - Tests viewing and interacting with lab stream entries  
-  - Function: `test_entry_interaction` - Comprehensive test trying multiple interaction methods
-- (Add your own test modules here)
+### Project Management
+- `permissions_create_project` - Tests project creation capability
+- `permissions_delete_project` - Tests project deletion rights
+- `permissions_read_process` - Tests process viewing permissions
+- `permissions_create_process` - Tests process creation
+- `permissions_update_process` - Tests process modification
 
-### Supporting Files
-- `permissions_complete_audit_balanced.py` - Comprehensive audit helper functions for permission testing
-- `store_creds.py` - Store credentials securely using keyring
-- `store_creds_template.py` - Template for credential storage
+### Sample Management
+- `permissions_create_sample` - Tests sample creation
+- `permissions_delete_sample` - Tests sample deletion
+- `permissions_update_sample` - Tests sample modification
+- `permissions_sample_workflow_assignment` - Tests workflow assignment capability
+- `permissions_sample_rework` - Tests sample rework permissions
+- `permissions_review_escalated_samples` - Tests escalation review
+- `permissions_requeue_sample` - Tests requeuing capability
+- `permissions_remove_sample_from_workflow` - Tests workflow removal
+
+### User Management
+- `permissions_create_user` - Tests user creation
+- `permissions_read_user` - Tests user viewing
+- `permissions_update_user` - Tests user modification
+- `permissions_delete_user` - Tests user deletion
+
+### Role Management
+- `permissions_create_role` - Tests role creation
+- `permissions_update_role` - Tests role modification
+- `permissions_delete_role` - Tests role deletion
+
+### Contact Management
+- `permissions_create_contact` - Tests contact creation
+- `permissions_read_contact` - Tests contact viewing
+- `permissions_update_contact` - Tests contact modification
+- `permissions_delete_contact` - Tests contact deletion
+
+### Control & Reagent Management
+- `permissions_create_control` - Tests control creation
+- `permissions_update_control` - Tests control modification
+- `permissions_delete_control` - Tests control deletion
+- `permissions_create_reagent_kit` - Tests reagent kit creation
+- `permissions_update_reagent_kit` - Tests reagent kit modification
+- `permissions_delete_reagent_kit` - Tests reagent kit deletion
+
+### System Features
+- `permissions_edit_completed_steps` - Tests editing completed workflow steps
+- `permissions_move_to_next_step` - Tests workflow progression
+- `permissions_overview_dashboard` - Tests dashboard access
+- `permissions_update_configuration` - Tests configuration changes
+- `permissions_esignature_signing` - Tests e-signature capability
+- `permissions_search_index` - Tests search functionality
+- `permissions_administer_lab_link` - Tests lab link administration
+
+## Configuration
+
+### Role Test Configurations
+The system uses a dictionary-based configuration where each role maps to a set of tests with their expected outcomes:
+
+```python
+MAIN_ROLE_TEST_SUITES = {
+    "Lab Operator": {
+        "permissions_clarity_login": True,           # Expected to pass
+        "permissions_API_login": True,              # Expected to pass
+        "permissions_create_project": False,        # Expected to fail (no permission)
+        "permissions_delete_project": False,        # Expected to fail
+        "permissions_sample_workflow_assignment": True,
+        "permissions_edit_completed_steps": False,
+        # ... more tests
+    },
+    "System Admin": {
+        "permissions_clarity_login": True,
+        "permissions_create_project": True,
+        "permissions_delete_project": True,
+        # ... more tests
+    }
+}
+```
+
+### Currently Configured Roles
+
+#### Main Roles
+- **Lab Operator** - Standard lab user with operational permissions
+- **System Admin** - Full administrative access
+- **Lab Admin** - Lab-specific administrative permissions
+- **Limited** - Minimal access role
+- **BTO API** - API-only access role
+- **Not Logged In** - Tests for unauthenticated access
+
+#### Add-On Roles
+- **Sample Creation** - Additional sample management permissions
+- **Editor** - Edit permissions for completed steps
+- **Reagent Manufacturing** - Reagent-specific permissions
+- **Review Escalations** - Escalation review capabilities
+- **Rework** - Sample rework permissions
+- **No Add-Ons** - Base role without additional permissions
 
 ## Usage
 
-### Basic Usage
-```bash
-# Test a specific role (use quotes for roles with spaces)
-python run_role_tests.py "Lab Operator"
-python run_role_tests.py "System Admin"
+### Basic Command Line Usage
 
-# Test on different server
-python run_role_tests.py "Lab Operator" --server test
-python run_role_tests.py Editor -s dev
+```bash
+# Test a specific role
+python run_role_tests.py "Lab Operator"
+
+# Test on different servers
+python run_role_tests.py "System Admin" --server dev
+python run_role_tests.py "Lab Admin" --server test
+python run_role_tests.py "Limited" -s prod
+
+# Test add-on roles
+python run_role_tests.py "Editor"
+python run_role_tests.py "Sample Creation"
 
 # Quick test (for development)
 python run_role_tests.py quick
@@ -61,221 +145,95 @@ python run_role_tests.py quick
 # Full test suite
 python run_role_tests.py full
 
-# Show help
+# Show available options
 python run_role_tests.py --help
 ```
 
-### Advanced Usage
-```python
-from role_permission_tester import RolePermissionTester
+### Setting Up Credentials
 
-# Create custom test suite
-tester = RolePermissionTester(server="dev", role_name="Custom Role")
-tester.run_test_suite([
-    "permissions_view",
-    ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-])
-```
+Before running tests, store your credentials securely:
 
-## Creating New Tests
-
-### Step 1: Create Test Module
-Create a new file with your test (e.g., `permissions_your_feature.py`):
-
-```python
-from playwright.sync_api import Page
-
-def test_your_permission(page: Page) -> dict:
-    """Test description."""
-    
-    print("\n" + "="*60)
-    print("TEST: Your Permission Name")
-    print("="*60)
-    
-    test_result = {
-        "test_name": "Your Permission Name",
-        "passed": False,
-        "description": "What this test checks",
-        "details": {}
-    }
-    
-    # Your test logic here
-    try:
-        # Do your testing
-        test_result["passed"] = True  # or False based on test
-    except Exception as e:
-        test_result["error"] = str(e)
-        test_result["passed"] = False
-    
-    return test_result
-```
-
-### Step 2: Add to Role Configuration
-Edit `role_test_configs.py`:
-
-```python
-ROLE_TEST_SUITES = {
-    "YourRole": [
-        "permissions_your_feature",  # Add your test module here
-        # other tests...
-    ],
-}
-```
-
-### Step 3: Run It
 ```bash
-python run_role_tests.py YourRole
+python store_creds.py
 ```
 
-## Test Module Requirements
+This will prompt for username and password and store them securely using the system keyring.
 
-Each test function must:
-1. Accept a `Page` object (already logged in)
-2. Return a dict with:
-   - `test_name`: Name of the test
-   - `passed`: Boolean result
-   - `description`: What the test checks
-   - `details`: Additional information
-   - `error`: (Optional) Error message if failed
+## Test Results
 
-## Example Test Modules
+### Console Output
+Tests provide real-time feedback during execution:
 
-### Simple Permission Check
-```python
-def test_can_access_settings(page: Page) -> dict:
-    """Check if user can access settings."""
-    result = {
-        "test_name": "Can Access Settings",
-        "passed": False,
-        "description": "Checks settings access"
-    }
-    
-    try:
-        page.goto("https://clarity-dev.btolims.com/clarity/settings")
-        page.wait_for_selector(".settings-panel", timeout=3000)
-        result["passed"] = True
-    except:
-        result["passed"] = False
-    
-    return result
 ```
+============================================================
+ROLE PERMISSION TEST SUITE
+Role: Lab Operator
+Server: dev
+Started: 2025-10-15 12:30:45
+============================================================
 
-### Complex Permission Test
-See `permissions_edit_completed_steps.py` for an example that:
-- Uses the audit framework from `permissions_complete_audit_balanced.py`
-- Checks multiple entries systematically
-- Looks for specific popup dialogs and edit capabilities
-- Returns detailed results with comprehensive logging
+Running test: Clarity Login
+----------------------------------------
+[Test execution details...]
+✓ Test passed as expected
 
-See `permissions_view.py` for an example that:
-- Tests multiple interaction methods (click, double-click, hover, JavaScript)
-- Handles cases where entries might not be clickable
-- Provides detailed debugging information
-- Falls back to checking view permissions when interaction fails
+Running test: Create Project
+----------------------------------------
+[Test execution details...]
+✓ Test failed as expected (permission denied)
 
-## Benefits of This Architecture
+============================================================
+TEST SUMMARY
+============================================================
 
-1. **Modularity**: Each test is independent
-2. **Reusability**: Tests can be mixed and matched for different roles
-3. **Maintainability**: Easy to add, modify, or remove tests
-4. **Clarity**: Clear separation of concerns
-5. **Extensibility**: Simple to extend with new test types
+Role: Lab Operator
+Total Tests: 13
+Passed (as expected): 13
+Failed (unexpectedly): 0
+Errors: 0
 
-## Configuration Examples
+Test Results:
+  [PASS] Clarity Login (11.2s) Expected:✓ Actual:✓
+  [PASS] Api Login (0.4s) Expected:✓ Actual:✓
+  [PASS] Create Project (41.7s) Expected:✗ Actual:✗
+  [PASS] Delete Project (52.9s) Expected:✗ Actual:✗
+  [PASS] Sample Workflow Assignment (9.7s) Expected:✓ Actual:✓
+  [PASS] Edit Completed Steps (7.8s) Expected:✗ Actual:✗
+  [PASS] Overview Dashboard (1.8s) Expected:✓ Actual:✓
+  [PASS] Requeue Sample (5.1s) Expected:✓ Actual:✓
+  [PASS] Sample Workflow Removal (53.5s) Expected:✓ Actual:✓
+  [PASS] Permissions Read User (8.9s) Expected:✓ Actual:✓
+  [PASS] Permissions Create User (8.1s) Expected:✓ Actual:✓
+  [PASS] Permissions Update User (17.0s) Expected:✓ Actual:✓
+  [PASS] Update Sample (8.9s) Expected:✓ Actual:✓
 
-### Define Test Suites by Role
-```python
-ROLE_TEST_SUITES = {
-    "Editor": [
-        "permissions_view",  # Test viewing and interaction capabilities
-    ],
-    
-    "Lab Operator": [
-        "permissions_view",
-    ],
-    
-    "System Admin": [
-        "permissions_edit_completed_steps",
-        "permissions_view",
-    ],
-    
-    "Lab Admin": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-    ],
-    
-    # Additional roles with specific permissions
-    "Reagent Manufacturing": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-    ],
-    
-    "Sample Creation": [
-        "permissions_view",
-        ("permissions_edit_completed_steps", "test_can_edit_completed_steps"),
-    ],
-}
+Overall Result: ALL TESTS PASSED AS EXPECTED
+
+Results saved to: test_results/all_role_tests.json
 ```
-
-### Create Test Groups
-```python
-# Reusable test groups
-BASIC_PERMISSIONS = [
-    "permissions_view",
-]
-
-EDIT_PERMISSIONS = [
-    "permissions_edit_completed_steps",
-]
-
-ADMIN_PERMISSIONS = [
-    # "test_user_management",
-    # "test_system_settings",
-]
-
-# Quick test suite for development/debugging
-QUICK_TEST = [
-    ("permissions_view", "test_entry_interaction"),  # Just one quick test
-]
-
-# Full comprehensive test suite
-FULL_TEST_SUITE = [
-    "permissions_view",
-    "permissions_edit_completed_steps",
-    # Add all available tests here
-]
-```
-
-## Output
-
-Results are:
-1. Displayed in console with pass/fail status
-2. Saved to a single JSON file (`test_results/all_role_tests.json`) that gets updated after each test run
-3. Include timing information and error details
-4. Provide detailed debugging information for failures
 
 ### JSON Output Format
 
-All test results are stored in a single consolidated file that groups tests by role:
+Results are saved to a consolidated JSON file (`test_results/all_role_tests.json`) that maintains history for all roles:
 
 ```json
 {
   "server": "dev",
-  "timestamp": "2025-10-11 15:30:45",
+  "timestamp": "2025-10-15 00:04:11",
   "tests": {
     "Lab Operator": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 5.6,
+        "execution_time": 11.2,
         "expected": true,
         "passed": true,
         "result": "pass"
       },
       {
-        "test_name": "Edit Completed Steps",
-        "description": "Checks if user can edit completed steps",
-        "execution_time": 12.3,
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 41.7,
         "expected": false,
         "passed": false,
         "result": "pass"
@@ -283,9 +241,9 @@ All test results are stored in a single consolidated file that groups tests by r
     ],
     "System Admin": [
       {
-        "test_name": "Edit Completed Steps",
-        "description": "Checks if user can edit completed steps",
-        "execution_time": 10.1,
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 13.9,
         "expected": true,
         "passed": true,
         "result": "pass"
@@ -295,119 +253,240 @@ All test results are stored in a single consolidated file that groups tests by r
 }
 ```
 
-**Key Features:**
-- **Single File**: All results in `test_results/all_role_tests.json`
-- **Append Mode**: New test runs update the file with their role's results
-- **Human-Readable Timestamp**: Format: "YYYY-MM-DD HH:MM:SS"
-- **Expected vs Actual**: Shows both what was expected and what actually happened
-- **Result Status**: "pass" if test behaved as expected, "fail" if not, "error" if exception occurred
+### Understanding Test Results
 
-Example output:
-```
-============================================================
-ROLE PERMISSION TEST SUITE
-Role: Lab Operator
-Server: dev
-Started: 2025-10-11T15:30:45.123456
-============================================================
+- **Expected**: What the test configuration says should happen (true = should pass, false = should fail)
+- **Passed**: What actually happened during the test
+- **Result**: 
+  - `"pass"` - Test behaved as expected (whether passing or failing)
+  - `"fail"` - Test did not behave as expected (unexpected pass or fail)
+  - `"error"` - Test encountered an execution error
 
-Running test: Clarity Login
-----------------------------------------
-[Test execution details...]
+## Creating New Permission Tests
 
-Running test: Edit Completed Steps
-----------------------------------------
-[Test execution details...]
+### Step 1: Create the Test Module
 
-============================================================
-TEST SUMMARY
-============================================================
+Create a new file in the `permissions/` directory:
 
-Role: Lab Operator
-Total Tests: 2
-Passed (as expected): 1
-Failed (as expected): 1
-Errors: 0
-
-Test Results:
-  [PASS] Clarity Login (5.6s) Expected:✓ Actual:✓
-  [PASS] Edit Completed Steps (12.3s) Expected:✗ Actual:✗
-
-Overall Result: ALL TESTS PASSED
-
-Results saved to: test_results/all_role_tests.json
-```
-
-## Troubleshooting
-
-### Lab Stream Entries Not Clickable
-
-**Issue**: Lab stream entries (`.lab-stream-entry`) may appear clickable (cursor: pointer) but don't navigate when clicked.
-
-**What we discovered**:
-- Entries have `cursor: pointer` CSS style suggesting they should be clickable
-- No `onclick` handler is attached to the entries
-- No child elements (links or buttons) exist within the entries
-- The entries are `<li>` elements containing only divs, spans, and images
-
-**Diagnosis**: Run the `permissions_view.py` test which tries multiple interaction methods:
-- Regular click
-- Double click  
-- JavaScript click
-- Hover actions
-- Clicking child elements
-
-**Common Causes**:
-1. **Permission restrictions** - User role may not have access to view entry details
-2. **Missing event handlers** - Click handlers might not be attached properly
-3. **Framework issues** - JavaScript framework may not have loaded completely
-4. **UI design** - Entries might be display-only with no detail view
-
-**Solution**: The test will automatically detect if entries are viewable but not clickable, and will pass the test if the user can at least see the entry list.
-
-### Test Function Discovery
-
-**Issue**: Test function not found or wrong function executed.
-
-**How it works**: The test runner automatically discovers functions that:
-1. Are in the specified module
-2. Start with `test_` prefix
-3. Accept a `Page` parameter and return a dict
-
-**Example**:
 ```python
-# WILL be discovered
-def test_my_permission(page: Page) -> dict:
-    pass
+# permissions/permissions_your_feature.py
+"""
+Test Module: Your Feature Permission
+=====================================
+Checks if a user can perform your specific action in Clarity LIMS.
+Compatible with RolePermissionTester framework.
+"""
 
-# Will NOT be discovered (wrong prefix)
-def check_my_permission(page: Page) -> dict:
-    pass
+import os
+import time
+
+BASE_URL = "https://clarity-dev.btolims.com"
+RETRIES = 2
+SCREENSHOT_DIR = "screenshots"
+
+os.makedirs(SCREENSHOT_DIR, exist_ok=True)
+
+def test_permissions_your_feature(page):
+    """
+    Test your specific permission.
+    Returns structured result dict.
+    """
+    print("\n===== TEST: Your Feature Permission =====")
+    
+    result = {
+        "test_name": "Your Feature Permission",
+        "description": "Checks if user can perform your action",
+        "execution_time": 0.0,
+        "expected": True,
+        "passed": False,
+        "result": "fail",
+        "error": None,
+        "screenshot": None
+    }
+    
+    start_time = time.time()
+    
+    try:
+        # Navigate to the relevant page
+        page.goto(f"{BASE_URL}/clarity/your-page")
+        page.wait_for_timeout(2000)
+        
+        # Check for permission-specific elements
+        if page.locator("your-selector").count() > 0:
+            result["passed"] = True
+            result["result"] = "pass"
+        else:
+            raise Exception("Permission denied - element not found")
+            
+    except Exception as e:
+        result["error"] = str(e)
+        # Capture screenshot on failure
+        timestamp = int(time.time())
+        screenshot_file = f"screenshots/your_feature_{timestamp}.png"
+        try:
+            page.screenshot(path=screenshot_file)
+            result["screenshot"] = screenshot_file
+        except:
+            pass
+    
+    result["execution_time"] = round(time.time() - start_time, 2)
+    
+    print(f"===== TEST RESULT: {'PASS' if result['passed'] else 'FAIL'} =====")
+    return result
 ```
 
-**To specify exact function**:
+### Step 2: Add to Role Configuration
+
+Edit `role_test_configs.py` to include your test:
+
 ```python
-ROLE_TEST_SUITES = {
-    "Editor": [
-        ("permissions_view", "test_entry_interaction"),  # Module and function
-    ],
+MAIN_ROLE_TEST_SUITES = {
+    "Lab Operator": {
+        # ... existing tests ...
+        "permissions_your_feature": False,  # Set expected outcome
+    },
+    "System Admin": {
+        # ... existing tests ...
+        "permissions_your_feature": True,   # Admins should have this permission
+    }
 }
 ```
 
-### Timeout Issues
+### Step 3: Run the Test
 
-**Issue**: Tests timing out waiting for elements.
-
-**Solutions**:
-1. Increase timeout in selectors: `page.wait_for_selector(".element", timeout=10000)`
-2. Add explicit waits: `page.wait_for_timeout(2000)`
-3. Wait for specific load states: `page.wait_for_load_state("networkidle")`
-
-### Authentication Issues
-
-**Issue**: Login fails or credentials not found.
-
-**Solution**: Run `store_creds.py` to securely store credentials:
 ```bash
-python store_creds.py
+python run_role_tests.py "Lab Operator"
 ```
+
+## Test Module Standards
+
+### Required Return Structure
+
+Every test function must return a dictionary with these fields:
+
+```python
+{
+    "test_name": str,        # Display name for the test
+    "description": str,      # What the test validates
+    "execution_time": float, # Test duration in seconds
+    "expected": bool,        # Expected outcome (set by framework)
+    "passed": bool,          # Actual test result
+    "result": str,           # "pass", "fail", or "error"
+    "error": str | None,     # Error message if applicable
+    "screenshot": str | None # Path to failure screenshot
+}
+```
+
+### Best Practices
+
+1. **Consistent Naming**: Use `permissions_` prefix for all test modules
+2. **Retry Logic**: Implement retries for transient failures
+3. **Screenshots**: Capture screenshots on failure for debugging
+4. **Clear Output**: Provide clear console output during execution
+5. **Navigation Reset**: Return to main page after test completion
+6. **Timeout Handling**: Use appropriate timeouts for UI elements
+
+## Advanced Usage
+
+### Programmatic Testing
+
+```python
+from role_permission_tester import RolePermissionTester
+
+# Create custom test suite
+tester = RolePermissionTester(server="dev", role_name="Custom Role")
+
+# Define tests with expected outcomes
+custom_tests = {
+    "permissions_clarity_login": True,
+    "permissions_create_project": False,
+    "permissions_update_sample": True,
+}
+
+# Run the tests
+tester.run_test_suite(custom_tests)
+```
+
+### Test Groups
+
+You can define reusable test groups in `role_test_configs.py`:
+
+```python
+# Quick smoke test
+QUICK_TEST = {
+    "permissions_clarity_login": True,
+}
+
+# Full regression suite
+FULL_TEST_SUITE = {
+    "permissions_clarity_login": True,
+    "permissions_create_project": True,
+    "permissions_delete_project": True,
+    # ... all available tests
+}
+```
+
+## Architecture Benefits
+
+1. **Modularity**: Each permission test is self-contained and independent
+2. **Scalability**: Easy to add new permission tests without modifying core code
+3. **Maintainability**: Clear separation between test logic and configuration
+4. **Flexibility**: Tests can be mixed and matched for different roles
+5. **Validation**: Expected outcomes ensure tests behave correctly
+6. **Traceability**: Comprehensive logging and result storage
+7. **Debugging**: Automatic screenshots on failure
+
+## Troubleshooting
+
+### Common Issues
+
+#### Tests Timing Out
+- Increase timeout values in wait_for_selector calls
+- Add explicit waits with page.wait_for_timeout()
+- Check network conditions
+
+#### Authentication Failures
+- Run `python store_creds.py` to update credentials
+- Verify server URL is correct
+- Check if account is locked
+
+#### Permission Tests Passing Unexpectedly
+- Verify the expected outcome in role_test_configs.py
+- Check if role permissions have changed in Clarity
+- Review test implementation for edge cases
+
+#### Screenshots Not Capturing
+- Ensure screenshots/ directory exists
+- Check disk space
+- Verify write permissions
+
+### Debug Mode
+
+For detailed debugging, modify the browser launch options:
+
+```python
+# In role_permission_tester.py
+browser = playwright.chromium.launch(
+    headless=False,  # Show browser window
+    slow_mo=500,     # Slow down operations
+    devtools=True    # Open developer tools
+)
+```
+
+## Recent Updates (October 2025)
+
+- **40+ Permission Tests**: Comprehensive coverage of Clarity LIMS permissions
+- **Expected Outcome Validation**: Tests now validate against expected results
+- **Consolidated Results**: All test results stored in single JSON file
+- **Main/Add-On Role Separation**: Clear distinction between primary and supplementary roles
+- **Enhanced Error Handling**: Better retry logic and screenshot capture
+- **Improved Test Discovery**: Automatic function detection with naming conventions
+
+## Future Enhancements
+
+- [ ] Parallel test execution for faster runs
+- [ ] HTML report generation
+- [ ] Test scheduling and automation
+- [ ] Permission change detection and alerts
+- [ ] Test coverage metrics
+- [ ] Integration with CI/CD pipelines
