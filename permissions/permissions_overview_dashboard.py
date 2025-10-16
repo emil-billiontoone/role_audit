@@ -18,7 +18,7 @@ SCREENSHOT_DIR = "screenshots"
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 
-def test_overview_dashboard(page):
+def test_overview_dashboard(page, expected=True):
     """
     Checks if role can view the Overview Dashboard in Clarity LIMS.
     Accepts a Playwright 'page' object from the test framework.
@@ -39,7 +39,16 @@ def test_overview_dashboard(page):
 
     start_time = time.time()
 
-    for attempt in range(1, RETRIES + 2):
+    # If expected to fail, only try once (no retries)
+
+
+    max_attempts = 1 if expected == False else (RETRIES + 1)
+
+
+    
+
+
+    for attempt in range(1, max_attempts + 1):
         try:
             print(f"\nAttempt {attempt}: Navigating to Overview Dashboard...")
 

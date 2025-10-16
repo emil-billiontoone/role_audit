@@ -16,7 +16,7 @@ SCREENSHOT_DIR = "screenshots"
 
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
-def test_sample_workflow_assignment(page):
+def test_sample_workflow_assignment(page, expected=True):
     """
     Checks if role can assign a sample to a workflow in Clarity LIMS.
     Accepts a Playwright 'page' object from the test framework.
@@ -38,7 +38,16 @@ def test_sample_workflow_assignment(page):
 
     start_time = time.time()
 
-    for attempt in range(1, RETRIES + 2):
+    # If expected to fail, only try once (no retries)
+
+
+    max_attempts = 1 if expected == False else (RETRIES + 1)
+
+
+    
+
+
+    for attempt in range(1, max_attempts + 1):
         try:
             print(f"\nAttempt {attempt}: Navigating to Projects & Samples...")
             page.get_by_role("link", name=re.compile("PROJECTS & Samples", re.I)).click()
@@ -67,7 +76,7 @@ def test_sample_workflow_assignment(page):
 
             # Deselect all samples first
             print("Looking for 'Select Group' button...")
-            select_group_btn = page.locator("button#select-all-1")
+            select_group_btn = page.locator("button#select-all-2")
             select_group_btn.wait_for(state="visible", timeout=10000)  # wait up to 10 seconds
 
             if select_group_btn.count() > 0:
@@ -83,14 +92,15 @@ def test_sample_workflow_assignment(page):
             page.wait_for_timeout(500)
 
             # Select workflow from dropdown
-            workflow_option = page.locator("li.rw-list-option", has_text="Expanded Carrier Screen v1.3").first
+            workflow_option = page.locator("li.rw-list-option", has_text="Aneuploidy v3.6").first
             workflow_option.wait_for(state="visible", timeout=10000)  # wait for dropdown item
             workflow_option.click()
             page.wait_for_timeout(500)
+            print(f"Selected workflow: {workflow_option.text_content()}")
 
             # Confirm workflow assigned
             workflow_name_locator = page.locator(
-                "div.workflow-name", has_text="Expanded Carrier Screen v1.3"
+                "div.workflow-name", has_text="Aneuploidy v3.6"
             )
             if workflow_name_locator.count() > 0:
                 print("Workflow successfully assigned")

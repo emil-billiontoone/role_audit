@@ -10,11 +10,11 @@ MAIN_ROLE_TEST_SUITES = {
         "permissions_clarity_login": True,
         # "permissions_API_login": True,
         # "permissions_create_project": False, 
-        # # "permissions_delete_project": False, 
-        # "permissions_sample_workflow_assignment": True, 
-        # "permissions_remove_sample_from_workflow": True,
+        # "permissions_delete_project": False, 
+        "permissions_sample_workflow_assignment": True, 
+        "permissions_move_to_next_step": True, # needs to be between sample workflow assignment and remove sample from workflow
+        "permissions_remove_sample_from_workflow": True,
         # "permissions_edit_completed_steps": False,
-        "permissions_move_to_next_step": False, 
         # "permissions_overview_dashboard": True, 
         # "permissions_requeue_sample": True,
         # "permissions_read_user": True, 
@@ -27,8 +27,8 @@ MAIN_ROLE_TEST_SUITES = {
         "permissions_clarity_login": True,
         # "permissions_edit_completed_steps": True,
         # "permissions_API_login": True,
-        # "permissions_collaborations_login": True, # still need to create this test & this test is not in the illumina configure role
-        # "permissions_operations_login": True, # still need to create this test & this test is not in the illumina configure role
+        # "permissions_collaborations_login": True, # Don't worry about this test
+        # "permissions_operations_login": True, # Don't worry about this test
         "permissions_create_project": True, 
         "permissions_delete_project": True, 
         # "permissions_create_sample": True, # still need to create this test
@@ -120,7 +120,8 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_read_user": False, 
         # "permissions_create_user": False,
         # "permissions_update_user": False,
-        "permissions_update_sample": False, 
+        # "permissions_update_sample": False, 
+        "permissions_move_to_next_step": False, 
     },
 
     "BTO API": {

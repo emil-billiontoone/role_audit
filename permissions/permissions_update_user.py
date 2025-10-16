@@ -19,7 +19,7 @@ SCREENSHOT_DIR = "screenshots"
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 
-def test_permissions_update_user(page):
+def test_permissions_update_user(page, expected=True):
     """
     Checks if a user can update a user in Clarity LIMS.
     Accepts a Playwright 'page' object from the test framework.
@@ -40,7 +40,16 @@ def test_permissions_update_user(page):
 
     start_time = time.time()
 
-    for attempt in range(1, RETRIES + 2):
+    # If expected to fail, only try once (no retries)
+
+
+    max_attempts = 1 if expected == False else (RETRIES + 1)
+
+
+    
+
+
+    for attempt in range(1, max_attempts + 1):
         try:
             print(f"\nAttempt {attempt}: Navigating to Configuration page...")
             page.goto(f"{BASE_URL}/clarity/configuration")

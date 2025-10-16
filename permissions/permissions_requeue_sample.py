@@ -17,7 +17,7 @@ SCREENSHOT_DIR = "screenshots"
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 
-def test_requeue_sample(page):
+def test_requeue_sample(page, expected=True):
     """
     Checks if a user can see the Requeue button for a sample in Clarity LIMS.
     Accepts a Playwright 'page' object from the test framework.
@@ -38,7 +38,16 @@ def test_requeue_sample(page):
 
     start_time = time.time()
 
-    for attempt in range(1, RETRIES + 2):
+    # If expected to fail, only try once (no retries)
+
+
+    max_attempts = 1 if expected == False else (RETRIES + 1)
+
+
+    
+
+
+    for attempt in range(1, max_attempts + 1):
         try:
             print(f"\nAttempt {attempt}: Navigating to Sample and Container Search page...")
             page.goto(f"{BASE_URL}/clarity/search?query=Emil%20Test&offset=0&scope=Process")

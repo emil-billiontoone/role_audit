@@ -390,11 +390,32 @@ Every test function must return a dictionary with these fields:
 ### Best Practices
 
 1. **Consistent Naming**: Use `permissions_` prefix for all test modules
-2. **Retry Logic**: Implement retries for transient failures
-3. **Screenshots**: Capture screenshots on failure for debugging
+2. **Smart Retry Logic**: Accept `expected` parameter to skip retries when expected to fail
+3. **Screenshots**: Capture screenshots on failure for debugging (now auto-captured by framework)
 4. **Clear Output**: Provide clear console output during execution
 5. **Navigation Reset**: Return to main page after test completion
 6. **Timeout Handling**: Use appropriate timeouts for UI elements
+
+### Smart Retry Feature
+
+Tests now automatically receive an `expected` parameter from the framework:
+
+```python
+def test_your_permission(page, expected=True):
+    """Your test function."""
+    
+    # If expected to fail, only try once (no retries)
+    max_attempts = 1 if expected == False else (RETRIES + 1)
+    
+    for attempt in range(1, max_attempts + 1):
+        # Your test logic here
+        pass
+```
+
+**Benefits:**
+- Tests expected to fail (`expected=False`) run only once, saving time
+- Tests expected to pass (`expected=True`) still retry on transient failures
+- No manual intervention needed - the framework passes the expected value automatically
 
 ## Advanced Usage
 
@@ -492,6 +513,7 @@ browser = playwright.chromium.launch(
 - **Enhanced Error Handling**: Better retry logic and screenshot capture
 - **Improved Test Discovery**: Automatic function detection with naming conventions
 - **Automatic Screenshot Capture**: All tests now automatically capture screenshots (both pass and fail)
+- **Smart Retry Logic**: Tests with `expected=False` now skip retries and run only once for faster execution
 
 ## Future Enhancements
 

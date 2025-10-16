@@ -70,7 +70,14 @@ class RolePermissionTester:
         
         start_time = time.time()
         try:
-            result = test_function(page)
+            # Try to pass expected parameter to test function
+            # Tests can use this to skip retries when expected=False
+            import inspect
+            sig = inspect.signature(test_function)
+            if 'expected' in sig.parameters:
+                result = test_function(page, expected=expected)
+            else:
+                result = test_function(page)
             execution_time = round(time.time() - start_time, 1)
             passed = result.get("passed", False)
             

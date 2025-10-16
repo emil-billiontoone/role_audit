@@ -19,7 +19,7 @@ SCREENSHOT_DIR = "screenshots"
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 
-def test_sample_workflow_removal(page):
+def test_sample_workflow_removal(page, expected=True):
     """
     Checks if role can remove samples from a workflow in Clarity LIMS.
     Accepts a Playwright 'page' object from the test framework.
@@ -41,7 +41,16 @@ def test_sample_workflow_removal(page):
 
     start_time = time.time()
 
-    for attempt in range(1, RETRIES + 2):
+    # If expected to fail, only try once (no retries)
+
+
+    max_attempts = 1 if expected == False else (RETRIES + 1)
+
+
+    
+
+
+    for attempt in range(1, max_attempts + 1):
         try:
             print(f"\nAttempt {attempt}: Navigating to Projects & Samples...")
             page.get_by_role("link", name=re.compile("PROJECTS & Samples", re.I)).click()
