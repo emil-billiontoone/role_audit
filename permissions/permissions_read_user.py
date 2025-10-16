@@ -2,7 +2,7 @@
 Test Module: Read User Permission
 =================================
 Checks if a user with the proper role can view the User Management tab
-under Configuration in Clarity LIMS.
+ ity LIMS.
 Compatible with RolePermissionTester framework.
 """
 

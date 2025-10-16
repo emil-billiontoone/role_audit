@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-15 14:26:39",
+  "timestamp": "2025-10-16 14:26:17",
   "tests": {
     "Limited": [
       {
@@ -24,26 +24,18 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 12.7,
+        "execution_time": 10.9,
         "expected": true,
         "passed": true,
         "result": "pass"
       },
       {
-        "test_name": "Sample Workflow Assignment",
-        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
-        "execution_time": 9.2,
-        "expected": true,
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.3,
+        "expected": false,
         "passed": true,
-        "result": "pass"
-      },
-      {
-        "test_name": "Sample Workflow Removal",
-        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
-        "execution_time": 12.7,
-        "expected": true,
-        "passed": true,
-        "result": "pass"
+        "result": "fail"
       }
     ],
     "Editor": [
