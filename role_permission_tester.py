@@ -33,6 +33,9 @@ class RolePermissionTester:
         self.base_url = f"https://clarity-{server}.btolims.com"
         self.results_file = "test_results/all_role_tests.json"
         self.current_test_results = []
+        self.screenshot_dir = "screenshots"
+        # Ensure screenshot directory exists
+        os.makedirs(self.screenshot_dir, exist_ok=True)
     
     
     def run_test(self, page, test_function, test_name=None, expected=True):
@@ -81,6 +84,8 @@ class RolePermissionTester:
                 "expected": expected,
                 "passed": passed,
                 "result": result_status,
+                "error": result.get("error", None),
+                "screenshot": result.get("screenshot", None)
             }
             
         except Exception as e:
@@ -92,9 +97,14 @@ class RolePermissionTester:
                 "expected": expected,
                 "passed": False,
                 "result": "error",
-                "error": str(e)
+                "error": str(e),
+                "screenshot": None
             }
             print(f"ERROR in test: {e}")
+        
+        # Always capture a screenshot if not already present
+        if test_result.get("screenshot") is None:
+            test_result["screenshot"] = self._capture_screenshot(page, formatted_name.lower().replace(" ", "_"))
         
         self.current_test_results.append(test_result)
         return test_result
@@ -225,6 +235,18 @@ class RolePermissionTester:
             print(f"\nResults saved to: {filename}")
         except Exception as e:
             print(f"\nFailed to save results: {e}")
+    
+    def _capture_screenshot(self, page, test_name):
+        """Capture a screenshot for the test."""
+        try:
+            timestamp = int(time.time())
+            screenshot_file = os.path.join(self.screenshot_dir, f"{test_name}_{timestamp}.png")
+            page.screenshot(path=screenshot_file)
+            print(f"  Screenshot saved: {screenshot_file}")
+            return screenshot_file
+        except Exception as e:
+            print(f"  Failed to capture screenshot: {e}")
+            return None
     
     def _create_new_data_structure(self):
         """Create a new data structure for the JSON file."""

@@ -219,16 +219,18 @@ Results are saved to a consolidated JSON file (`test_results/all_role_tests.json
 ```json
 {
   "server": "dev",
-  "timestamp": "2025-10-15 00:04:11",
+  "timestamp": "2025-10-16 13:58:19",
   "tests": {
     "Lab Operator": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 11.2,
+        "execution_time": 19.6,
         "expected": true,
         "passed": true,
-        "result": "pass"
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_1760650309.png"
       },
       {
         "test_name": "Create Project",
@@ -236,7 +238,9 @@ Results are saved to a consolidated JSON file (`test_results/all_role_tests.json
         "execution_time": 41.7,
         "expected": false,
         "passed": false,
-        "result": "pass"
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/create_project_1760650351.png"
       }
     ],
     "System Admin": [
@@ -246,7 +250,9 @@ Results are saved to a consolidated JSON file (`test_results/all_role_tests.json
         "execution_time": 13.9,
         "expected": true,
         "passed": true,
-        "result": "pass"
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/create_project_1760650455.png"
       }
     ]
   }
@@ -261,6 +267,8 @@ Results are saved to a consolidated JSON file (`test_results/all_role_tests.json
   - `"pass"` - Test behaved as expected (whether passing or failing)
   - `"fail"` - Test did not behave as expected (unexpected pass or fail)
   - `"error"` - Test encountered an execution error
+- **Error**: Error message if the test encountered an exception (null otherwise)
+- **Screenshot**: Path to the screenshot captured for this test (automatically captured for all tests)
 
 ## Creating New Permission Tests
 
@@ -373,9 +381,11 @@ Every test function must return a dictionary with these fields:
     "passed": bool,          # Actual test result
     "result": str,           # "pass", "fail", or "error"
     "error": str | None,     # Error message if applicable
-    "screenshot": str | None # Path to failure screenshot
+    "screenshot": str | None # Path to screenshot (auto-captured by framework if not provided)
 }
 ```
+
+**Note**: The framework now automatically captures screenshots for ALL tests. If your test doesn't provide a screenshot, one will be captured automatically after the test completes.
 
 ### Best Practices
 
@@ -481,6 +491,7 @@ browser = playwright.chromium.launch(
 - **Main/Add-On Role Separation**: Clear distinction between primary and supplementary roles
 - **Enhanced Error Handling**: Better retry logic and screenshot capture
 - **Improved Test Discovery**: Automatic function detection with naming conventions
+- **Automatic Screenshot Capture**: All tests now automatically capture screenshots (both pass and fail)
 
 ## Future Enhancements
 

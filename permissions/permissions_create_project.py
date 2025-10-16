@@ -8,6 +8,7 @@ Compatible with RolePermissionTester framework.
 import os
 import re
 import time
+from datetime import datetime
 
 BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "Emil Project Test"
@@ -108,7 +109,7 @@ def test_create_project(page):
             break
 
         except Exception as e:
-            timestamp = int(time.time())
+            timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")  # readable
             screenshot_file = os.path.join(SCREENSHOT_DIR, f"create_project_{timestamp}.png")
             try:
                 page.screenshot(path=screenshot_file)
