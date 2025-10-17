@@ -42,18 +42,48 @@ def test_permissions_move_to_next_step(page):
     try:
         # 1. Click on the step
         print("Locating workflow step button...")
-        step_button = page.locator("div.sub-work:has-text('Step 1 » Aneuploidy - Plasma Isolation')").first
-        step_button.wait_for(state="visible", timeout=10000)
-        step_button.click()
-        page.wait_for_timeout(1000)
-        print(f"Selected workflow step: {step_button.text_content()}")
+        step_button = page.locator("div.sub-work", has_text="Aneuploidy - Plasma Isolation")
+        if step_button.count() == 0:
+            raise Exception("Workflow step not found")
+        print("Clicking workflow step...")
+        with page.expect_navigation():
+            step_button.first.click()
 
-        # 2. Expand sample group
+        print("Navigated to workflow queue page.")
+
+        # Confirm the queue page loaded
+        page.wait_for_selector("div.group-header-label", timeout=20000)
+        print("Page loaded, continuing test...")
+
         print("Expanding 'Single Well: Tube' group header...")
-        group_header = page.locator("div.group-header-label", has_text="Single Well: Tube")
-        group_header.wait_for(state="visible", timeout=10000)
-        group_header.click()
+
+        # Locate the entire group header that contains the label text
+        group = page.locator("div.group-header", has_text="Single Well: Tube")
+
+        # Wait until it’s visible and attached
+        group.wait_for(state="visible", timeout=10000)
+
+        # Now find the expander button *inside* that group
+        expander = group.locator(".group-expander-btn")
+
+        # If it’s already expanded, it won’t have “collapsed” in its class list
+        is_collapsed = expander.get_attribute("class")
+        if "collapsed" in (is_collapsed or ""):
+            expander.click()
+            print("Clicked group expander...")
+        else:
+            print("Group already expanded.")
+
+        # Give it a moment to load the samples
         page.wait_for_timeout(1500)
+
+        # Optional: verify expansion
+        samples_section = group.locator(".samples")
+        page.wait_for_timeout(500)
+        if samples_section.is_visible():
+            print("Sample group expanded successfully.")
+        else:
+            print("Warning: Group expansion did not reveal samples.")
 
         # 3. Click on a sample
         print("Selecting sample...")

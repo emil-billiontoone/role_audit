@@ -11,8 +11,6 @@ import time
 from datetime import datetime
 
 BASE_URL = "https://clarity-dev.btolims.com"
-PROJECT_NAME = "Emil Project Test"
-ACCOUNT_NAME = "Administrative Lab"
 CLIENT_NAME = "Emil Test"
 RETRIES = 2  # Number of retries on failure
 SCREENSHOT_DIR = "screenshots"
@@ -28,7 +26,6 @@ def test_create_project(page, expected=True):
     Returns structured JSON result.
     """
     print("\n===== TEST: Create Project Permission =====")
-    print(f"Project: {PROJECT_NAME}")
 
     result = {
         "test_name": "Create Project",

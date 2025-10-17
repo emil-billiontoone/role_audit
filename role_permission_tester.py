@@ -244,11 +244,11 @@ class RolePermissionTester:
             print(f"\nFailed to save results: {e}")
     
     def _capture_screenshot(self, page, test_name):
-        """Capture a screenshot for the test."""
+        """Capture a screenshot for the test with readable timestamp."""
         try:
-            timestamp = int(time.time())
+            timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
             screenshot_file = os.path.join(self.screenshot_dir, f"{test_name}_{timestamp}.png")
-            page.screenshot(path=screenshot_file)
+            page.screenshot(path=screenshot_file, full_page=False)
             print(f"  Screenshot saved: {screenshot_file}")
             return screenshot_file
         except Exception as e:

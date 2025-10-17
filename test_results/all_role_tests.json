@@ -1,47 +1,71 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-16 16:19:37",
+  "timestamp": "2025-10-17 15:42:49",
   "tests": {
     "Lab Operator": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 8.2,
+        "execution_time": 7.8,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_1760656664.png"
-      },
-      {
-        "test_name": "Sample Workflow Assignment",
-        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
-        "execution_time": 9.3,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/sample_workflow_assignment_1760656679.png"
+        "screenshot": "screenshots/clarity_login_1760734706.png"
       },
       {
         "test_name": "Permissions Move To Next Step",
         "description": "Checks if a user can move to the next step in Clarity LIMS.",
-        "execution_time": 31.6,
-        "expected": true,
-        "passed": false,
+        "execution_time": 5.6,
+        "expected": false,
+        "passed": true,
         "result": "fail",
-        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
-        "screenshot": "screenshots/move_to_next_step_1760656718.png"
-      },
+        "error": null,
+        "screenshot": "screenshots/move_to_next_step_1760734717.png"
+      }
+    ],
+    "Limited": [
       {
-        "test_name": "Sample Workflow Removal",
-        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
-        "execution_time": 53.6,
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 7.8,
         "expected": true,
         "passed": true,
         "result": "pass",
-        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.delete-btn[data-sample-id='47269197']\").first\n",
-        "screenshot": "screenshots/sample_removal_1760656765.png"
+        "error": null,
+        "screenshot": "screenshots/clarity_login_1760734832.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.3,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text('Options')\") to be visible\n",
+        "screenshot": "screenshots/move_to_next_step_1760734852.png"
+      }
+    ],
+    "System Admin": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 7.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251017_154236.png"
+      },
+      {
+        "test_name": "Create Sample",
+        "description": "Checks if role can create a sample in Clarity LIMS.",
+        "execution_time": 7.3,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "screenshots/create_sample_pass_20251017_154248.png"
       }
     ]
   }

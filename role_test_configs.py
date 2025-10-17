@@ -8,19 +8,19 @@ Define which tests to run for each role.
 MAIN_ROLE_TEST_SUITES = {
     "Lab Operator": {
         "permissions_clarity_login": True,
-        # "permissions_API_login": True,
-        # "permissions_create_project": False, 
-        # "permissions_delete_project": False, 
+        "permissions_API_login": True,
+        "permissions_create_project": False, 
+        "permissions_delete_project": False, 
         "permissions_sample_workflow_assignment": True, 
-        "permissions_move_to_next_step": True, # needs to be between sample workflow assignment and remove sample from workflow
+        "permissions_move_to_next_step": True, 
         "permissions_remove_sample_from_workflow": True,
-        # "permissions_edit_completed_steps": False,
-        # "permissions_overview_dashboard": True, 
-        # "permissions_requeue_sample": True,
-        # "permissions_read_user": True, 
-        # "permissions_create_user": True, 
-        # "permissions_update_user": True, 
-        # "permissions_update_sample": True, 
+        "permissions_edit_completed_steps": False,
+        "permissions_overview_dashboard": True, 
+        "permissions_requeue_sample": True,
+        "permissions_read_user": True, 
+        "permissions_create_user": True, 
+        "permissions_update_user": True, 
+        "permissions_update_sample": True, 
     },
     
     "System Admin": {
@@ -29,9 +29,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_API_login": True,
         # "permissions_collaborations_login": True, # Don't worry about this test
         # "permissions_operations_login": True, # Don't worry about this test
-        "permissions_create_project": True, 
-        "permissions_delete_project": True, 
-        # "permissions_create_sample": True, # still need to create this test
+        # "permissions_create_project": True, 
+        # "permissions_delete_project": True, 
+        "permissions_create_sample": False, 
         # "permissions_delete_sample": True, # still need to create this test
         # "permissions_sample_workflow_assignment": True, 
         # "permissions_sample_rework": True, # still need to create this test
@@ -71,8 +71,8 @@ MAIN_ROLE_TEST_SUITES = {
         "permissions_clarity_login": True,
         # "permissions_edit_completed_steps": False,
         # "permissions_API_login": True,
-        "permissions_create_project": False, 
-        "permissions_delete_project": False, 
+        # "permissions_create_project": False, 
+        # "permissions_delete_project": False, 
         # "permissions_create_sample": True, # still need to create this test
         # "permissions_delete_sample": True, # still need to create this test
         # "permissions_sample_workflow_assignment": True, 

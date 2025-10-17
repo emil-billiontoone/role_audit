@@ -76,7 +76,7 @@ def test_sample_workflow_assignment(page, expected=True):
 
             # Deselect all samples first
             print("Looking for 'Select Group' button...")
-            select_group_btn = page.locator("button#select-all-2")
+            select_group_btn = page.locator("button.select-group-help", has_text="Select Group")
             select_group_btn.wait_for(state="visible", timeout=10000)  # wait up to 10 seconds
 
             if select_group_btn.count() > 0:

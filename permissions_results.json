@@ -38,5 +38,135 @@
         "result": "fail",
         "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
         "screenshot": "screenshots/move_to_next_step_1760656718.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 31.63,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
+        "screenshot": "screenshots/move_to_next_step_1760658426.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 31.57,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
+        "screenshot": "screenshots/move_to_next_step_1760658682.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 31.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
+        "screenshot": "screenshots/move_to_next_step_1760658845.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 31.66,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
+        "screenshot": "screenshots/move_to_next_step_1760732657.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 31.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
+        "screenshot": "screenshots/move_to_next_step_1760732888.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 31.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
+        "screenshot": "screenshots/move_to_next_step_1760733032.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 31.63,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work:has-text('Step 1 \u00bb Aneuploidy - Plasma Isolation')\").first\n",
+        "screenshot": "screenshots/move_to_next_step_1760733140.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 31.59,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.text_content: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.sub-work\").filter(has_text=\"Aneuploidy - Plasma Isolation\")\n",
+        "screenshot": "screenshots/move_to_next_step_1760734225.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 6.61,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.wait_for: Target page, context or browser has been closed\nCall log:\n  - waiting for locator(\"span.qtip-value\").filter(has_text=\"V_251014L0001-5\").first to be visible\n",
+        "screenshot": null
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.49,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/move_to_next_step_1760734652.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.62,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/move_to_next_step_1760734717.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.28,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text('Options')\") to be visible\n",
+        "screenshot": "screenshots/move_to_next_step_1760734811.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.26,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"button:has-text('Options')\") to be visible\n",
+        "screenshot": "screenshots/move_to_next_step_1760734852.png"
     }
 ]
