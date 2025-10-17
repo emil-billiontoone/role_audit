@@ -31,10 +31,10 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_operations_login": True, # Don't worry about this test
         # "permissions_create_project": True, 
         # "permissions_delete_project": True, 
-        "permissions_create_sample": False, 
-        # "permissions_delete_sample": True, # still need to create this test
+        "permissions_create_sample": True, 
+        "permissions_delete_sample": True, 
         # "permissions_sample_workflow_assignment": True, 
-        # "permissions_sample_rework": True, # still need to create this test
+        "permissions_sample_rework": True, # still need to create this test
         # "permissions_review_escalated_samples": True, # still need to create this test
         # "permissions_move_to_next_step": True, # still need to create this test
         # "permissions_create_control": True, # still need to create this test
@@ -100,11 +100,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_edit_completed_steps": False,
         # "permissions_API_login": False,
         # "permissions_create_project": False, 
-        # "permissions_create_sample": False, # still need to create this test
         # "permissions_sample_workflow_assignment": False,
         # "permissions_sample_rework": True, # still need to create this test
         # "permissions_review_escalated_samples": True, # still need to create this test
-        # "permissions_move_to_next_step": True, # still need to create this test
         # "permissions_create_control": True, # still need to create this test
         # "permissions_update_control": True, # still need to create this test
         # "permissions_create_reagent_kit": True, # still need to create this test
@@ -115,13 +113,14 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_read_process": True, # still need to create this test
         # "permissions_create_process": True, # still need to create this test
         # "permissions_update_process": True, # still need to create this test
-        # "permissions_update_sample": True, # still need to create this test
         # "permissions_overview_dashboard": False, 
         # "permissions_read_user": False, 
         # "permissions_create_user": False,
         # "permissions_update_user": False,
         # "permissions_update_sample": False, 
-        "permissions_move_to_next_step": False, 
+        # "permissions_move_to_next_step": False, 
+        "permissions_create_sample": False, 
+        "permissions_delete_sample": False, 
     },
 
     "BTO API": {
