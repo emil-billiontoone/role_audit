@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-17 17:10:02",
+  "timestamp": "2025-10-17 22:40:18",
   "tests": {
     "Lab Operator": [
       {
@@ -28,54 +28,84 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 8.8,
+        "execution_time": 12.4,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251017_161922.png"
+        "screenshot": "screenshots/clarity_login_20251017_223826.png"
       },
       {
-        "test_name": "Create Sample",
-        "description": "Checks if role can create a sample in Clarity LIMS.",
-        "execution_time": 15.8,
-        "expected": false,
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 31.7,
+        "expected": true,
         "passed": false,
-        "result": "pass",
-        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"#upload-sample-sheet-button\") to be visible\n    25 \u00d7 locator resolved to hidden <div id=\"upload-sample-sheet-button\" class=\"isis-btn ext-btn isis-btn-default-small x-noicon isis-btn-noicon isis-btn-default-small-noicon\">\u2026</div>\n",
-        "screenshot": "screenshots/create_sample_fail_20251017_161944.png"
+        "result": "fail",
+        "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/create_control_fail_20251017_223903.png"
       },
       {
-        "test_name": "Delete Sample",
-        "description": "Checks if role can delete a sample in Clarity LIMS.",
-        "execution_time": 7.1,
-        "expected": false,
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 31.4,
+        "expected": true,
         "passed": false,
-        "result": "pass",
-        "error": "Delete button is not visible \u2014 permission denied.",
-        "screenshot": "screenshots/delete_sample_fail_20251017_161957.png"
+        "result": "fail",
+        "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/update_control_fail_20251017_223940.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 31.3,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/delete_control_fail_20251017_224017.png"
       }
     ],
     "System Admin": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 9.1,
+        "execution_time": 13.8,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251017_170935.png"
+        "screenshot": "screenshots/clarity_login_20251017_223232.png"
       },
       {
         "test_name": "Create Control",
         "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 21.0,
+        "execution_time": 21.2,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/create_control_pass_20251017_171000.png"
+        "screenshot": "screenshots/create_control_pass_20251017_223257.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 20.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/update_control_pass_20251017_223324.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 20.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/delete_control_pass_20251017_223351.png"
       }
     ]
   }

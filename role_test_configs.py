@@ -38,8 +38,8 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_review_escalated_samples": True, # still need to create this test ???
         # "permissions_move_to_next_step": True, 
         "permissions_create_control": True,
-        # "permissions_update_control": True, # still need to create this test
-        # "permissions_delete_control": True, # still need to create this test
+        "permissions_update_control": True,
+        "permissions_delete_control": True, 
         # "permissions_create_reagent_kit": True, # still need to create this test
         # "permissions_update_reagent_kit": True, # still need to create this test
         # "permissions_delete_reagent_kit": True, # still need to create this test
@@ -119,8 +119,12 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_update_user": False,
         # "permissions_update_sample": False, 
         # "permissions_move_to_next_step": False, 
-        "permissions_create_sample": False, 
-        "permissions_delete_sample": False, 
+        # "permissions_create_sample": False, 
+        # "permissions_delete_sample": False, 
+        # "permissions_create_control": False,
+        "permissions_create_control": True,
+        "permissions_update_control": True,
+        "permissions_delete_control": True, 
     },
 
     "BTO API": {

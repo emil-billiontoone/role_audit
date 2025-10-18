@@ -41,10 +41,6 @@ def test_create_sample(page, expected=True):
 
     max_attempts = 1 if expected == False else (RETRIES + 1)
 
-
-    
-
-
     for attempt in range(1, max_attempts + 1):
         try:
             print(f"\nAttempt {attempt}: Navigating to Projects & Samples...")
@@ -85,6 +81,8 @@ def test_create_sample(page, expected=True):
             add_samples_button.wait_for(state="visible", timeout=10000)
             print(f"Add samples button found: {add_samples_button.inner_text().strip().upper()}")
 
+
+    
             if modify_samples_button.count() > 0 and add_samples_button.count() > 0 and upload_samples_button.count() > 0:
                 print("All buttons found — permission confirmed.")
                 result["passed"] = True

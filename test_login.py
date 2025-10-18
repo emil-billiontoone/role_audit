@@ -26,6 +26,9 @@ def run(playwright: Playwright) -> None:
     page.locator("#config-view").press("ControlOrMeta+f")
     page.locator(".right-col").click()
     page.locator("#config-view").press("ControlOrMeta+f")
+    page.get_by_role("button", name="OK").click()
+    page.get_by_role("button", name="OK").click()
+    page.close()
 
     # ---------------------
     context.close()
