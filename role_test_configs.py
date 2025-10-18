@@ -31,40 +31,40 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_operations_login": True, # Don't worry about this test
         # "permissions_create_project": True, 
         # "permissions_delete_project": True, 
-        "permissions_create_sample": True, 
-        "permissions_delete_sample": True, 
+        # "permissions_create_sample": True, 
+        # "permissions_delete_sample": True, 
         # "permissions_sample_workflow_assignment": True, 
-        "permissions_sample_rework": True, # still need to create this test
-        # "permissions_review_escalated_samples": True, # still need to create this test
-        # "permissions_move_to_next_step": True, # still need to create this test
-        # "permissions_create_control": True, # still need to create this test
+        # "permissions_sample_rework": True, # still need to create this test ???
+        # "permissions_review_escalated_samples": True, # still need to create this test ???
+        # "permissions_move_to_next_step": True, 
+        "permissions_create_control": True,
         # "permissions_update_control": True, # still need to create this test
         # "permissions_delete_control": True, # still need to create this test
         # "permissions_create_reagent_kit": True, # still need to create this test
         # "permissions_update_reagent_kit": True, # still need to create this test
         # "permissions_delete_reagent_kit": True, # still need to create this test
         # "permissions_overview_dashboard": True, 
-        # "permissions_update_configuration": True, # still need to create this test
+        # "permissions_update_configuration": True, # still need to create this test ???
         # "permissions_requeue_sample": True,
-        # "permissions_remove_sample_from_workflow": True, # still need to create this test
+        # "permissions_remove_sample_from_workflow": True, 
         # "permissions_read_user": True,
-        # "permissions_create_user": True, # still need to create this test
-        # "permissions_update_user": True, # still need to create this test
+        # "permissions_create_user": True, 
+        # "permissions_update_user": True,
         # "permissions_delete_user": True, # still need to create this test
         # "permissions_read_process": True, # still need to create this test
         # "permissions_create_process": True, # still need to create this test
         # "permissions_update_process": True, # still need to create this test
-        # "permissions_esignature_signing": True, # still need to create this test
+        # "permissions_esignature_signing": True, # still need to create this test ???
         # "permissions_create_role": True, # still need to create this test
         # "permissions_update_role": True, # still need to create this test
         # "permissions_delete_role": True, # still need to create this test
-        # "permissions_search_index": True, # still need to create this test
-        # "permissions_update_sample": True, # still need to create this test
+        # "permissions_search_index": True, # still need to create this test ???
+        # "permissions_update_sample": True, 
         # "permissions_create_contact": True, # still need to create this test
         # "permissions_read_contact": True, # still need to create this test
         # "permissions_update_contact": True, # still need to create this test
         # "permissions_delete_contact": True, # still need to create this test
-        # "permissions_administer_lab_link": True, # still need to create this test
+        # "permissions_administer_lab_link": True, # still need to create this test???
     },
     
     "Lab Admin": {

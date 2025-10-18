@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-17 16:19:57",
+  "timestamp": "2025-10-17 17:10:02",
   "tests": {
     "Lab Operator": [
       {
@@ -60,32 +60,22 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 9.0,
+        "execution_time": 9.1,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251017_160515.png"
+        "screenshot": "screenshots/clarity_login_20251017_170935.png"
       },
       {
-        "test_name": "Create Sample",
-        "description": "Checks if role can create a sample in Clarity LIMS.",
-        "execution_time": 7.1,
-        "expected": false,
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 21.0,
+        "expected": true,
         "passed": true,
-        "result": "fail",
+        "result": "pass",
         "error": null,
-        "screenshot": "screenshots/create_sample_pass_20251017_160527.png"
-      },
-      {
-        "test_name": "Delete Sample",
-        "description": "Checks if role can delete a sample in Clarity LIMS.",
-        "execution_time": 8.2,
-        "expected": false,
-        "passed": true,
-        "result": "fail",
-        "error": null,
-        "screenshot": "screenshots/delete_sample_pass_20251017_160542.png"
+        "screenshot": "screenshots/create_control_pass_20251017_171000.png"
       }
     ]
   }
