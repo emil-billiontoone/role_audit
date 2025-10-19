@@ -49,7 +49,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_remove_sample_from_workflow": True, 
         # "permissions_read_user": True,
         "permissions_create_user": True, 
-        # "permissions_update_user": True,
+        "permissions_update_user": True,
         "permissions_delete_user": True, 
         # "permissions_read_process": True, # still need to create this test
         # "permissions_create_process": True, # still need to create this test
@@ -128,6 +128,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_reagent_kit": False, 
         # "permissions_update_reagent_kit": False, 
         # "permissions_delete_reagent_kit": False,
+        # "permissions_create_user": False, 
+        # "permissions_update_user": False,
+        # "permissions_delete_user": False, 
     },
 
     "BTO API": {

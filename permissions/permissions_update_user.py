@@ -1,37 +1,32 @@
 """
 Test Module: Update User Permission
-===================================
+=====================================
 Checks if a user with the proper role can update a user in Clarity LIMS.
 Compatible with RolePermissionTester framework.
 """
 
-import os
 import re
 import time
-from playwright.sync_api import TimeoutError as PlaywrightTimeoutError
+from .test_utils import capture_screenshot
 
 BASE_URL = "https://clarity-dev.btolims.com"
-RETRIES = 0
-USER_NAME = "Emil Test"
-SCREENSHOT_DIR = "screenshots"
+PROJECT_NAME = "ED_TEST"
+RETRIES = 2
 
-# Ensure screenshot directory exists
-os.makedirs(SCREENSHOT_DIR, exist_ok=True)
-
-
-def test_permissions_update_user(page, expected=True):
+def test_update_user(page, expected=True):
     """
-    Checks if a user can update a user in Clarity LIMS.
+    Checks if role can update a user in Clarity LIMS.
     Accepts a Playwright 'page' object from the test framework.
     Returns structured JSON result.
     """
     print("\n===== TEST: Update User Permission =====")
+    print(f"Project: {PROJECT_NAME}")
 
     result = {
-        "test_name": "Update User Permission",
-        "description": "Checks if a user can update a user in Clarity LIMS",
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS",
         "execution_time": 0.0,
-        "expected": True,
+        "expected": expected,
         "passed": False,
         "result": "fail",
         "error": None,
@@ -39,94 +34,99 @@ def test_permissions_update_user(page, expected=True):
     }
 
     start_time = time.time()
+    max_attempts = 1 if not expected else (RETRIES + 1)
 
-    # If expected to fail, only try once (no retries)
+    user_details = {
+        "first_name": "Emil Create",
+        "last_name": "User Test",
+        "phone": "1234567890",
+    }
 
-
-    max_attempts = 1 if expected == False else (RETRIES + 1)
-
-
-    
-
+    full_name = f"{user_details['first_name']} {user_details['last_name']}"
 
     for attempt in range(1, max_attempts + 1):
         try:
             print(f"\nAttempt {attempt}: Navigating to Configuration page...")
             page.goto(f"{BASE_URL}/clarity/configuration")
+            page.wait_for_timeout(2000)
 
-            print("Waiting for User Management tab...")
+            # Click User Management
+            print("Checking for User Management tab...")
             user_tab = page.locator("div.tab-title", has_text=re.compile("User Management", re.I))
-            user_tab.wait_for(state="visible", timeout=5000)  
-
-            print("User Management tab found — clicking it...")
+            if user_tab.count() == 0:
+                raise Exception("User Management tab not found — permission denied or hidden.")
             user_tab.first.click()
+            page.wait_for_timeout(2000)
 
-            print("Waiting for user list to appear...")
-            user_list = page.locator("div.g-table.user-list")
-            user_list.wait_for(state="visible", timeout=15000)
+            print(f"Verifying that user '{full_name}' appears in the list...")
+            page.locator("div.g-col-value", has_text=re.compile(full_name, re.I)).scroll_into_view_if_needed()
+            search_result = page.locator("div.g-col-value", has_text=re.compile(full_name, re.I))
+            if not search_result.is_visible():
+                raise Exception(f"User '{full_name}' not found after creation.")
+                
+            print(f"Deleting user '{full_name}'...")
+            search_result.click()
+            page.wait_for_timeout(1000)
 
-            print(f"Searching for user: {USER_NAME}...")
-            user_entry = page.locator("div.g-col-value", has_text=re.compile(USER_NAME, re.I))
-            user_entry.wait_for(state="visible", timeout=15000)
+            # Fill Phone
+            print("Filling Phone...")
+            page.get_by_role("textbox", name="Phone").type(user_details["phone"], delay=100)
+            page.wait_for_timeout(500)
 
-            print(f"User '{USER_NAME}' found — clicking entry...")
-            user_entry.first.click()
+            # Save User
+            print("Clicking 'Save'...")
+            page.locator("button").filter(has_text="Save").click()
+            page.wait_for_timeout(2000)
 
-            print("Waiting for Fax input field...")
-            fax_input = page.locator("input#fax")
-            fax_input.wait_for(state="visible", timeout=15000)
+            # Verify user exists
+            print("Refreshing page to see if user is updated...")
+            page.reload()
+            page.wait_for_timeout(2000)
 
-            print("Entering 'TEST' in Fax field to trigger Save button...")
-            fax_input.fill("TEST")
+            print(f"Verifying that user '{full_name}' appears in the list...")
+            page.locator("div.g-col-value", has_text=re.compile(full_name, re.I)).scroll_into_view_if_needed()
+            search_result = page.locator("div.g-col-value", has_text=re.compile(full_name, re.I))
+            if not search_result.is_visible():
+                raise Exception(f"User '{full_name}' not found after update.")
 
-            print("Waiting for Save button to become active...")
-            save_button_active = page.locator(
-                "div.btn-base.isis-btn.btn.action.undefined button:not(.disabled)",
-                has_text=re.compile("Save", re.I)
-            )
-            save_button_active.wait_for(state="visible", timeout=15000)
+            print(f"Verifying phone is '{user_details['phone']}'...")
+            search_result.click()
+            page.wait_for_timeout(1000)
+            phone_text = page.get_by_role("textbox", name="Phone").input_value()
+            if phone_text.strip() == user_details["phone"]:
+                print("Phone is updated — permission confirmed.")
+                result["passed"] = True
+                result["result"] = "pass"
+            else:
+                raise Exception(f"Phone is '{phone_text}' — permission denied.")
 
-            print("Save button is active — user can update details.")
-            result["passed"] = True
-            result["result"] = "pass"
-            break  # test passed, exit retry loop
+            result["screenshot"], _ = capture_screenshot(page, "update_user", "pass")
 
-        except PlaywrightTimeoutError as e:
-            result["error"] = f"Timeout waiting for element: {e}"
-            print(f"Attempt {attempt} failed: {result['error']}")
+            page.goto(BASE_URL)
+            page.wait_for_timeout(1000)
+            break
 
         except Exception as e:
+            print(f"Attempt {attempt} failed: {e}")
             result["error"] = str(e)
-            print(f"Attempt {attempt} failed: {result['error']}")
+            result["passed"] = False
+            result["result"] = "fail"
+            result["screenshot"], _ = capture_screenshot(page, "update_user", "fail")
 
-        finally:
-            timestamp = int(time.time())
-            screenshot_file = os.path.join(SCREENSHOT_DIR, f"update_user_permission_fail_{timestamp}.png")
-            try:
-                page.screenshot(path=screenshot_file)
-                result["screenshot"] = screenshot_file
-            except:
-                result["screenshot"] = "Failed to capture screenshot"
-
-            if attempt <= RETRIES and not result["passed"]:
+            if attempt < max_attempts:
                 print("Retrying in 2 seconds...")
+                page.goto(BASE_URL)
+                page.wait_for_timeout(1000)
                 time.sleep(2)
             else:
-                print("Max retries reached or test passed.")
-
-            try:
-                page.goto(BASE_URL)
-            except:
-                pass
+                print("Max retries reached. Failing test.")
+                break
 
     end_time = time.time()
     result["execution_time"] = round(end_time - start_time, 2)
-
     print(f"\n===== TEST RESULT: {'PASS' if result['passed'] else 'FAIL'} =====")
-    print(f"Execution time: {result['execution_time']}s")
     if result["error"]:
         print(f"Error: {result['error']}")
     if result["screenshot"]:
         print(f"Screenshot: {result['screenshot']}")
-
     return result

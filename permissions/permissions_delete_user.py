@@ -78,9 +78,6 @@ def test_delete_user(page, expected=True):
             # Wait for the user list to finish loading
             page.wait_for_selector("div.g-col-value", state="visible", timeout=30000)
 
-            # # Check if the user still exists
-            # search_result = page.locator("div.g-col-value", has_text=re.compile(full_name, re.I))
-
             if not search_result.is_visible():
                 print(f"'{full_name}' is deleted — permission confirmed.")
                 result["passed"] = True
