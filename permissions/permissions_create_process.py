@@ -38,7 +38,6 @@ def test_create_process(page, expected=True):
 
     user_details = {
         "master_step": "Emil Master Step Test",
-        "instrument_type": "AJ Thermocycler",
     }
 
     master_step = f"{user_details['master_step']}"
@@ -51,33 +50,25 @@ def test_create_process(page, expected=True):
 
             # Click User Management
             print("Checking for Lab Work tab...")
-            user_tab = page.locator("div.tab-title", has_text=re.compile("Lab Work", re.I))
-            if user_tab.count() == 0:
+            lab_work_tab = page.locator("div.tab-title", has_text=re.compile("Lab Work", re.I))
+            if lab_work_tab.count() == 0:
                 raise Exception("Lab Work tab not found — permission denied or hidden.")
-            user_tab.first.click()
+            lab_work_tab.first.click()
             page.wait_for_timeout(2000)
 
             print("Clicking 'Add Master Step' icon button...")
-            button = page.locator("div.wps-header-button.master-step-column-header button")
+            button = page.locator(".g-col-header.wps-header-button.master-step-column-header > .btn-base")
 
             if button.count() > 0:
                 print("Button found, clicking now...")
                 button.first.click()
-                page.wait_for_timeout(1000)
+                page.wait_for_timeout(2000)
             else:
                 raise Exception("Add Master Step button not found — permission denied or hidden.")
 
             # Fill first & last name
             print("Filling Master Step Name...")
-            page.get_by_role("textbox", name=re.compile("Enter Name", re.I)).type(user_details["master_step"], delay=100)
-            page.wait_for_timeout(500)
-
-            # Fill Instrument Type
-            print("Filling Instrument Type...")
-            page.locator(".fa.fa-plus").first.click()
-            page.locator("#configuration-app-container").get_by_text(user_details["instrument_type"]).click()
-            page.wait_for_timeout(500)
-            page.locator("div.btn-base.isis-btn.btn.only-icon.check button").click()
+            page.get_by_role("textbox", name=re.compile("Enter Name", re.I)).type(user_details["master_step"], delay=10)
             page.wait_for_timeout(500)
 
             # Save User
@@ -110,7 +101,7 @@ def test_create_process(page, expected=True):
             result["error"] = str(e)
             result["passed"] = False
             result["result"] = "fail"
-            result["screenshot"], _ = capture_screenshot(page, "create_user", "fail")
+            result["screenshot"], _ = capture_screenshot(page, "create_process", "fail")
 
             if attempt < max_attempts:
                 print("Retrying in 2 seconds...")

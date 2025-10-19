@@ -38,7 +38,6 @@ def test_delete_process(page, expected=True):
 
     user_details = {
         "master_step": "Emil Master Step Test",
-        "instrument_type": "AJ Thermocycler",
     }
 
     master_step = f"{user_details['master_step']}"
@@ -51,21 +50,20 @@ def test_delete_process(page, expected=True):
 
             # Click User Management
             print("Checking for Lab Work tab...")
-            user_tab = page.locator("div.tab-title", has_text=re.compile("Lab Work", re.I))
-            if user_tab.count() == 0:
+            lab_work_tab = page.locator("div.tab-title", has_text=re.compile("Lab Work", re.I))
+            if lab_work_tab.count() == 0:
                 raise Exception("Lab Work tab not found — permission denied or hidden.")
-            user_tab.first.click()
+            lab_work_tab.first.click()
             page.wait_for_timeout(2000)
 
-            print("Clicking 'Add Master Step' icon button...")
-            button = page.locator("div.wps-header-button.master-step-column-header button")
+            print("Looking for 'Master Step' column header...")
+            header = page.locator("div.g-col-header.master-step-column-header")
+            if header.count() == 0:
+                raise Exception("Master Step column header not found — permission denied or hidden.")
 
-            if button.count() > 0:
-                print("Button found, clicking now...")
-                button.first.click()
-                page.wait_for_timeout(1000)
-            else:
-                raise Exception("Add Master Step button not found — permission denied or hidden.")
+            print(f"Verifying that user '{master_step}' appears in the list...")
+            page.locator("#configuration-app-container").get_by_text(master_step).click()
+            print(f"Master Step '{master_step}' found and clicked.")
 
             # Delete Master Step
             print("Clicking 'Delete'...")
@@ -84,15 +82,13 @@ def test_delete_process(page, expected=True):
             page.wait_for_timeout(2000)
 
             print(f"Verifying that master step '{master_step}' is deleted...")
-            page.locator("div.g-two-sided-row", has_text=re.compile(master_step, re.I)).scroll_into_view_if_needed()
-            search_result = page.locator("div.g-two-sided-row", has_text=re.compile(master_step, re.I))
-            if search_result.is_visible():
-                raise Exception(f"Master Step '{master_step}' is not deleted.")
-
-            print(f"Master Step '{master_step}' successfully deleted.")
-            result["passed"] = True
-            result["result"] = "pass"
-            result["screenshot"], _ = capture_screenshot(page, "delete_process", "pass")
+            if not page.locator("#configuration-app-container").get_by_text(master_step).is_visible():
+                print(f"Master Step '{master_step}' is deleted.")
+                result["passed"] = True
+                result["result"] = "pass"
+                result["screenshot"], _ = capture_screenshot(page, "delete_process", "pass")
+            else:
+                raise Exception(f"Master Step '{master_step}' is not deleted. It is still present in the list.")
 
             page.goto(BASE_URL)
             page.wait_for_timeout(1000)

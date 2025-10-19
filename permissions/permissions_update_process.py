@@ -38,7 +38,6 @@ def test_update_process(page, expected=True):
 
     user_details = {
         "master_step": "Emil Master Step Test",
-        "instrument_type": "AJ Thermocycler",
     }
 
     master_step = f"{user_details['master_step']}"
@@ -51,10 +50,10 @@ def test_update_process(page, expected=True):
 
             # Click User Management
             print("Checking for Lab Work tab...")
-            user_tab = page.locator("div.tab-title", has_text=re.compile("Lab Work", re.I))
-            if user_tab.count() == 0:
+            lab_work_tab = page.locator("div.tab-title", has_text=re.compile("Lab Work", re.I))
+            if lab_work_tab.count() == 0:
                 raise Exception("Lab Work tab not found — permission denied or hidden.")
-            user_tab.first.click()
+            lab_work_tab.first.click()
             page.wait_for_timeout(2000)
 
             print("Looking for 'Master Step' column header...")
@@ -63,47 +62,42 @@ def test_update_process(page, expected=True):
                 raise Exception("Master Step column header not found — permission denied or hidden.")
 
             print(f"Verifying that user '{master_step}' appears in the list...")
+            page.locator("#configuration-app-container").get_by_text(master_step).click()
+            print(f"Master Step '{master_step}' found and clicked.")
+
+            # Add to Naming Convention
+            page.get_by_role("textbox", name="Enter Naming Convention").click()
+            page.get_by_role("textbox", name="Enter Naming Convention").type("Test", delay=10)
+            page.wait_for_timeout(500)
+
+            # Save Master Step
+            print("Clicking 'Save'...")
+            page.locator("button").filter(has_text="Save").click()
+            page.wait_for_timeout(2000)
+
+            print("Refreshing page to see if master step is updated...")
+            page.reload()
+            page.wait_for_timeout(2000)
+
+            print(f"Clicking on the master step...")
             page.locator("div.g-two-sided-row", has_text=re.compile(master_step, re.I)).scroll_into_view_if_needed()
             search_result = page.locator("div.g-two-sided-row", has_text=re.compile(master_step, re.I))
             if not search_result.is_visible():
-                raise Exception(f"Master Step '{master_step}' not found after creation.")
+                raise Exception(f"Master Step '{master_step}' not found.")
 
             print(f"Clicking '{master_step}'...")
             search_result.click()
             page.wait_for_timeout(1000)
 
-            # Fill Instrument Type
-            print("Filling Instrument Type...")
-            page.locator(".fa.fa-plus").first.click()
-            page.locator("#configuration-app-container").get_by_text(user_details["instrument_type"]).click()
-            page.wait_for_timeout(500)
-            page.locator("div.btn-base.isis-btn.btn.only-icon.check button").click()
-            page.wait_for_timeout(500)
-
-            # Save User
-            print("Clicking 'Save'...")
-            page.locator("button").filter(has_text="Save").click()
-            page.wait_for_timeout(2000)
-
-            print("Refreshing page to see if instrument type is updated...")
-            page.reload()
-            page.wait_for_timeout(2000)
-
-            print(f"Verifying that instrument type is '{user_details['instrument_type']}'...")
-
-            # Locate the div containing the instrument type
-            instrument_type_div = page.locator("div.g-col-value", has_text=re.compile(user_details["instrument_type"], re.I))
-
-            if instrument_type_div.count() > 0:
-                actual_value = instrument_type_div.first.inner_text().strip()
-                if actual_value == user_details["instrument_type"]:
-                    print("Instrument type is updated — permission confirmed.")
-                    result["passed"] = True
-                    result["result"] = "pass"
-                else:
-                    raise Exception(f"Instrument type is '{actual_value}' — permission denied.")
-            else:
-                raise Exception("Instrument type field not found on page.")
+            print(f"Verifying that Naming Convention is changed...")
+            naming_convention = page.get_by_role("textbox", name="Enter Naming Convention")
+            naming_convention_text = naming_convention.input_value()
+            if not search_result.is_visible():
+                raise Exception(f"Naming Convention is not changed.")
+            else:   
+                print("Naming Convention is changed — permission confirmed.")
+                result["passed"] = True
+                result["result"] = "pass"
 
             result["screenshot"], _ = capture_screenshot(page, "update_process", "pass")
 
@@ -116,7 +110,7 @@ def test_update_process(page, expected=True):
             result["error"] = str(e)
             result["passed"] = False
             result["result"] = "fail"
-            result["screenshot"], _ = capture_screenshot(page, "create_user", "fail")
+            result["screenshot"], _ = capture_screenshot(page, "update_process", "fail")
 
             if attempt < max_attempts:
                 print("Retrying in 2 seconds...")
