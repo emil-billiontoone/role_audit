@@ -21,8 +21,8 @@ def remove_role_from_user(user, role_obj, username, role_name):
 
 SERVICE_NAME = "role_audit_app"  # must match store_creds.py
 server = "dev"
-role_names = [f"Limited (BTO)"]
-action = "remove"
+role_names = [f"System Admin (BTO)"]
+action = "add"
 
 CLARITY_SERVERS = {
     "prod": "https://billiontoone-prod.claritylims.com/api/v2",

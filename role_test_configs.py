@@ -53,6 +53,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_delete_user": True, 
         # "permissions_read_process": True, # still need to create this test
         "permissions_create_process": True, 
+        "permissions_read_process": True, 
         "permissions_update_process": True, 
         "permissions_delete_process": True, 
         # "permissions_esignature_signing": True, # still need to create this test ???
@@ -132,6 +133,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_user": False, 
         # "permissions_update_user": False,
         # "permissions_delete_user": False, 
+        "permissions_create_process": True, 
+        "permissions_update_process": True, 
+        "permissions_delete_process": True, 
     },
 
     "BTO API": {
