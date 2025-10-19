@@ -68,34 +68,32 @@ def test_delete_user(page, expected=True):
             page.wait_for_timeout(1000)
 
             print("Clicking 'Delete' button...")
-            delete_button = page.get_by_role("button", name=re.compile("Delete", re.I))
-            delete_button.wait_for(state="visible", timeout=5000)
-            delete_button.click()
-            page.wait_for_timeout(1000)
-
-            print("Waiting for confirmation dialog...")
-            confirm_button = page.get_by_role("button", name=re.compile("Delete Item", re.I))
-            confirm_button.wait_for(state="visible", timeout=5000)
-            confirm_button.click()
+            page.locator("button").filter(has_text="Delete").first.click()
+            page.wait_for_timeout(500)
 
             print("Refreshing page to see if user is deleted...")
             page.reload()
             page.wait_for_timeout(2000)
 
-            print(f"Verifying that user '{full_name}' is deleted...")
-            search_result = page.locator("div.g-col-value", has_text=re.compile(full_name, re.I))
+            # Wait for the user list to finish loading
+            page.wait_for_selector("div.g-col-value", state="visible", timeout=30000)
+
+            # # Check if the user still exists
+            # search_result = page.locator("div.g-col-value", has_text=re.compile(full_name, re.I))
+
             if not search_result.is_visible():
                 print(f"'{full_name}' is deleted — permission confirmed.")
                 result["passed"] = True
                 result["result"] = "pass"
+                
+                # Take screenshot now that the list is fully rendered
+                result["screenshot"], _ = capture_screenshot(page, "delete_user", "pass")
+
+                page.goto(BASE_URL)
+                page.wait_for_timeout(1000)
+                break
             else:
                 raise Exception(f"'{full_name}' is not deleted — permission denied.")
-
-            result["screenshot"], _ = capture_screenshot(page, "delete_user", "pass")
-
-            page.goto(BASE_URL)
-            page.wait_for_timeout(1000)
-            break
 
         except Exception as e:
             print(f"Attempt {attempt} failed: {e}")

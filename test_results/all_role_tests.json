@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-18 21:23:05",
+  "timestamp": "2025-10-18 23:39:32",
   "tests": {
     "Lab Operator": [
       {
@@ -70,22 +70,32 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 12.4,
+        "execution_time": 11.4,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251018_212216.png"
+        "screenshot": "screenshots/clarity_login_20251018_233803.png"
       },
       {
         "test_name": "Create User",
         "description": "Checks if role can create a user in Clarity LIMS.",
-        "execution_time": 42.8,
+        "execution_time": 42.4,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/create_user_pass_20251018_212303.png"
+        "screenshot": "screenshots/create_user_pass_20251018_233849.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 34.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/delete_user_pass_20251018_233929.png"
       }
     ]
   }

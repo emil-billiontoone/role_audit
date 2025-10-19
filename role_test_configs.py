@@ -50,7 +50,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_read_user": True,
         "permissions_create_user": True, 
         # "permissions_update_user": True,
-        # "permissions_delete_user": True, # still need to create this test
+        "permissions_delete_user": True, 
         # "permissions_read_process": True, # still need to create this test
         # "permissions_create_process": True, # still need to create this test
         # "permissions_update_process": True, # still need to create this test
