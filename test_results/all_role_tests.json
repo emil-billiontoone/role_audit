@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-18 19:15:03",
+  "timestamp": "2025-10-18 20:28:23",
   "tests": {
     "Lab Operator": [
       {
@@ -28,84 +28,84 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 12.6,
+        "execution_time": 13.1,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251018_191421.png"
+        "screenshot": "screenshots/clarity_login_20251018_202736.png"
       },
       {
-        "test_name": "Create Control",
-        "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 8.1,
-        "expected": false,
-        "passed": false,
-        "result": "pass",
-        "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/create_control_fail_20251018_191434.png"
-      },
-      {
-        "test_name": "Update Control",
-        "description": "Checks if role can update a control in Clarity LIMS.",
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
         "execution_time": 7.9,
         "expected": false,
         "passed": false,
         "result": "pass",
-        "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/update_control_fail_20251018_191448.png"
+        "error": "NEW REAGENT KIT button not visible \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/create_reagent_kit_fail_20251018_202750.png"
       },
       {
-        "test_name": "Delete Control",
-        "description": "Checks if role can delete a control in Clarity LIMS.",
-        "execution_time": 8.6,
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 10.2,
         "expected": false,
         "passed": false,
         "result": "pass",
-        "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/delete_control_fail_20251018_191503.png"
+        "error": "'Emil Reagent Kit Test' not found \u2014 update may have failed or permission denied.",
+        "screenshot": "screenshots/update_reagent_kit_fail_20251018_202806.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 10.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "'Emil Reagent Kit Test' not found \u2014 delete may have failed or permission denied.",
+        "screenshot": "screenshots/delete_reagent_kit_fail_20251018_202823.png"
       }
     ],
     "System Admin": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 13.8,
+        "execution_time": 15.2,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251017_223232.png"
+        "screenshot": "screenshots/clarity_login_20251018_201445.png"
       },
       {
-        "test_name": "Create Control",
-        "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 21.2,
-        "expected": true,
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 24.8,
+        "expected": false,
         "passed": true,
-        "result": "pass",
+        "result": "fail",
         "error": null,
-        "screenshot": "screenshots/create_control_pass_20251017_223257.png"
+        "screenshot": "screenshots/create_reagent_kit_pass_20251018_201514.png"
       },
       {
-        "test_name": "Update Control",
-        "description": "Checks if role can update a control in Clarity LIMS.",
-        "execution_time": 20.7,
-        "expected": true,
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 26.1,
+        "expected": false,
         "passed": true,
-        "result": "pass",
+        "result": "fail",
         "error": null,
-        "screenshot": "screenshots/update_control_pass_20251017_223324.png"
+        "screenshot": "screenshots/update_reagent_kit_pass_20251018_201546.png"
       },
       {
-        "test_name": "Delete Control",
-        "description": "Checks if role can delete a control in Clarity LIMS.",
-        "execution_time": 20.7,
-        "expected": true,
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 24.3,
+        "expected": false,
         "passed": true,
-        "result": "pass",
+        "result": "fail",
         "error": null,
-        "screenshot": "screenshots/delete_control_pass_20251017_223351.png"
+        "screenshot": "screenshots/delete_reagent_kit_pass_20251018_201617.png"
       }
     ]
   }

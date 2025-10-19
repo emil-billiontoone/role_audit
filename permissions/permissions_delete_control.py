@@ -85,7 +85,7 @@ def test_delete_control(page, expected=True):
             confirm_button.click()
             page.wait_for_timeout(2000)
 
-            print("Refreshing page to see if control and update is present...")
+            print("Refreshing page to see if control is deleted...")
             page.reload()
             page.wait_for_timeout(2000)
 

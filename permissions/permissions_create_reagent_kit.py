@@ -52,29 +52,29 @@ def test_create_reagent_kit(page, expected=True):
             consumables_tab.first.click()
             page.wait_for_timeout(2000)
 
-            print("Checking for 'Controls' tab...")
-            controls_tab = page.locator("div.tab-title", has_text=re.compile("Controls", re.I))
-            if controls_tab.count() == 0:
+            print("Checking for 'Reagents' tab...")
+            reagents_tab = page.locator("div.tab-title", has_text=re.compile("Reagents", re.I))
+            if reagents_tab.count() == 0:
                 raise Exception("Controls tab not found — permission denied or hidden.")
 
             print("Controls tab found — clicking it...")
-            controls_tab.first.click()
+            reagents_tab.first.click()
             page.wait_for_timeout(2000)
 
-            print("Checking for 'NEW CONTROL' button...")
-            new_control_button = page.get_by_role("button", name=re.compile("NEW CONTROL", re.I))
-            if not new_control_button.is_visible():
-                raise Exception("NEW CONTROL button not visible — permission denied or hidden.")
+            print("Checking for 'NEW REAGENT KIT' button...")
+            new_reagent_kit_button = page.get_by_role("button", name=re.compile("NEW REAGENT KIT", re.I))
+            if not new_reagent_kit_button.is_visible():
+                raise Exception("NEW REAGENT KIT button not visible — permission denied or hidden.")
 
-            print("NEW CONTROL button found — clicking it...")
-            new_control_button.click()
+            print("NEW REAGENT KIT button found — clicking it...")
+            new_reagent_kit_button.click()
             page.wait_for_timeout(1000)
 
-            print("Filling out 'Control Sample Name' field...")
-            control_name = "Emil Control Test"
-            name_box = page.get_by_role("textbox", name=re.compile("Enter Control Sample Name", re.I))
+            print("Filling out 'Reagent Kit Name' field...")
+            reagent_kit_name = "Emil Reagent Kit Test"
+            name_box = page.get_by_role("textbox", name=re.compile("Enter Reagent Kit Name", re.I))
             name_box.click()
-            name_box.type(control_name, delay=100)
+            name_box.type(reagent_kit_name, delay=100)
             page.wait_for_timeout(500)
 
             print("Clicking 'Save' button...")
@@ -82,21 +82,24 @@ def test_create_reagent_kit(page, expected=True):
             save_button.click()
             page.wait_for_timeout(2000)
 
-
-            print("Refreshing page to see if control is present...")
+            print("Refreshing page to see if reagent kit is present...")
             page.reload()
             page.wait_for_timeout(2000)
 
-            print(f"Verifying control '{control_name}' appears in the list...")
-            search_result = page.get_by_text(control_name)
-            if not search_result.is_visible():
-                raise Exception(f"'{control_name}' not found — creation may have failed or permission denied.")
+            print(f"Verifying reagent kit '{reagent_kit_name}' appears in the list...")
+            page.wait_for_timeout(2000)
+            search_result = page.get_by_text(reagent_kit_name)
 
-            print(f"'{control_name}' successfully created.")
+            if not search_result.is_visible():
+                raise Exception(f"'{reagent_kit_name}' not found — creation may have failed or permission denied.")
+
+            # Scroll directly to it
+            search_result.scroll_into_view_if_needed()
+            page.wait_for_timeout(500)
+
+            print(f"'{reagent_kit_name}' successfully created — capturing screenshot.")
             result["passed"] = True
             result["result"] = "pass"
-
-            # Take screenshot before leaving page
             result["screenshot"], _ = capture_screenshot(page, "create_reagent_kit", "pass")
 
             print("Returning to main page...")
