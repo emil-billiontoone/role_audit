@@ -122,9 +122,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_sample": False, 
         # "permissions_delete_sample": False, 
         # "permissions_create_control": False,
-        "permissions_create_control": True,
-        "permissions_update_control": True,
-        "permissions_delete_control": True, 
+        "permissions_create_control": False,
+        "permissions_update_control": False,
+        "permissions_delete_control": False, 
     },
 
     "BTO API": {

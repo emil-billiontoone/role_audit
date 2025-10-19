@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-17 22:40:18",
+  "timestamp": "2025-10-18 19:15:03",
   "tests": {
     "Lab Operator": [
       {
@@ -28,42 +28,42 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 12.4,
+        "execution_time": 12.6,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251017_223826.png"
+        "screenshot": "screenshots/clarity_login_20251018_191421.png"
       },
       {
         "test_name": "Create Control",
         "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 31.7,
-        "expected": true,
+        "execution_time": 8.1,
+        "expected": false,
         "passed": false,
-        "result": "fail",
+        "result": "pass",
         "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/create_control_fail_20251017_223903.png"
+        "screenshot": "screenshots/create_control_fail_20251018_191434.png"
       },
       {
         "test_name": "Update Control",
         "description": "Checks if role can update a control in Clarity LIMS.",
-        "execution_time": 31.4,
-        "expected": true,
+        "execution_time": 7.9,
+        "expected": false,
         "passed": false,
-        "result": "fail",
+        "result": "pass",
         "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/update_control_fail_20251017_223940.png"
+        "screenshot": "screenshots/update_control_fail_20251018_191448.png"
       },
       {
         "test_name": "Delete Control",
         "description": "Checks if role can delete a control in Clarity LIMS.",
-        "execution_time": 31.3,
-        "expected": true,
+        "execution_time": 8.6,
+        "expected": false,
         "passed": false,
-        "result": "fail",
+        "result": "pass",
         "error": "NEW CONTROL button not visible \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/delete_control_fail_20251017_224017.png"
+        "screenshot": "screenshots/delete_control_fail_20251018_191503.png"
       }
     ],
     "System Admin": [
