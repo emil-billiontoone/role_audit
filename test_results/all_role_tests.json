@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-18 20:28:23",
+  "timestamp": "2025-10-18 21:23:05",
   "tests": {
     "Lab Operator": [
       {
@@ -70,42 +70,22 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 15.2,
+        "execution_time": 12.4,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251018_201445.png"
+        "screenshot": "screenshots/clarity_login_20251018_212216.png"
       },
       {
-        "test_name": "Create Reagent Kit",
-        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
-        "execution_time": 24.8,
-        "expected": false,
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 42.8,
+        "expected": true,
         "passed": true,
-        "result": "fail",
+        "result": "pass",
         "error": null,
-        "screenshot": "screenshots/create_reagent_kit_pass_20251018_201514.png"
-      },
-      {
-        "test_name": "Update Reagent Kit",
-        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
-        "execution_time": 26.1,
-        "expected": false,
-        "passed": true,
-        "result": "fail",
-        "error": null,
-        "screenshot": "screenshots/update_reagent_kit_pass_20251018_201546.png"
-      },
-      {
-        "test_name": "Delete Reagent Kit",
-        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
-        "execution_time": 24.3,
-        "expected": false,
-        "passed": true,
-        "result": "fail",
-        "error": null,
-        "screenshot": "screenshots/delete_reagent_kit_pass_20251018_201617.png"
+        "screenshot": "screenshots/create_user_pass_20251018_212303.png"
       }
     ]
   }
