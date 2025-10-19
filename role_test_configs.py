@@ -48,12 +48,13 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_requeue_sample": True,
         # "permissions_remove_sample_from_workflow": True, 
         # "permissions_read_user": True,
-        "permissions_create_user": True, 
-        "permissions_update_user": True,
-        "permissions_delete_user": True, 
+        # "permissions_create_user": True, 
+        # "permissions_update_user": True,
+        # "permissions_delete_user": True, 
         # "permissions_read_process": True, # still need to create this test
-        # "permissions_create_process": True, # still need to create this test
-        # "permissions_update_process": True, # still need to create this test
+        "permissions_create_process": True, 
+        "permissions_update_process": True, 
+        "permissions_delete_process": True, 
         # "permissions_esignature_signing": True, # still need to create this test ???
         # "permissions_create_role": True, # still need to create this test
         # "permissions_update_role": True, # still need to create this test

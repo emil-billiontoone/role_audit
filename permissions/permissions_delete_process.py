@@ -1,7 +1,7 @@
 """
-Test Module: Create Process Permission
+Test Module: Delete Process Permission
 =====================================
-Checks if a user with the proper role can create a process in Clarity LIMS.
+Checks if a user with the proper role can delete a process in Clarity LIMS.
 Compatible with RolePermissionTester framework.
 """
 
@@ -13,18 +13,18 @@ BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "ED_TEST"
 RETRIES = 2
 
-def test_create_process(page, expected=True):
+def test_delete_process(page, expected=True):
     """
-    Checks if role can create a process in Clarity LIMS.
+    Checks if role can delete a process in Clarity LIMS.
     Accepts a Playwright 'page' object from the test framework.
     Returns structured JSON result.
     """
-    print("\n===== TEST: Create Process Permission =====")
+    print("\n===== TEST: Delete Process Permission =====")
     print(f"Project: {PROJECT_NAME}")
 
     result = {
-        "test_name": "Create Process",
-        "description": "Checks if role can create a process in Clarity LIMS",
+        "test_name": "Delete Process",
+        "description": "Checks if role can delete a process in Clarity LIMS",
         "execution_time": 0.0,
         "expected": expected,
         "passed": False,
@@ -67,39 +67,32 @@ def test_create_process(page, expected=True):
             else:
                 raise Exception("Add Master Step button not found — permission denied or hidden.")
 
-            # Fill first & last name
-            print("Filling Master Step Name...")
-            page.get_by_role("textbox", name=re.compile("Enter Name", re.I)).type(user_details["master_step"], delay=100)
-            page.wait_for_timeout(500)
-
-            # Fill Instrument Type
-            print("Filling Instrument Type...")
-            page.locator(".fa.fa-plus").first.click()
-            page.locator("#configuration-app-container").get_by_text(user_details["instrument_type"]).click()
-            page.wait_for_timeout(500)
-            page.locator("div.btn-base.isis-btn.btn.only-icon.check button").click()
-            page.wait_for_timeout(500)
-
-            # Save User
-            print("Clicking 'Save'...")
-            page.locator("button").filter(has_text="Save").click()
+            # Delete Master Step
+            print("Clicking 'Delete'...")
+            page.locator("button").filter(has_text="Delete").click()
             page.wait_for_timeout(2000)
 
-            # Verify user exists
-            print("Refreshing page to see if master step is created...")
+            print("Waiting for confirmation deletion dialog...")
+            confirm_button = page.get_by_role("button", name=re.compile("Delete Master Step", re.I))
+            confirm_button.wait_for(state="visible", timeout=5000)
+            confirm_button.click()
+            page.wait_for_timeout(2000)
+
+            # Verify master step is deleted
+            print("Refreshing page to see if master step is deleted...")
             page.reload()
             page.wait_for_timeout(2000)
 
-            print(f"Verifying that user '{master_step}' appears in the list...")
+            print(f"Verifying that master step '{master_step}' is deleted...")
             page.locator("div.g-two-sided-row", has_text=re.compile(master_step, re.I)).scroll_into_view_if_needed()
-            search_result = page.locator("div.g-col-value", has_text=re.compile(master_step, re.I))
-            if not search_result.is_visible():
-                raise Exception(f"User '{master_step}' not found after creation.")
+            search_result = page.locator("div.g-two-sided-row", has_text=re.compile(master_step, re.I))
+            if search_result.is_visible():
+                raise Exception(f"Master Step '{master_step}' is not deleted.")
 
-            print(f"User '{master_step}' successfully created.")
+            print(f"Master Step '{master_step}' successfully deleted.")
             result["passed"] = True
             result["result"] = "pass"
-            result["screenshot"], _ = capture_screenshot(page, "create_process", "pass")
+            result["screenshot"], _ = capture_screenshot(page, "delete_process", "pass")
 
             page.goto(BASE_URL)
             page.wait_for_timeout(1000)
@@ -110,7 +103,7 @@ def test_create_process(page, expected=True):
             result["error"] = str(e)
             result["passed"] = False
             result["result"] = "fail"
-            result["screenshot"], _ = capture_screenshot(page, "create_user", "fail")
+            result["screenshot"], _ = capture_screenshot(page, "delete_process", "fail")
 
             if attempt < max_attempts:
                 print("Retrying in 2 seconds...")
