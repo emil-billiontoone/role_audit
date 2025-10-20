@@ -34,8 +34,8 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_sample": True, 
         # "permissions_delete_sample": True, 
         # "permissions_sample_workflow_assignment": True, 
-        # "permissions_sample_rework": True, # still need to create this test ???
-        # "permissions_review_escalated_samples": True, # still need to create this test ???
+        # "permissions_sample_rework": True, # still need to create this test ??? This one I need 
+        # "permissions_review_escalated_samples": True, # still need to create this test ??? This one I need
         # "permissions_move_to_next_step": True, 
         # "permissions_create_control": True,
         # "permissions_update_control": True,
@@ -52,10 +52,10 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_update_user": True,
         # "permissions_delete_user": True, 
         # "permissions_read_process": True, # still need to create this test
-        "permissions_create_process": True, 
-        "permissions_read_process": True, 
-        "permissions_update_process": True, 
-        "permissions_delete_process": True, 
+        # "permissions_create_process": True, 
+        # "permissions_read_process": True, 
+        # "permissions_update_process": True, 
+        # "permissions_delete_process": True, 
         # "permissions_esignature_signing": True, # still need to create this test ???
         # "permissions_create_role": True, # still need to create this test
         # "permissions_update_role": True, # still need to create this test
