@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-21 00:09:22",
+  "timestamp": "2025-10-21 10:09:36",
   "tests": {
     "System Admin": [
       {
@@ -64,6 +64,28 @@
         "result": "fail",
         "error": "Lab Work tab not found \u2014 permission denied or hidden.",
         "screenshot": "screenshots/delete_process_fail_20251019_152216.png"
+      }
+    ],
+    "System Admin (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 7.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_100836.png"
+      },
+      {
+        "test_name": "Sample Rework",
+        "description": "Checks if role can rework a sample in Clarity LIMS.",
+        "execution_time": 53.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/sample_rework_pass_20251021_100934.png"
       }
     ]
   }

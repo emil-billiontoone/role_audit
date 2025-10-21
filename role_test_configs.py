@@ -6,7 +6,7 @@ Define which tests to run for each role.
 
 # Test suite configurations for different roles
 MAIN_ROLE_TEST_SUITES = {
-    "Lab Operator": {
+    "Lab Operator (BTO)": {
         "permissions_clarity_login": True,
         "permissions_API_login": True,
         "permissions_create_project": False, 
@@ -23,7 +23,7 @@ MAIN_ROLE_TEST_SUITES = {
         "permissions_update_sample": True, 
     },
     
-    "System Admin": {
+    "System Admin (BTO)": {
         "permissions_clarity_login": True,
         # "permissions_edit_completed_steps": True,
         # "permissions_API_login": True,
@@ -69,7 +69,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_administer_lab_link": True, # still need to create this test???
     },
     
-    "Lab Admin": {
+    "Lab Admin (BTO)": {
         "permissions_clarity_login": True,
         # "permissions_edit_completed_steps": False,
         # "permissions_API_login": True,
@@ -97,7 +97,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_update_sample": True, # still need to create this test
     },
 
-    "Limited": {
+    "Limited (BTO)": {
         "permissions_clarity_login": True,
         # "permissions_edit_completed_steps": False,
         # "permissions_API_login": False,
@@ -154,29 +154,38 @@ MAIN_ROLE_TEST_SUITES = {
 }
 
 ADD_ON_ROLE_TEST_SUITES = {
-    "Sample Creation": {
-        "permissions_view": True,
+    "Sample Creation (BTO)": {
+        "permissions_create_project": True,
+        "permissions_create_sample": True,
+        "permissions_sample_workflow_assignment": True,
+        "permissions_update_sample": True,
     },
     
     "Editor": {
-        "permissions_clarity_login": True,
         "permissions_edit_completed_steps": True,
     },
 
-    "Reagent Manufacturing": {
-        "permissions_view": True,
+    "Reagent Manufacturing (BTO)": {
+        "permissions_create_control": True,
+        "permissions_update_control": True,
+        "permissions_delete_control": True,
+        "permissions_create_reagent_kit": True,
+        "permissions_update_reagent_kit": True,
+        "permissions_delete_reagent_kit": True,
     },
 
-    "Review Escalations": {
-        "permissions_view": True,
+    "ReviewEscalations": {
+        "permissions_review_escalated_samples": True,
     },
 
-    "Rework": {
-        "permissions_view": True,
-    },
-
-    "No Add-Ons": {
-        "permissions_view": True,
+    "ReWork": {
+        "permissions_clarity_login": True,
+        "permissiosn_api_login": True,
+        "permissions_sample_rework": True,
+        "permissions_move_to_next_step": True,
+        "permissions_create_user": True,
+        "permissions_update_user": True,
+        "permissions_read_user": True,
     },
 }
 
