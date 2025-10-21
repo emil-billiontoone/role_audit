@@ -1,91 +1,27 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-21 11:18:05",
+  "timestamp": "2025-10-21 12:32:43",
   "tests": {
-    "System Admin": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 34.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_000801.png"
-      },
-      {
-        "test_name": "Sample Rework",
-        "description": "Checks if role can rework a sample in Clarity LIMS.",
-        "execution_time": 74.5,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/sample_rework_pass_20251021_000920.png"
-      }
-    ],
-    "Limited": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 11.6,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/clarity_login_20251019_152106.png"
-      },
-      {
-        "test_name": "Create Process",
-        "description": "Checks if role can create a process in Clarity LIMS.",
-        "execution_time": 17.4,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Lab Work tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/create_process_fail_20251019_152129.png"
-      },
-      {
-        "test_name": "Update Process",
-        "description": "Checks if role can update a process in Clarity LIMS.",
-        "execution_time": 17.5,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Lab Work tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/update_process_fail_20251019_152153.png"
-      },
-      {
-        "test_name": "Delete Process",
-        "description": "Checks if role can delete a process in Clarity LIMS.",
-        "execution_time": 17.6,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Lab Work tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/delete_process_fail_20251019_152216.png"
-      }
-    ],
     "System Admin (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 7.8,
+        "execution_time": 8.2,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_111605.png"
+        "screenshot": "screenshots/clarity_login_20251021_123058.png"
       },
       {
         "test_name": "Sample Rework",
         "description": "Checks if role can rework a sample in Clarity LIMS.",
-        "execution_time": 114.3,
-        "expected": true,
+        "execution_time": 99.0,
+        "expected": false,
         "passed": true,
-        "result": "pass",
+        "result": "fail",
         "error": null,
-        "screenshot": "screenshots/sample_workflow_removal_pass_20251021_111805.png"
+        "screenshot": "screenshots/sample_rework_pass_20251021_123227.png"
       }
     ]
   }

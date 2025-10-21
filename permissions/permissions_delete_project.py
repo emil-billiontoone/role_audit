@@ -61,7 +61,7 @@ def test_delete_project(page, expected=True):
             filter_box = page.get_by_role("textbox", name="Filter...")
             filter_box.wait_for(state="visible", timeout=5000)
             page.wait_for_timeout(500)
-            filter_box.type(PROJECT_NAME, delay=100)
+            filter_box.type(PROJECT_NAME, delay=10)
 
             print("Waiting for project row to appear...")
             project_row_locator = page.locator(f"div.project-list-item:has(div[data-qtip='{PROJECT_NAME}'])").first
@@ -97,11 +97,16 @@ def test_delete_project(page, expected=True):
             delete_confirm_button.wait_for(state="visible", timeout=3000)
             delete_confirm_button.click()
 
-            if project_row_locator.count() == 0:
+            # After clicking 'Delete Project' button
+            page.wait_for_timeout(1000)  # small wait to let the UI update
+            project_row_check = page.locator(f"div.project-list-item:has(div[data-qtip='{PROJECT_NAME}'])")
+            if project_row_check.count() == 0:
                 print("Project deleted successfully")
                 result["passed"] = True
                 result["result"] = "pass"
                 break
+            else:
+                raise Exception(f"Project '{PROJECT_NAME}' still exists after deletion")
 
         except Exception as e:
             timestamp = int(time.time())

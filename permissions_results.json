@@ -38,5 +38,15 @@
         "result": "pass",
         "error": null,
         "screenshot": "screenshots/move_to_next_step_1761022321.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.58,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/move_to_next_step_1761072686.png"
     }
 ]

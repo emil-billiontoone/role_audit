@@ -434,13 +434,9 @@ def test_sample_rework(page, expected=True):
                 remaining_samples = page.locator("div.sample-row:has(div.workflow-name)").count()
                 if remaining_samples == 0:
                     print("All samples successfully removed from workflows.")
-                    result["passed"] = True
-                    result["result"] = "pass"
-                    result["screenshot"], _ = capture_screenshot(page, "sample_workflow_removal", "pass")
                 else:
                     raise Exception(f"{remaining_samples} sample(s) still assigned to workflows after removal.")
-
-                break  # Exit retry loop on success
+                     # Exit cleanup loop on success
             except Exception as e:
                 print(f"Cleanup encountered an issue: {e}")
 

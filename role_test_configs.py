@@ -25,7 +25,7 @@ MAIN_ROLE_TEST_SUITES = {
     
     "System Admin (BTO)": {
         "permissions_clarity_login": True,
-        # "permissions_edit_completed_steps": True,
+        # "permissions_edit_completed_steps": False,
         # "permissions_API_login": True,
         # "permissions_collaborations_login": True, # Don't worry about this test
         # "permissions_operations_login": True, # Don't worry about this test
@@ -42,10 +42,10 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_control": True,
         # "permissions_update_control": True,
         # "permissions_delete_control": True, 
-        # "permissions_create_reagent_kit": False, 
-        # "permissions_update_reagent_kit": False, 
-        # "permissions_delete_reagent_kit": False,
-        # "permissions_overview_dashboard": True, 
+        # "permissions_create_reagent_kit": True, 
+        # "permissions_update_reagent_kit": True, 
+        # "permissions_delete_reagent_kit": True,
+        # "permissions_overview_dashboard": False, 
         # "permissions_update_configuration": True, # still need to create this test ???
         # "permissions_requeue_sample": True,
         # "permissions_read_user": True,
@@ -133,9 +133,10 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_user": False, 
         # "permissions_update_user": False,
         # "permissions_delete_user": False, 
-        "permissions_create_process": True, 
-        "permissions_update_process": True, 
-        "permissions_delete_process": True, 
+        # "permissions_create_process": True, 
+        # "permissions_update_process": True, 
+        # "permissions_delete_process": True, 
+        "permissions_sample_rework": False, 
     },
 
     "BTO API": {

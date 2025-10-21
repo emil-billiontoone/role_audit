@@ -14,6 +14,8 @@ BASE_URL = "https://clarity-dev.btolims.com"
 CLIENT_NAME = "Emil Test"
 RETRIES = 2  # Number of retries on failure
 SCREENSHOT_DIR = "screenshots"
+PROJECT_NAME = "Emil Project Test"
+ACCOUNT_NAME = "Administrative Lab"
 
 # Ensure screenshot directory exists
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
@@ -53,7 +55,7 @@ def test_create_project(page, expected=True):
             filter_box = page.get_by_role("textbox", name="Filter...")
             filter_box.wait_for(state="visible", timeout=5000)
             page.wait_for_timeout(500)
-            filter_box.type(PROJECT_NAME, delay=100)
+            filter_box.type(PROJECT_NAME, delay=10)
 
             print("Clicking 'NEW PROJECT' button...")
             new_project_btn = page.locator("button", has_text="NEW PROJECT")
@@ -80,7 +82,7 @@ def test_create_project(page, expected=True):
                 if client_input.is_enabled():
                     break
                 page.wait_for_timeout(200)
-            client_input.type(CLIENT_NAME, delay=100)
+            client_input.type(CLIENT_NAME, delay=10)
             client_input.press("Enter")
 
             print("Setting priority to 'Standard' and saving project...")
@@ -95,7 +97,7 @@ def test_create_project(page, expected=True):
             filter_box = page.get_by_role("textbox", name="Filter...")
             filter_box.wait_for(state="visible", timeout=5000)
             page.wait_for_timeout(500)
-            filter_box.type(PROJECT_NAME, delay=100)
+            filter_box.type(PROJECT_NAME, delay=10)
             project_row_locator = page.locator(f"div.project-list-item-headline-title[data-qtip='{PROJECT_NAME}']").first
             project_row_locator.wait_for(state="visible", timeout=10000)
 
