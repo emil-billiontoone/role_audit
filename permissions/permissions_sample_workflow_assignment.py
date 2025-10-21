@@ -8,6 +8,7 @@ Compatible with RolePermissionTester framework.
 import os
 import re
 import time
+from .test_utils import capture_screenshot
 
 BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "ED_TEST"
@@ -57,7 +58,7 @@ def test_sample_workflow_assignment(page, expected=True):
             filter_box = page.get_by_role("textbox", name="Filter...")
             filter_box.wait_for(state="visible", timeout=5000)
             page.wait_for_timeout(500)
-            filter_box.type(PROJECT_NAME, delay=100)
+            filter_box.type(PROJECT_NAME, delay=10)
             page.wait_for_timeout(1000)
 
             project_row = page.locator(f"div.project-list-item:has(div[data-qtip='{PROJECT_NAME}'])").first
@@ -106,6 +107,7 @@ def test_sample_workflow_assignment(page, expected=True):
                 print("Workflow successfully assigned")
                 result["passed"] = True
                 result["result"] = "pass"
+                result["screenshot"], _ = capture_screenshot(page, "sample_workflow_assignment", "pass")
             else:
                 raise Exception("Workflow assignment failed")
 
@@ -121,13 +123,7 @@ def test_sample_workflow_assignment(page, expected=True):
             break  # Exit retry loop if successful
 
         except Exception as e:
-            timestamp = int(time.time())
-            screenshot_file = os.path.join(SCREENSHOT_DIR, f"sample_workflow_{timestamp}.png")
-            try:
-                page.screenshot(path=screenshot_file)
-                result["screenshot"] = screenshot_file
-            except:
-                result["screenshot"] = "Failed to capture screenshot"
+            result["screenshot"], _ = capture_screenshot(page, "sample_workflow_assignment", "fail")
 
             result["error"] = str(e)
             result["passed"] = False

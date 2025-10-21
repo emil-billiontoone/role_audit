@@ -9,6 +9,7 @@ Compatible with RolePermissionTester framework.
 import os
 import re
 import time
+from .test_utils import capture_screenshot
 
 BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "ED_TEST"
@@ -126,21 +127,14 @@ def test_sample_workflow_removal(page, expected=True):
                 print("All samples successfully removed from workflows.")
                 result["passed"] = True
                 result["result"] = "pass"
+                result["screenshot"], _ = capture_screenshot(page, "sample_workflow_removal", "pass")
             else:
                 raise Exception(f"{remaining_samples} sample(s) still assigned to workflows after removal.")
 
             break  # Exit retry loop on success
 
         except Exception as e:
-            timestamp = int(time.time())
-            screenshot_file = os.path.join(SCREENSHOT_DIR, f"sample_removal_{timestamp}.png")
-            try:
-                page.screenshot(path=screenshot_file)
-                result["screenshot"] = screenshot_file
-                print(f"Captured screenshot: {screenshot_file}")
-            except:
-                result["screenshot"] = "Failed to capture screenshot"
-                print("Failed to capture screenshot.")
+            result["screenshot"], _ = capture_screenshot(page, "sample_workflow_removal", "fail")
 
             result["error"] = str(e)
             result["passed"] = False

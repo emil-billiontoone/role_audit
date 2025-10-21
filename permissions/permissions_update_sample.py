@@ -8,6 +8,7 @@ Compatible with RolePermissionTester framework.
 import os
 import re
 import time
+from .test_utils import capture_screenshot
 
 BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "ED_TEST"
@@ -84,10 +85,9 @@ def test_update_sample(page, expected=True):
                 print("Modify sample button found — permission confirmed.")
                 result["passed"] = True
                 result["result"] = "pass"
+                result["screenshot"], _ = capture_screenshot(page, "update_sample", "pass")
             elif "DOWNLOAD" in button_text:
-                print("Modify sample button not found — user only has Download Sample List permission.")
-                result["passed"] = False
-                result["result"] = "fail"
+                raise Exception("Modify sample button not found — user only has Download Sample List permission.")
             else:
                 raise Exception(f"Unexpected button text: '{button_text}'")
 
@@ -95,14 +95,7 @@ def test_update_sample(page, expected=True):
 
 
         except Exception as e:
-            timestamp = int(time.time())
-            screenshot_file = os.path.join(SCREENSHOT_DIR, f"update_sample_fail_{timestamp}.png")
-            try:
-                page.screenshot(path=screenshot_file)
-                result["screenshot"] = screenshot_file
-            except:
-                result["screenshot"] = "Failed to capture screenshot"
-
+            result["screenshot"], _ = capture_screenshot(page, "update_sample", "fail")
             result["error"] = str(e)
             result["passed"] = False
             result["result"] = "fail"
