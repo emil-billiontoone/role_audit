@@ -10,6 +10,7 @@ import re
 import time
 from datetime import datetime
 from .test_utils import capture_screenshot
+from change_role import get_lims_connection, modify_user_role
 
 BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "ED_TEST"
@@ -76,6 +77,14 @@ def test_sample_rework(page, expected=True):
 
     for attempt in range(1, max_attempts + 1):
         try:
+
+            # Add System Admin (BTO) role to user to create test environment
+            lims, username = get_lims_connection()
+            user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="add")
+            print(f"Current roles for {username} after adding System Admin (BTO) role:")
+            for r in user.roles:
+                print(f"  - {r.name}")
+
             print(f"\n--- Attempt {attempt} ---")
             print("Navigating to Projects & Samples...")
             page.get_by_role("link", name=re.compile("PROJECTS & Samples", re.I)).click()
@@ -189,6 +198,10 @@ def test_sample_rework(page, expected=True):
             page.get_by_role("button", name="Begin Work »").click()
             print("Sample rework initiated successfully.")
 
+            user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="remove")
+            print(f"Current roles for {username} after removing System Admin (BTO) role:")
+            for r in user.roles:
+                print(f"  - {r.name}")
 
 
             from playwright.sync_api import expect
@@ -312,8 +325,18 @@ def test_sample_rework(page, expected=True):
             # Select workflow and confirm rework
             print("Selecting workflow and verifying rework...")
             try:
+                # Click the workflow in the tree view
                 page.locator("#treeview-1076").get_by_text("Aneuploidy - Automated cfDNA").click()
-                page.locator("#iconcombobox-1095-bodyEl").get_by_text("Rework from an earlier step").click()
+                page.wait_for_timeout(500)  # small pause for UI
+
+                # Wait for Select2 dropdown to appear
+                page.wait_for_selector("div.select2-dropdown", state="visible", timeout=10000)
+
+                # Click the 'Rework from an earlier step' option inside the dropdown
+                option = page.locator("div.select2-dropdown li div", has_text="Rework from an earlier step").first
+                option.click()
+                page.wait_for_timeout(500)
+                print("Selected 'Rework from an earlier step'")
             except Exception as e:
                 print(f"Failed to select workflow and verify rework: {e}")
                 raise Exception(f"Failed to select workflow and verify rework: {e}")
@@ -357,6 +380,12 @@ def test_sample_rework(page, expected=True):
                 break
 
         finally:
+            # Add System Admin (BTO) role to user to clean up test environment
+            user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="add")
+            print(f"Current roles for {username} after adding System Admin (BTO) role to clean up test environment:")
+            for r in user.roles:
+                print(f"  - {r.name}")
+
             print("Performing cleanup — aborting test step and returning to Lab View...")
             try:
                 page.get_by_role("button", name="Abort").click()
@@ -437,6 +466,12 @@ def test_sample_rework(page, expected=True):
                 else:
                     raise Exception(f"{remaining_samples} sample(s) still assigned to workflows after removal.")
                      # Exit cleanup loop on success
+
+                # Remove System Admin (BTO) role from user to clean up test environment
+                user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="remove")
+                print(f"Current roles for {username} after removing System Admin (BTO) role after cleanup:")
+                for r in user.roles:
+                    print(f"  - {r.name}")
             except Exception as e:
                 print(f"Cleanup encountered an issue: {e}")
 
