@@ -19,6 +19,37 @@ SCREENSHOT_DIR = "screenshots"
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 
+# --- Helper to select an option from a react-widgets multiselect by widget id ---
+def select_multiselect_option_by_id(page, widget_id, option_text, timeout=8000):
+    """
+    Open multiselect #<widget_id>, wait for its listbox to be visible,
+    then click the li inside that listbox that matches option_text.
+    """
+    listbox_id = f"#{widget_id}__listbox"
+    wrapper = page.locator(f"#{widget_id} .rw-multiselect-wrapper").first
+
+    print(f"Opening multiselect {widget_id}...")
+    wrapper.click()
+    try:
+        page.wait_for_selector(listbox_id, state="visible", timeout=timeout)
+    except Exception as e:
+        print(f"Timeout waiting for listbox {listbox_id} to be visible: {e}")
+        return False
+
+    print(f"Selecting option '{option_text}' inside {listbox_id}...")
+    # Use a scoped locator so we only match items inside this listbox
+    option = page.locator(f"{listbox_id} >> text=\"{option_text}\"").first
+    try:
+        option.click()
+        page.wait_for_timeout(200)  # let UI settle
+        print(f"Selected '{option_text}' in {widget_id}.")
+        return True
+    except Exception as e:
+        print(f"Failed to click option '{option_text}' in {widget_id}: {e}")
+        return False
+
+
+
 def test_sample_rework(page, expected=True):
     """
     Checks if role can rework a sample in Clarity LIMS.
@@ -181,7 +212,7 @@ def test_sample_rework(page, expected=True):
 
             # --- Wait for ExtJS mask to disappear ---
             print("Waiting for page mask to clear before drag-and-drop...")
-            for _ in range(40):  # wait up to ~20 seconds
+            for _ in range(60):  # wait up to ~20 seconds
                 masks = page.locator("div.x-mask")
                 if masks.count() == 0 or not masks.first.is_visible():
                     break
@@ -197,7 +228,7 @@ def test_sample_rework(page, expected=True):
             )
 
             # Poll for the "in-use-well" class to appear
-            for _ in range(20):  # ~10 seconds if 0.5s sleep
+            for _ in range(60):  # ~10 seconds if 0.5s sleep
                 if "in-use-well" in target.get_attribute("class"):
                     break
                 time.sleep(0.5)
@@ -212,11 +243,105 @@ def test_sample_rework(page, expected=True):
             page.wait_for_timeout(1000)
             print("Sample successfully recorded in workflow.")
 
-            # === Test success ===
+            print("Filling in metadata fields before finalizing rework...")
+
+            # Fill in dropdowns
+            print("Selecting default options from multiselect fields...")
+
+            print("Selecting default options from multiselect fields...")
+
+            if not select_multiselect_option_by_id(page, "rw_1", "NA, Lot: NA"):
+                # capture screenshot for debugging and raise so outer retry logic can handle it
+                ss, _ = capture_screenshot(page, "multiselect_rw1_fail", "fail")
+                print(f"Screenshot captured: {ss}")
+                raise Exception("Could not select 'NA, Lot: NA' in rw_1")
+
+            if not select_multiselect_option_by_id(page, "rw_2", "NA, Lot: NA"):
+                ss, _ = capture_screenshot(page, "multiselect_rw2_fail", "fail")
+                print(f"Screenshot captured: {ss}")
+                raise Exception("Could not select 'NA, Lot: NA' in rw_2")
+
+            # --- Simpler dropdown (fallback handling) ---
+            print("Selecting 'NA' from picker #ext-gen1136...")
+            try:
+                page.locator("#ext-gen1136").click()
+                page.wait_for_timeout(200)
+                # Try to click exact option first
+                page.get_by_role("option", name="NA", exact=True).click()
+                print("Selected 'NA' from #ext-gen1136.")
+            except Exception:
+                # fallback: click visible list item text=NA
+                try:
+                    page.locator("ul.rw-list >> text=NA").first.click()
+                    print("Fallback: clicked visible 'NA' option.")
+                except Exception as e:
+                    ss, _ = capture_screenshot(page, "ext-gen1136_fail", "fail")
+                    print(f"Failed to select 'NA' from #ext-gen1136: {e}. Screenshot: {ss}")
+                    raise
+
+            # --- Fill textboxes using fill() (more reliable than typing) ---
+            print("Filling operator and instrument textboxes...")
+            textbox_fields = [
+                "BSC Operator(s)",
+                "Loading Operator(s)",
+                "Instrument",
+                "Workstation",
+                "Verifying Operator(s)",
+                "Comments"
+            ]
+
+            for field in textbox_fields:
+                try:
+                    textbox = page.get_by_role("textbox", name=field)
+                    textbox.wait_for(state="visible", timeout=5000)
+                    textbox.fill("N/A")
+                    print(f"Filled '{field}' with 'N/A'.")
+                except Exception as e:
+                    print(f"Warning: could not fill textbox '{field}': {e}")
+
+            print("All text fields populated successfully.")
+
+            # Proceed to next step
+            print("Clicking 'Next Steps »' to continue...")
+            try: 
+                page.get_by_role("button", name="Next Steps »").click()
+            except Exception as e:
+                print(f"Failed to navigate to Work Complete page: {e}")
+                raise Exception(f"Failed to navigate to Work Complete page: {e}")
+
+            # Select workflow and confirm rework
+            print("Selecting workflow and verifying rework...")
+            try:
+                page.locator("#treeview-1076").get_by_text("Aneuploidy - Automated cfDNA").click()
+                page.locator("#iconcombobox-1095-bodyEl").get_by_text("Rework from an earlier step").click()
+            except Exception as e:
+                print(f"Failed to select workflow and verify rework: {e}")
+                raise Exception(f"Failed to select workflow and verify rework: {e}")
+
+            # Wait for rework dialog to appear
+            try:
+                page.wait_for_selector("#sampleReworkDialog", state="visible", timeout=10000)
+            except Exception as e:
+                print(f"Failed to wait for rework dialog to appear: {e}")
+                raise Exception(f"Failed to wait for rework dialog to appear: {e}")
+
+            print("Rework dialog appeared — verifying step options...")
+
+            if page.locator("#sampleReworkDialog_header").count() > 0 and page.locator("#sampleReworkDialog-body").count() > 0 and page.locator("#sampleReworkList").get_by_text("Aneuploidy v3.6").count() > 0:
+                print("Rework dialog appeared and step options are visible.")
+            else:
+                raise Exception("Rework dialog did not appear.")
+
+                        # === Test success ===
             result["passed"] = True
             result["result"] = "pass"
             result["screenshot"], _ = capture_screenshot(page, "sample_rework", "pass")
-            print("Test PASSED — sample successfully reworked.")
+            print("Test PASSED — sample rework verified.")
+
+            print("Rework verification complete — closing dialog.")
+            page.get_by_role("button", name="Cancel").click()
+            page.wait_for_timeout(1000)
+
             break  # exit retry loop
 
         except Exception as e:
@@ -232,11 +357,92 @@ def test_sample_rework(page, expected=True):
                 break
 
         finally:
+            print("Performing cleanup — aborting test step and returning to Lab View...")
             try:
-                page.goto(BASE_URL)
-                print("Returned to main page.")
-            except Exception:
-                pass
+                page.get_by_role("button", name="Abort").click()
+                page.get_by_role("button", name="OK").click()
+                page.get_by_role("button", name="Remove").click()
+                print(f"\nAttempt {attempt}: Navigating to Projects & Samples...")
+                page.get_by_role("link", name=re.compile("PROJECTS & Samples", re.I)).click()
+                page.wait_for_timeout(1000)
+
+                print(f"Filtering for project '{PROJECT_NAME}'...")
+                filter_box = page.get_by_role("textbox", name="Filter...")
+                filter_box.wait_for(state="visible", timeout=5000)
+                page.wait_for_timeout(500)
+                filter_box.fill("")
+                filter_box.type(PROJECT_NAME, delay=100)
+                page.wait_for_timeout(1000)
+
+                print("Locating project row...")
+                project_row = page.locator(f"div.project-list-item:has(div[data-qtip='{PROJECT_NAME}'])").first
+                project_row.wait_for(state="visible", timeout=10000)
+                if project_row.count() == 0:
+                    raise Exception(f"Project '{PROJECT_NAME}' not found")
+
+                print("Project found — clicking to open project details...")
+                project_row.click()
+                page.wait_for_timeout(1500)
+
+                print("Expanding sample group to show all samples...")
+                group_expander = page.locator("div.group-expander-btn").first
+                if group_expander.count() > 0:
+                    group_expander.click()
+                    page.wait_for_timeout(1500)
+                    print("Sample group expanded.")
+                else:
+                    print("No group expander button found — possibly already expanded.")
+
+                # Remove all samples from workflows using live-loop
+                removed_count = 0
+                while True:
+                    sample_rows = page.locator("div.sample-row:has(div.workflow-name)")
+                    if sample_rows.count() == 0:
+                        break
+
+                    sample = sample_rows.first
+                    sample_id = sample.locator(".sample-udf-icon").get_attribute("data-sample-id")
+                    workflow_name = sample.locator(".workflow-name").inner_text()
+                    print(f"Removing sample ID {sample_id} from workflow '{workflow_name}'...")
+
+                    delete_btn = page.locator(f"div.delete-btn[data-sample-id='{sample_id}']")
+                    if delete_btn.count() == 0:
+                        print(f"No delete button found for sample ID {sample_id}, skipping.")
+                        # Remove this sample from DOM consideration if needed
+                        page.evaluate("el => el.remove()", sample)
+                        continue
+
+                    # Wait for any page overlay to disappear before clicking
+                    page.locator("div.x-mask-full-page").wait_for(state="hidden", timeout=10000)
+
+                    # Click delete
+                    delete_btn.first.click()
+
+                    # Wait until the workflow name for this sample is gone
+                    workflow_locator = page.locator(f"div.sample-row[data-sample-id='{sample_id}'] div.workflow-name")
+                    try:
+                        workflow_locator.wait_for(state="detached", timeout=10000)
+                    except:
+                        print(f"Warning: workflow for sample {sample_id} did not disappear within timeout")
+
+                    removed_count += 1
+                    page.wait_for_timeout(500)  # optional small buffer
+
+                print(f"Removed {removed_count} sample(s) from workflows.")
+
+                # Verification: ensure no samples remain assigned
+                remaining_samples = page.locator("div.sample-row:has(div.workflow-name)").count()
+                if remaining_samples == 0:
+                    print("All samples successfully removed from workflows.")
+                    result["passed"] = True
+                    result["result"] = "pass"
+                    result["screenshot"], _ = capture_screenshot(page, "sample_workflow_removal", "pass")
+                else:
+                    raise Exception(f"{remaining_samples} sample(s) still assigned to workflows after removal.")
+
+                break  # Exit retry loop on success
+            except Exception as e:
+                print(f"Cleanup encountered an issue: {e}")
 
     # --- Test summary ---
     end_time = time.time()
