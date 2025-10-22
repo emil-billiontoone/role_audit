@@ -115,12 +115,12 @@ python generate_pdf_report.py -i custom.json -o report.pdf
 
 Professional reports auto-generated with:
 
-📖 **Permission Test Reference** - Descriptions of all 42+ tests organized by category  
-📊 **Summary Statistics** - Overall results and execution times  
-📋 **Detailed Results** - Per-role tables with screenshots  
-🎨 **Color-Coded** - Green (pass), Red (fail), Orange (error)  
-⏱️ **Execution Times** - Performance metrics  
-📸 **Screenshots** - Documented for all tests  
+ **Permission Test Reference** - Descriptions of all 42+ tests organized by category  
+ **Summary Statistics** - Overall results and execution times  
+ **Detailed Results** - Per-role tables with screenshots  
+ **Color-Coded** - Green (pass), Red (fail), Orange (error)  
+ **Execution Times** - Performance metrics  
+ **Screenshots** - Documented for all tests  
 
 See [docs/PDF_GUIDE.md](docs/PDF_GUIDE.md) for details.
 
@@ -246,16 +246,16 @@ See [docs/ADVANCED.md](docs/ADVANCED.md) for details.
 
 ## Key Features
 
-✅ **42+ Permission Tests** - Comprehensive coverage  
-✅ **Modular Design** - Easy to add/modify tests  
-✅ **Expected Outcomes** - Validates test behavior  
-✅ **Role Combinations** - Tests MAIN + ADD_ON roles  
-✅ **Safe Role Management** - User always has ≥1 role  
-✅ **Auto-Generated PDFs** - Professional reports  
-✅ **Screenshot Documentation** - Visual evidence  
-✅ **Execution Tracking** - Performance metrics  
-✅ **Interactive Control** - Pause/continue between roles  
-✅ **Organized Output** - All results in `test_results/`  
+ **42+ Permission Tests** - Comprehensive coverage  
+ **Modular Design** - Easy to add/modify tests  
+ **Expected Outcomes** - Validates test behavior  
+ **Role Combinations** - Tests MAIN + ADD_ON roles  
+ **Safe Role Management** - User always has ≥1 role  
+ **Auto-Generated PDFs** - Professional reports  
+ **Screenshot Documentation** - Visual evidence  
+ **Execution Tracking** - Performance metrics  
+ **Interactive Control** - Pause/continue between roles  
+ **Organized Output** - All results in `test_results/`  
 
 ## Troubleshooting
 
