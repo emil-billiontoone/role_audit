@@ -20,7 +20,7 @@ python run_all_roles.py "Emil" "Test" --server dev
 4. Test with Reagent Manufacturing (BTO)
 5. Test with ReviewEscalations
 6. Test with ReWork
-7. **PROMPT** - Continue to next MAIN role?
+7. Automatically continues to next MAIN role (2-second pause allows Ctrl+C if needed)
 
 **Role Management:**
 - User starts with Lab Operator (BTO) only
@@ -39,23 +39,26 @@ MAIN ROLE 1/5: Lab Operator (BTO)
 ├─ Lab Operator (BTO) + Reagent Manufacturing (BTO)
 ├─ Lab Operator (BTO) + ReviewEscalations
 └─ Lab Operator (BTO) + ReWork
-   → PROMPT: Continue to System Admin?
+   → Auto-continue to System Admin (2s pause)
 
 MAIN ROLE 2/5: System Admin (BTO)
 ├─ System Admin (BTO) [BASE]
 ├─ System Admin (BTO) + Sample Creation (BTO)
 └─ ... (repeat for all add-ons)
+   → Auto-continue...
+
+[Continues automatically through all MAIN roles]
 ```
 
 ### Total Test Runs
 - **5 MAIN roles** × **6 configs each** (1 BASE + 5 ADD_ONs)
 - **= 30 total test combinations**
-- **4 prompts** (after each MAIN role except last)
+- **Fully automated** - Runs all tests without user interaction
 
 ### Key Features
 ✅ Safe role transitions (never 0 roles)  
 ✅ Combined permission testing  
-✅ Interactive control (can stop anytime)  
+✅ Fully automated (can stop with Ctrl+C anytime)  
 ✅ Automatic PDF generation  
 ✅ Comprehensive coverage  
 

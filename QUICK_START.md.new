@@ -76,7 +76,7 @@ python run_all_roles.py --help
 
 ## Stopping Mid-Test
 
-Press `Ctrl+C` at any time to stop the tests. There's a 2-second pause between MAIN roles.
+Press `n` when prompted after each MAIN role completes.
 
 ## Troubleshooting
 

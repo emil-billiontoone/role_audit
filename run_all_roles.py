@@ -215,13 +215,13 @@ def run_all_role_tests(user_firstname, user_lastname, server="dev", account="MAS
         print(f"Tested {1 + len(addon_role_names)} combinations (BASE + {len(addon_role_names)} add-ons)")
         print("=" * 80)
         
-        # Ask if user wants to continue to next MAIN role (only after all add-ons are tested)
+        # Automatically continue to next MAIN role
         if main_idx < total_main_roles:
             next_main_role = main_role_names[main_idx]
-            user_input = input(f"\nContinue to next MAIN role ({next_main_role})? [Y/n]: ").strip().lower()
-            if user_input in ['n', 'no']:
-                print("\nStopping role testing loop as requested.")
-                break
+            print(f"\nAutomatically continuing to next MAIN role: {next_main_role}")
+            print("(Press Ctrl+C to stop if needed)")
+            import time
+            time.sleep(2)  # Brief pause to allow Ctrl+C if user wants to stop
     
     print("\n" + "=" * 80)
     print("COMPREHENSIVE ROLE TESTING COMPLETE")
