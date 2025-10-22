@@ -22,9 +22,10 @@ import argparse
 from role_permission_tester import RolePermissionTester
 from role_test_configs import MAIN_ROLE_TEST_SUITES, ADD_ON_ROLE_TEST_SUITES
 from change_role import get_lims_connection, modify_user_role
+from generate_pdf_report import PDFReportGenerator
 
 
-def run_all_role_tests(user_firstname, user_lastname, server="dev", account="MASTER"):
+def run_all_role_tests(user_firstname, user_lastname, server="dev", account="MASTER", generate_pdf=True):
     """
     Run tests for all roles in MAIN_ROLE_TEST_SUITES.
     
@@ -33,6 +34,7 @@ def run_all_role_tests(user_firstname, user_lastname, server="dev", account="MAS
         user_lastname: Last name of the user
         server: Server environment (dev, staging, prod)
         account: Account name for credentials (default: MASTER)
+        generate_pdf: Whether to auto-generate PDF report after completion (default: True)
     """
     print("=" * 80)
     print("COMPREHENSIVE ROLE TESTING SUITE")
@@ -226,6 +228,20 @@ def run_all_role_tests(user_firstname, user_lastname, server="dev", account="MAS
     print("=" * 80)
     print(f"Total MAIN roles tested: {main_idx}")
     print("=" * 80)
+    
+    # Generate PDF report if requested
+    if generate_pdf:
+        print("\n" + "=" * 80)
+        print("GENERATING PDF REPORT")
+        print("=" * 80)
+        try:
+            pdf_generator = PDFReportGenerator()
+            pdf_file = pdf_generator.generate_pdf()
+            print(f"\n✓ PDF report available at: {pdf_file}")
+        except Exception as e:
+            print(f"\n⚠ Warning: Could not generate PDF report: {e}")
+            print("  (Test results are still saved in JSON format)")
+        print("=" * 80)
 
 
 def main():
@@ -270,6 +286,9 @@ Example testing flow for Lab Operator (BTO):
     parser.add_argument("-a", "--account",
                        default="MASTER",
                        help="Account name for credentials (default: MASTER)")
+    parser.add_argument("--no-pdf",
+                       action="store_true",
+                       help="Skip PDF report generation (default: generate PDF)")
     
     args = parser.parse_args()
     
@@ -277,7 +296,8 @@ Example testing flow for Lab Operator (BTO):
         user_firstname=args.firstname,
         user_lastname=args.lastname,
         server=args.server,
-        account=args.account
+        account=args.account,
+        generate_pdf=not args.no_pdf
     )
 
 

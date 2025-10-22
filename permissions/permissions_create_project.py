@@ -13,7 +13,7 @@ from datetime import datetime
 BASE_URL = "https://clarity-dev.btolims.com"
 CLIENT_NAME = "Emil Test"
 RETRIES = 2  # Number of retries on failure
-SCREENSHOT_DIR = "screenshots"
+SCREENSHOT_DIR = "test_results/screenshots"
 PROJECT_NAME = "Emil Project Test"
 ACCOUNT_NAME = "Administrative Lab"
 

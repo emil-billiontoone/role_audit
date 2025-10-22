@@ -13,11 +13,13 @@ role_audit/
 ├── role_test_configs.py           # Role-specific test configurations
 ├── change_role.py                 # Role switching utility
 ├── store_creds.py                 # Secure credential storage
+├── generate_pdf_report.py         # PDF report generator
 ├── permissions/                   # Individual permission test modules (40+ tests)
 │   ├── permissions_*.py           # Each file tests a specific permission
-├── test_results/                  # Test execution results
-│   └── all_role_tests.json        # Consolidated test results
-└── screenshots/                   # Test failure screenshots
+└── test_results/                  # All test outputs in one place
+    ├── all_role_tests.json        # Consolidated test results
+    ├── role_test_report_*.pdf     # Generated PDF reports
+    └── screenshots/               # Test screenshots
 
 ```
 
@@ -180,6 +182,33 @@ python run_all_roles.py --help
 3. Saves all results to the consolidated JSON file
 
 **Note**: The script pauses between roles, allowing you to review results before proceeding to the next role. You can press `n` to stop the loop at any point.
+
+### PDF Report Generation
+
+After running tests, a **professional PDF report is automatically generated** with:
+- **Permission Test Reference** - Comprehensive descriptions of all 42+ tests organized by category
+- Server and timestamp information
+- Summary statistics
+- Detailed results for each role
+- Color-coded pass/fail indicators
+- Screenshot documentation
+- Error details
+
+```bash
+# PDF is auto-generated after tests complete
+python run_all_roles.py "Emil" "Test"
+
+# Skip PDF generation if desired
+python run_all_roles.py "Emil" "Test" --no-pdf
+
+# Manually generate PDF from existing JSON results
+python generate_pdf_report.py
+
+# Custom input/output
+python generate_pdf_report.py -i custom_results.json -o my_report.pdf
+```
+
+See [PDF_REPORT_GUIDE.md](PDF_REPORT_GUIDE.md) for detailed documentation.
 
 ### Setting Up Credentials
 
@@ -547,6 +576,10 @@ browser = playwright.chromium.launch(
 - **Automatic Screenshot Capture**: All tests now automatically capture screenshots (both pass and fail)
 - **Smart Retry Logic**: Tests with `expected=False` now skip retries and run only once for faster execution
 - **Sequential Role Testing**: New `run_all_roles.py` script to automatically test all roles in sequence with safe role transitions
+- **Comprehensive Role Combinations**: Tests each MAIN role with all ADD_ON role combinations
+- **Professional PDF Reports**: Auto-generated PDF reports with color-coded results, summary statistics, and detailed test information
+- **Permission Test Reference**: Built-in PDF section with comprehensive descriptions of all 42+ tests organized by functional category
+- **Centralized Test Results**: All outputs (JSON, PDFs, screenshots) now organized in `test_results/` folder
 
 ## Future Enhancements
 

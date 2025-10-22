@@ -7,7 +7,7 @@ Common helper functions for all permission test modules.
 import os
 from datetime import datetime
 
-SCREENSHOT_DIR = "screenshots"
+SCREENSHOT_DIR = "test_results/screenshots"
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
 

@@ -1,182 +1,55 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-21 22:08:50",
+  "timestamp": "2025-10-21 22:44:54",
   "tests": {
-    "Not Logged In": [
-      {
-        "test_name": "Url Check",
-        "description": "For each URL:",
-        "execution_time": 20.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/url_check_20251021_214430.png"
-      }
-    ],
+    "Not Logged In": [],
     "Lab Operator (BTO) (BASE)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 12.7,
+        "execution_time": 12.5,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_214444.png"
-      },
-      {
-        "test_name": "Api Login",
-        "description": "Checks if user can login to Clarity API",
-        "execution_time": 0.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/api_login_20251021_214451.png"
+        "screenshot": "screenshots/clarity_login_20251021_222556.png"
       }
     ],
     "Lab Operator (BTO) + Sample Creation (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 12.3,
+        "execution_time": 11.5,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_214505.png"
-      },
-      {
-        "test_name": "Api Login",
-        "description": "Checks if user can login to Clarity API",
-        "execution_time": 0.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/api_login_20251021_214511.png"
-      },
-      {
-        "test_name": "Create Project",
-        "description": "Checks if user can create a new project in Clarity LIMS",
-        "execution_time": 10.2,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/create_project_20251021_214528.png"
+        "screenshot": "screenshots/clarity_login_20251021_222609.png"
       }
     ],
     "Lab Operator (BTO) + Editor": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 15.1,
+        "execution_time": 11.7,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_214545.png"
-      },
-      {
-        "test_name": "Api Login",
-        "description": "Checks if user can login to Clarity API",
-        "execution_time": 0.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/api_login_20251021_214552.png"
+        "screenshot": "screenshots/clarity_login_20251021_222623.png"
       },
       {
         "test_name": "Edit Completed Steps",
         "description": "No description available",
-        "execution_time": 3.4,
+        "execution_time": 3.5,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/edit_completed_steps_20251021_214602.png"
+        "screenshot": "screenshots/edit_completed_steps_20251021_222633.png"
       }
     ],
     "Lab Operator (BTO) + Reagent Manufacturing (BTO)": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 11.8,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_214616.png"
-      },
-      {
-        "test_name": "Api Login",
-        "description": "Checks if user can login to Clarity API",
-        "execution_time": 0.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/api_login_20251021_214623.png"
-      },
-      {
-        "test_name": "Create Control",
-        "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 20.5,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/create_control_pass_20251021_214647.png"
-      }
-    ],
-    "Lab Operator (BTO) + ReviewEscalations": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 14.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_214707.png"
-      },
-      {
-        "test_name": "Api Login",
-        "description": "Checks if user can login to Clarity API",
-        "execution_time": 0.5,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/api_login_20251021_214713.png"
-      },
-      {
-        "test_name": "Review Escalated Samples",
-        "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 139.6,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Timed out waiting for ExtJS mask to disappear.",
-        "screenshot": "screenshots/review_escalated_samples_fail_20251021_214827.png"
-      }
-    ],
-    "System Admin (BTO) (BASE)": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 14.4,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_215149.png"
-      }
-    ],
-    "System Admin (BTO) + Sample Creation (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
@@ -185,61 +58,293 @@
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_215205.png"
+        "screenshot": "screenshots/clarity_login_20251021_222648.png"
       },
       {
-        "test_name": "Create Project",
-        "description": "Checks if user can create a new project in Clarity LIMS",
-        "execution_time": 10.3,
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 23.0,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/create_project_20251021_215221.png"
+        "screenshot": "screenshots/create_control_pass_20251021_222713.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 18.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/delete_control_pass_20251021_222741.png"
       }
     ],
-    "System Admin (BTO) + Editor": [
+    "Lab Operator (BTO) + ReviewEscalations": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 17.3,
+        "execution_time": 12.7,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_215242.png"
-      },
-      {
-        "test_name": "Edit Completed Steps",
-        "description": "No description available",
-        "execution_time": 3.9,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/edit_completed_steps_20251021_215252.png"
-      }
-    ],
-    "System Admin (BTO)": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 17.0,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_220637.png"
+        "screenshot": "screenshots/clarity_login_20251021_222758.png"
       },
       {
         "test_name": "Review Escalated Samples",
         "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 125.6,
+        "execution_time": 118.5,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/review_escalated_samples_pass_20251021_220820.png"
+        "screenshot": "screenshots/review_escalated_samples_pass_20251021_222933.png"
+      }
+    ],
+    "System Admin (BTO) (BASE)": [],
+    "System Admin (BTO) + Sample Creation (BTO)": [],
+    "System Admin (BTO) + Editor": [
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 3.8,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": null,
+        "screenshot": "screenshots/edit_completed_steps_20251021_223510.png"
+      }
+    ],
+    "System Admin (BTO) + Reagent Manufacturing (BTO)": [
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 18.5,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/create_control_fail_20251021_223531.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 15.5,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/delete_control_fail_20251021_223549.png"
+      }
+    ],
+    "System Admin (BTO) + ReviewEscalations": [
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 62.9,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
+        "screenshot": "screenshots/review_escalated_samples_fail_20251021_223623.png"
+      }
+    ],
+    "Lab Admin (BTO) (BASE)": [],
+    "Lab Admin (BTO) + Sample Creation (BTO)": [],
+    "Lab Admin (BTO) + Editor": [
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 3.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": null,
+        "screenshot": "screenshots/edit_completed_steps_20251021_223724.png"
+      }
+    ],
+    "Lab Admin (BTO) + Reagent Manufacturing (BTO)": [
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 17.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/create_control_fail_20251021_223744.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 15.5,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/delete_control_fail_20251021_223803.png"
+      }
+    ],
+    "Lab Admin (BTO) + ReviewEscalations": [
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 61.9,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
+        "screenshot": "screenshots/review_escalated_samples_fail_20251021_223836.png"
+      }
+    ],
+    "Limited (BTO) (BASE)": [],
+    "Limited (BTO) + Sample Creation (BTO)": [],
+    "Limited (BTO) + Editor": [
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 4.8,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": null,
+        "screenshot": "screenshots/edit_completed_steps_20251021_223923.png"
+      }
+    ],
+    "Limited (BTO) + Reagent Manufacturing (BTO)": [
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 18.2,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/create_control_fail_20251021_223943.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 15.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/delete_control_fail_20251021_224002.png"
+      }
+    ],
+    "Limited (BTO) + ReviewEscalations": [
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 62.0,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
+        "screenshot": "screenshots/review_escalated_samples_fail_20251021_224036.png"
+      }
+    ],
+    "BTO - API (BASE)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 16.0,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_224158.png"
+      }
+    ],
+    "BTO - API + Sample Creation (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 15.0,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_224215.png"
+      }
+    ],
+    "BTO - API + Editor": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 16.6,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_224234.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 1.3,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": null,
+        "screenshot": "screenshots/edit_completed_steps_20251021_224238.png"
+      }
+    ],
+    "BTO - API + Reagent Manufacturing (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 14.7,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_224255.png"
+      },
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 15.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/create_control_fail_20251021_224314.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 15.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "screenshots/delete_control_fail_20251021_224332.png"
+      }
+    ],
+    "BTO - API + ReviewEscalations": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 14.1,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_224349.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 62.0,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
+        "screenshot": "screenshots/review_escalated_samples_fail_20251021_224424.png"
       }
     ]
   }

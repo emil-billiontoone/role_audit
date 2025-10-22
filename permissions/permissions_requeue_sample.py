@@ -11,7 +11,7 @@ import time
 
 BASE_URL = "https://clarity-dev.btolims.com"
 RETRIES = 1
-SCREENSHOT_DIR = "screenshots"
+SCREENSHOT_DIR = "test_results/screenshots"
 
 # Ensure screenshot directory exists
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)

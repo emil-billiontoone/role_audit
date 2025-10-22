@@ -13,7 +13,7 @@ from playwright.sync_api import TimeoutError
 
 BASE_URL = "https://clarity-dev.btolims.com"
 RETRIES = 2
-SCREENSHOT_DIR = "screenshots"
+SCREENSHOT_DIR = "test_results/screenshots"
 RESULTS_JSON = "permissions_results.json"
 
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)

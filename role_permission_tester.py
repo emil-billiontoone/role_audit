@@ -33,7 +33,7 @@ class RolePermissionTester:
         self.base_url = f"https://clarity-{server}.btolims.com"
         self.results_file = "test_results/all_role_tests.json"
         self.current_test_results = []
-        self.screenshot_dir = "screenshots"
+        self.screenshot_dir = "test_results/screenshots"
         # Ensure screenshot directory exists
         os.makedirs(self.screenshot_dir, exist_ok=True)
     

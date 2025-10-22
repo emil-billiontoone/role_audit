@@ -14,7 +14,7 @@ PROJECT_NAME = "Emil Project Test"
 ACCOUNT_NAME = "Administrative Lab"
 CLIENT_NAME = "Emil Test"
 RETRIES = 2  # Number of retries on failure
-SCREENSHOT_DIR = "screenshots"
+SCREENSHOT_DIR = "test_results/screenshots"
 
 # Ensure screenshot directory exists
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)

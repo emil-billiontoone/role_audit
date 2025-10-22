@@ -8,7 +8,7 @@ Define which tests to run for each role.
 MAIN_ROLE_TEST_SUITES = {
     "Lab Operator (BTO)": {
         "permissions_clarity_login": True,
-        "permissions_API_login": True,
+        # "permissions_API_login": True,
         # "permissions_create_project": False, 
         # "permissions_delete_project": False, 
         # "permissions_sample_workflow_assignment": True, # needs to be in this order 1
@@ -24,7 +24,7 @@ MAIN_ROLE_TEST_SUITES = {
     },
     
     "System Admin (BTO)": {
-        "permissions_clarity_login": True,
+        # "permissions_clarity_login": True,
         # "permissions_edit_completed_steps": False,
         # "permissions_API_login": True,
         # "permissions_collaborations_login": True, # Don't worry about this test
@@ -38,7 +38,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_move_to_next_step": True, 
         # "permissions_remove_sample_from_workflow": True, 
         # "permissions_sample_rework": True, 
-        "permissions_review_escalated_samples": True,
+        # "permissions_review_escalated_samples": True,
         # "permissions_create_control": True,
         # "permissions_update_control": True,
         # "permissions_delete_control": True, 
@@ -69,7 +69,7 @@ MAIN_ROLE_TEST_SUITES = {
     },
     
     "Lab Admin (BTO)": {
-        "permissions_clarity_login": True,
+        # "permissions_clarity_login": True,
         # "permissions_edit_completed_steps": False,
         # "permissions_API_login": True,
         # "permissions_create_project": False, 
@@ -97,7 +97,7 @@ MAIN_ROLE_TEST_SUITES = {
     },
 
     "Limited (BTO)": {
-        "permissions_clarity_login": True,
+        # "permissions_clarity_login": True,
         # "permissions_edit_completed_steps": False,
         # "permissions_API_login": False,
         # "permissions_create_project": False, 
@@ -142,13 +142,13 @@ MAIN_ROLE_TEST_SUITES = {
     },  
 
     "Not Logged In": {
-        "permissions_url_check": True,
+        # "permissions_url_check": True,
     },
 }
 
 ADD_ON_ROLE_TEST_SUITES = {
     "Sample Creation (BTO)": {
-        "permissions_create_project": True,
+        # "permissions_create_project": True,
         # "permissions_create_sample": True,
         # "permissions_sample_workflow_assignment": True,
         # "permissions_update_sample": True,
@@ -161,7 +161,7 @@ ADD_ON_ROLE_TEST_SUITES = {
     "Reagent Manufacturing (BTO)": {
         "permissions_create_control": True,
         # "permissions_update_control": True,
-        # "permissions_delete_control": True,
+        "permissions_delete_control": True,
         # "permissions_create_reagent_kit": True,
         # "permissions_update_reagent_kit": True,
         # "permissions_delete_reagent_kit": True,
