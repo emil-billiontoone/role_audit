@@ -19,7 +19,6 @@ SCREENSHOT_DIR = "screenshots"
 
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
 
-
 # --- Helper to select an option from a react-widgets multiselect by widget id ---
 def select_multiselect_option_by_id(page, widget_id, option_text, timeout=8000):
     """
@@ -71,7 +70,7 @@ def test_review_escalated_samples(page, expected=True):
         "screenshot": None
     }
 
-    SAMPLE_ID = "V_251014L0001-4"
+    SAMPLE_ID = "V_251014L0001-5"
     max_attempts = 1 if expected is False else (RETRIES + 1)
     start_time = time.time()
 
@@ -194,21 +193,15 @@ def test_review_escalated_samples(page, expected=True):
             page.wait_for_timeout(500)
 
             print("Adding to Ice Bucket...")
-            page.locator("#ice-bucket-add-47269197").click()
+            page.locator("#ice-bucket-add-47269198").click()
             page.get_by_role("button", name="View Ice Bucket »").click()
             page.get_by_role("button", name="Begin Work »").click()
             print("Sample review escalated samples initiated successfully.")
 
-            print("Removing System Admin (BTO) role to test Limited (BTO) role...")
-            user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="remove")
-            print(f"Current roles for {username} after removing System Admin (BTO) role:")
-            for r in user.roles:
-                print(f"  - {r.name}")
-
 
             from playwright.sync_api import expect
 
-            SAMPLE_ID = "V_251014L0001-4"
+            SAMPLE_ID = "V_251014L0001-5"
             ROW = "A"
             COL = "1"
 
@@ -389,8 +382,9 @@ def test_review_escalated_samples(page, expected=True):
             print("Clicked Finish Step »")
 
             # 4. Check homepage for manager notification
-            print("Checking homepage for manager notification...")
-            page.goto(BASE_URL)
+            print("Checking Lab View for manager notification...")
+            page.get_by_role("link", name=re.compile("Lab View", re.I)).click()
+            page.wait_for_timeout(1000)
 
             print("Removing System Admin (BTO) role to user to test role...")
             user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="remove")
@@ -398,7 +392,7 @@ def test_review_escalated_samples(page, expected=True):
             for r in user.roles:
                 print(f"  - {r.name}")
 
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(2000)
             notification = page.locator("div.manager-notification-entry:has(strong:text('Emil Test'))")
             if notification.count() == 0:
                 raise Exception("Notification from Emil Test not found on homepage")
@@ -428,20 +422,12 @@ def test_review_escalated_samples(page, expected=True):
             #Cleanup: Remove sample from workflow
             print("Cleaning up: Removing sample from workflow...")
 
-            # 1. Click the sample tree cell to select it
-            page.locator("td.sample-tree-cell.stepTransition.required").first.click()
-            print("Clicked the sample tree cell")
+            page.get_by_role("link", name="Select this sample's next step").click()
+            page.get_by_role("listitem").filter(has_text="Remove from workflow").click()
+            page.get_by_role("button", name="Apply").click()
+            page.get_by_role("button", name="Finish Review »").click()
 
-            # 2. Wait for the 'Remove from workflow' option to appear
-            remove_btn = page.locator("div.iconcombobox-item.gls-icon-remove-from-workflow.with-text", has_text="Remove from workflow")
-            remove_btn.wait_for(state="visible", timeout=5000)
 
-            # 3. Click 'Remove from workflow'
-            remove_btn.click()
-            print("Clicked 'Remove from workflow'")
-
-            # 4. Click Finish Step
-            page.locator("button:has-text('Finish Review »')").click()
             page.wait_for_timeout(1000)  # wait for page update
             print("Clicked Finish Review »")
 
@@ -463,21 +449,6 @@ def test_review_escalated_samples(page, expected=True):
             # Wait until it disappears
             execution_popup.wait_for(state="hidden", timeout=60000)  # adjust timeout if needed
             print("Execution popup has disappeared, proceeding with next steps")
-
-            # # Wait for rework dialog to appear
-            # try:
-            #     page.locator("#treeview-1076").get_by_text("Aneuploidy - Automated cfDNA").click()
-            #     commentpage.wait_for_selector(".x-form-field x-form-text x-form-empty-field", state="", timeout=10000)
-            # except Exception as e:
-            #     print(f"Failed to wait for rework dialog to appear: {e}")
-            #     raise Exception(f"Failed to wait for rework dialog to appear: {e}")
-
-            # print("Rework dialog appeared — verifying step options...")
-
-            # if page.locator("#sampleReworkDialog_header").count() > 0 and page.locator("#sampleReworkDialog-body").count() > 0 and page.locator("#sampleReworkList").get_by_text("Aneuploidy v3.6").count() > 0:
-            #     print("Rework dialog appeared and step options are visible.")
-            # else:
-            #     raise Exception("Rework dialog did not appear.")
 
             break  # exit retry loop
 
@@ -536,7 +507,8 @@ def test_review_escalated_samples(page, expected=True):
                 # Remove all samples from workflows using live-loop
                 removed_count = 0
                 while True:
-                    sample_rows = page.locator("div.sample-row:has(div.workflow-name)")
+                    # Only get sample rows that have an active workflow delete button
+                    sample_rows = page.locator("div.sample-row:has(div.delete-btn)")
                     if sample_rows.count() == 0:
                         break
 
@@ -545,30 +517,66 @@ def test_review_escalated_samples(page, expected=True):
                     workflow_name = sample.locator(".workflow-name").inner_text()
                     print(f"Removing sample ID {sample_id} from workflow '{workflow_name}'...")
 
-                    delete_btn = page.locator(f"div.delete-btn[data-sample-id='{sample_id}']")
-                    if delete_btn.count() == 0:
-                        print(f"No delete button found for sample ID {sample_id}, skipping.")
-                        # Remove this sample from DOM consideration if needed
-                        page.evaluate("el => el.remove()", sample)
-                        continue
-
-                    # Wait for any page overlay to disappear before clicking
+                    delete_btn = sample.locator(".delete-btn")
+                    # Wait for any overlay
                     page.locator("div.x-mask-full-page").wait_for(state="hidden", timeout=10000)
-
+                    
                     # Click delete
-                    delete_btn.first.click()
+                    delete_btn.click()
 
-                    # Wait until the workflow name for this sample is gone
-                    workflow_locator = page.locator(f"div.sample-row[data-sample-id='{sample_id}'] div.workflow-name")
+                    # Wait until workflow is removed
+                    workflow_locator = sample.locator("div.workflow-name")
                     try:
                         workflow_locator.wait_for(state="detached", timeout=10000)
                     except:
                         print(f"Warning: workflow for sample {sample_id} did not disappear within timeout")
 
                     removed_count += 1
-                    page.wait_for_timeout(500)  # optional small buffer
+                    page.wait_for_timeout(500)
 
                 print(f"Removed {removed_count} sample(s) from workflows.")
+                # removed_count = 0
+                # while True:
+                #     sample_rows = page.locator("div.sample-row:has(div.workflow-name)")
+                #     if sample_rows.count() == 0:
+                #         break
+
+                #     sample = sample_rows.first
+                #     sample_id = sample.locator(".sample-udf-icon").get_attribute("data-sample-id")
+                #     workflow_name = sample.locator(".workflow-name").inner_text()
+                #     print(f"Removing sample ID {sample_id} from workflow '{workflow_name}'...")
+
+                #     delete_btn = page.locator(f"div.delete-btn[data-sample-id='{sample_id}']")
+                #     if delete_btn.count() == 0:
+                #         print(f"No delete button found for sample ID {sample_id}, skipping.")
+                #         # Remove this sample from DOM consideration if needed
+                #         page.evaluate("el => el.remove()", sample)
+                #         continue
+
+                #     # Wait for any page overlay to disappear before clicking
+                #     page.locator("div.x-mask-full-page").wait_for(state="hidden", timeout=10000)
+
+                #     # Click delete
+                #     delete_btn.first.click()
+
+                #     # Wait until the workflow name for this sample is gone
+                #     workflow_locator = page.locator(f"div.sample-row[data-sample-id='{sample_id}'] div.workflow-name")
+                #     try:
+                #         workflow_locator.wait_for(state="detached", timeout=10000)
+                #     except:
+                #         print(f"Warning: workflow for sample {sample_id} did not disappear within timeout")
+
+                #     removed_count += 1
+                #     page.wait_for_timeout(500)  # optional small buffer
+
+                # print(f"Removed {removed_count} sample(s) from workflows.")
+
+                # Verification: ensure no samples remain assigned
+                remaining_samples = page.locator("div.sample-row:has(div.workflow-name)").count()
+                if remaining_samples == 0:
+                    print("All samples successfully removed from workflows.")
+                else:
+                    raise Exception(f"{remaining_samples} sample(s) still assigned to workflows after removal.")
 
                 # Verification: ensure no samples remain assigned
                 remaining_samples = page.locator("div.sample-row:has(div.workflow-name)").count()
@@ -583,6 +591,7 @@ def test_review_escalated_samples(page, expected=True):
                 print(f"Current roles for {username} after removing System Admin (BTO) role after cleanup:")
                 for r in user.roles:
                     print(f"  - {r.name}")
+
             except Exception as e:
                 print(f"Cleanup encountered an issue: {e}")
 

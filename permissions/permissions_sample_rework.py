@@ -71,7 +71,7 @@ def test_sample_rework(page, expected=True):
         "screenshot": None
     }
 
-    SAMPLE_ID = "V_251014L0001-4"
+    SAMPLE_ID = "V_251014L0001-5"
     max_attempts = 1 if expected is False else (RETRIES + 1)
     start_time = time.time()
 
@@ -194,7 +194,7 @@ def test_sample_rework(page, expected=True):
             page.wait_for_timeout(500)
 
             print("Adding to Ice Bucket...")
-            page.locator("#ice-bucket-add-47269197").click()
+            page.locator("#ice-bucket-add-47269198").click()
             page.get_by_role("button", name="View Ice Bucket »").click()
             page.get_by_role("button", name="Begin Work »").click()
             print("Sample rework initiated successfully.")
@@ -208,7 +208,7 @@ def test_sample_rework(page, expected=True):
 
             from playwright.sync_api import expect
 
-            SAMPLE_ID = "V_251014L0001-4"
+            SAMPLE_ID = "V_251014L0001-5"
             ROW = "A"
             COL = "1"
 

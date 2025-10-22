@@ -1,27 +1,39 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-21 15:15:19",
+  "timestamp": "2025-10-21 19:18:31",
   "tests": {
     "System Admin (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 7.9,
+        "execution_time": 13.9,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_151319.png"
+        "screenshot": "screenshots/clarity_login_20251021_191542.png"
       },
       {
         "test_name": "Review Escalated Samples",
         "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 112.6,
+        "execution_time": 158.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/review_escalated_samples_pass_20251021_191730.png"
+      }
+    ],
+    "System Admin": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 1.7,
         "expected": true,
         "passed": false,
-        "result": "fail",
-        "error": "User does NOT have permission to review escalated samples",
-        "screenshot": "screenshots/review_escalated_samples_fail_20251021_151458.png"
+        "result": "error",
+        "error": "Page.goto: Target page, context or browser has been closed\nCall log:\n  - navigating to \"https://clarity-dev.btolims.com/clarity/login/auth?unauthenticated=1\", waiting until \"load\"\n",
+        "screenshot": null
       }
     ]
   }
