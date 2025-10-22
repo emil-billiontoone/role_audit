@@ -7,7 +7,8 @@ A comprehensive, modular testing framework for validating role-based permissions
 
 ```
 role_audit/
-├── run_role_tests.py              # Main CLI entry point
+├── run_role_tests.py              # Main CLI entry point (single role)
+├── run_all_roles.py               # Loop through all roles sequentially
 ├── role_permission_tester.py      # Core test framework and runner
 ├── role_test_configs.py           # Role-specific test configurations
 ├── change_role.py                 # Role switching utility
@@ -126,6 +127,8 @@ MAIN_ROLE_TEST_SUITES = {
 
 ### Basic Command Line Usage
 
+#### Testing a Single Role
+
 ```bash
 # Test a specific role
 python run_role_tests.py "Lab Operator"
@@ -148,6 +151,35 @@ python run_role_tests.py full
 # Show available options
 python run_role_tests.py --help
 ```
+
+#### Testing All Roles Sequentially
+
+The `run_all_roles.py` script automatically loops through all roles in `MAIN_ROLE_TEST_SUITES`, testing each one sequentially while ensuring the user always has at least one role assigned:
+
+```bash
+# Test all roles for a specific user
+python run_all_roles.py "Emil" "Test"
+
+# Test all roles on a specific server
+python run_all_roles.py "Emil" "Test" --server dev
+
+# Test all roles with specific account credentials
+python run_all_roles.py "John" "Doe" --server staging --account MASTER
+
+# Show available options
+python run_all_roles.py --help
+```
+
+**How it works:**
+1. Tests "Not Logged In" role first (if present in config)
+2. For each remaining role:
+   - Adds the new role to the user
+   - Removes the previous role (ensuring at least one role is always assigned)
+   - Runs all permission tests configured for that role
+   - Prompts to continue to next role
+3. Saves all results to the consolidated JSON file
+
+**Note**: The script pauses between roles, allowing you to review results before proceeding to the next role. You can press `n` to stop the loop at any point.
 
 ### Setting Up Credentials
 
@@ -514,6 +546,7 @@ browser = playwright.chromium.launch(
 - **Improved Test Discovery**: Automatic function detection with naming conventions
 - **Automatic Screenshot Capture**: All tests now automatically capture screenshots (both pass and fail)
 - **Smart Retry Logic**: Tests with `expected=False` now skip retries and run only once for faster execution
+- **Sequential Role Testing**: New `run_all_roles.py` script to automatically test all roles in sequence with safe role transitions
 
 ## Future Enhancements
 

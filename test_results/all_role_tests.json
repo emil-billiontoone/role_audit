@@ -1,61 +1,71 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-21 20:38:17",
+  "timestamp": "2025-10-21 21:36:30",
   "tests": {
-    "System Admin (BTO)": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 13.8,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_201816.png"
-      },
-      {
-        "test_name": "Sample Rework",
-        "description": "Checks if role can rework a sample in Clarity LIMS.",
-        "execution_time": 102.4,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Failed to select workflow option: Locator.wait_for: Error: strict mode violation: locator(\"div.select2-drop\") resolved to 3 elements:\n    1) <div class=\"select2-drop\">\u2026</div> aka locator(\"#iconcombobox-1080-bodyEl div\").nth(3)\n    2) <div class=\"select2-drop\">\u2026</div> aka get_by_role(\"row\", name=\"Select this sample's next step\").locator(\"div\").nth(2)\n    3) <div class=\"select2-drop\">\u2026</div> aka locator(\"#iconcombobox-1095-bodyEl div\").filter(has_text=\"Aneuploidy - Automated cfDNA\").nth(2)\n\nCall log:\n  - waiting for locator(\"div.select2-drop\") to be visible\n. Screenshot: screenshots/select2_dropdown_fail_fail_20251021_201949.png",
-        "screenshot": "screenshots/sample_rework_fail_20251021_201949.png"
-      },
-      {
-        "test_name": "Review Escalated Samples",
-        "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 168.1,
-        "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/review_escalated_samples_pass_20251021_202159.png"
-      }
-    ],
-    "System Admin": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 1.7,
-        "expected": true,
-        "passed": false,
-        "result": "error",
-        "error": "Page.goto: Target page, context or browser has been closed\nCall log:\n  - navigating to \"https://clarity-dev.btolims.com/clarity/login/auth?unauthenticated=1\", waiting until \"load\"\n",
-        "screenshot": null
-      }
-    ],
     "Not Logged In": [
       {
         "test_name": "Url Check",
         "description": "For each URL:",
-        "execution_time": 65.7,
+        "execution_time": 20.8,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/url_check_20251021_203817.png"
+        "screenshot": "screenshots/url_check_20251021_213504.png"
+      }
+    ],
+    "Lab Operator (BTO) (BASE)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 14.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_213534.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/api_login_20251021_213541.png"
+      }
+    ],
+    "Lab Operator (BTO) + Sample Creation (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 16.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_213604.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/api_login_20251021_213610.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 12.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/create_project_20251021_213630.png"
       }
     ]
   }

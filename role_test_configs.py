@@ -131,10 +131,10 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_process": True, 
         # "permissions_update_process": True, 
         # "permissions_delete_process": True, 
-        "permissions_sample_rework": False, 
+        # "permissions_sample_rework": False, 
     },
 
-    "BTO API": {
+    "BTO - API": {
         # "permissions_clarity_login": False,
         # "permissions_edit_completed_steps": False,
         "permissions_API_login": True,
@@ -149,9 +149,9 @@ MAIN_ROLE_TEST_SUITES = {
 ADD_ON_ROLE_TEST_SUITES = {
     "Sample Creation (BTO)": {
         "permissions_create_project": True,
-        "permissions_create_sample": True,
-        "permissions_sample_workflow_assignment": True,
-        "permissions_update_sample": True,
+        # "permissions_create_sample": True,
+        # "permissions_sample_workflow_assignment": True,
+        # "permissions_update_sample": True,
     },
     
     "Editor": {
@@ -160,11 +160,11 @@ ADD_ON_ROLE_TEST_SUITES = {
 
     "Reagent Manufacturing (BTO)": {
         "permissions_create_control": True,
-        "permissions_update_control": True,
-        "permissions_delete_control": True,
-        "permissions_create_reagent_kit": True,
-        "permissions_update_reagent_kit": True,
-        "permissions_delete_reagent_kit": True,
+        # "permissions_update_control": True,
+        # "permissions_delete_control": True,
+        # "permissions_create_reagent_kit": True,
+        # "permissions_update_reagent_kit": True,
+        # "permissions_delete_reagent_kit": True,
     },
 
     "ReviewEscalations": {
@@ -173,37 +173,12 @@ ADD_ON_ROLE_TEST_SUITES = {
 
     "ReWork": {
         "permissions_clarity_login": True,
-        "permissiosn_api_login": True,
-        "permissions_sample_rework": True,
-        "permissions_move_to_next_step": True,
-        "permissions_create_user": True,
-        "permissions_update_user": True,
-        "permissions_read_user": True,
+        # "permissiosn_api_login": True,
+        # "permissions_sample_rework": True,
+        # "permissions_move_to_next_step": True,
+        # "permissions_create_user": True,
+        # "permissions_update_user": True,
+        # "permissions_read_user": True,
     },
 }
 
-# You can also define test groups for reuse
-BASIC_PERMISSIONS = [
-    "permissions_view",
-]
-
-EDIT_PERMISSIONS = [
-    "permissions_edit_completed_steps",
-]
-
-ADMIN_PERMISSIONS = [
-    # "test_user_management",
-    # "test_system_settings",
-]
-
-# Quick test suite for development/debugging
-QUICK_TEST = [
-    ("permissions_view", "test_can_view_entries"),  # Just one quick test
-]
-
-# Full comprehensive test suite
-FULL_TEST_SUITE = [
-    "permissions_view",
-    "permissions_edit_completed_steps", 
-    # Add all available tests here
-]
