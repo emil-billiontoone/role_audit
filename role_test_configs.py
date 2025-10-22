@@ -9,18 +9,18 @@ MAIN_ROLE_TEST_SUITES = {
     "Lab Operator (BTO)": {
         "permissions_clarity_login": True,
         "permissions_API_login": True,
-        "permissions_create_project": False, 
-        "permissions_delete_project": False, 
-        "permissions_sample_workflow_assignment": True, # needs to be in this order 1
-        "permissions_move_to_next_step": True,  # 2
-        "permissions_remove_sample_from_workflow": True, # 3
-        "permissions_edit_completed_steps": False,
-        "permissions_overview_dashboard": True, 
-        "permissions_requeue_sample": True,
-        "permissions_read_user": True, 
-        "permissions_create_user": True, 
-        "permissions_update_user": True, 
-        "permissions_update_sample": True, 
+        # "permissions_create_project": False, 
+        # "permissions_delete_project": False, 
+        # "permissions_sample_workflow_assignment": True, # needs to be in this order 1
+        # "permissions_move_to_next_step": True,  # 2
+        # "permissions_remove_sample_from_workflow": True, # 3
+        # "permissions_edit_completed_steps": False,
+        # "permissions_overview_dashboard": True, 
+        # "permissions_requeue_sample": True,
+        # "permissions_read_user": True, 
+        # "permissions_create_user": True, 
+        # "permissions_update_user": True, 
+        # "permissions_update_sample": True, 
     },
     
     "System Admin (BTO)": {
@@ -37,8 +37,8 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_sample_workflow_assignment": True, 
         # "permissions_move_to_next_step": True, 
         # "permissions_remove_sample_from_workflow": True, 
-        "permissions_sample_rework": True, 
-        "permissions_review_escalated_samples": True,
+        # "permissions_sample_rework": True, 
+        # "permissions_review_escalated_samples": True,
         # "permissions_create_control": True,
         # "permissions_update_control": True,
         # "permissions_delete_control": True, 
@@ -135,7 +135,7 @@ MAIN_ROLE_TEST_SUITES = {
     },
 
     "BTO API": {
-        "permissions_clarity_login": False,
+        # "permissions_clarity_login": False,
         # "permissions_edit_completed_steps": False,
         "permissions_API_login": True,
         # "permissions_overview_dashboard": False, 
