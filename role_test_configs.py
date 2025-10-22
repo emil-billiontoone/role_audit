@@ -37,7 +37,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_sample_workflow_assignment": True, 
         # "permissions_move_to_next_step": True, 
         # "permissions_remove_sample_from_workflow": True, 
-        # "permissions_sample_rework": True, 
+        "permissions_sample_rework": True, 
         "permissions_review_escalated_samples": True,
         # "permissions_create_control": True,
         # "permissions_update_control": True,
@@ -52,7 +52,6 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_user": True, 
         # "permissions_update_user": True,
         # "permissions_delete_user": True, 
-        # "permissions_read_process": True, # still need to create this test
         # "permissions_create_process": True, 
         # "permissions_read_process": True, 
         # "permissions_update_process": True, 
@@ -103,11 +102,8 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_API_login": False,
         # "permissions_create_project": False, 
         # "permissions_sample_workflow_assignment": False,
-        # "permissions_sample_rework": True, # still need to create this test
         # "permissions_review_escalated_samples": True, # still need to create this test
-        # "permissions_create_control": True, # still need to create this test
         # "permissions_update_control": True, # still need to create this test
-        # "permissions_create_reagent_kit": True, # still need to create this test
         # "permissions_update_reagent_kit": True, # still need to create this test
         # "permissions_update_configuration": True, # still need to create this test
         # "permissions_requeue_sample": False,
@@ -123,7 +119,6 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_move_to_next_step": False, 
         # "permissions_create_sample": False, 
         # "permissions_delete_sample": False, 
-        # "permissions_create_control": False,
         # "permissions_create_control": False,
         # "permissions_update_control": False,
         # "permissions_delete_control": False, 
@@ -141,16 +136,13 @@ MAIN_ROLE_TEST_SUITES = {
 
     "BTO API": {
         "permissions_clarity_login": False,
-        "permissions_edit_completed_steps": False,
+        # "permissions_edit_completed_steps": False,
         "permissions_API_login": True,
-        "permissions_overview_dashboard": False, 
+        # "permissions_overview_dashboard": False, 
     },  
 
     "Not Logged In": {
-        "permissions_clarity_login": False,
-        "permissions_edit_completed_steps": False,
-        "permissions_API_login": True,
-        "permissions_overview_dashboard": False, 
+        "permissions_url_check": True,
     },
 }
 
