@@ -37,8 +37,8 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_sample_workflow_assignment": True, 
         # "permissions_move_to_next_step": True, 
         # "permissions_remove_sample_from_workflow": True, 
-        "permissions_sample_rework": True, 
-        # "permissions_review_escalated_samples": True, # still need to create this test ??? This one I need
+        # "permissions_sample_rework": True, 
+        "permissions_review_escalated_samples": True,
         # "permissions_create_control": True,
         # "permissions_update_control": True,
         # "permissions_delete_control": True, 

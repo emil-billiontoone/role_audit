@@ -14,7 +14,7 @@ from change_role import get_lims_connection, modify_user_role
 
 BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "ED_TEST"
-RETRIES = 2
+RETRIES = 0
 SCREENSHOT_DIR = "screenshots"
 
 os.makedirs(SCREENSHOT_DIR, exist_ok=True)
@@ -79,6 +79,7 @@ def test_sample_rework(page, expected=True):
         try:
 
             # Add System Admin (BTO) role to user to create test environment
+            print("Adding System Admin (BTO) role to user to create test environment...")
             lims, username = get_lims_connection()
             user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="add")
             print(f"Current roles for {username} after adding System Admin (BTO) role:")
@@ -198,6 +199,7 @@ def test_sample_rework(page, expected=True):
             page.get_by_role("button", name="Begin Work »").click()
             print("Sample rework initiated successfully.")
 
+            print("Removing System Admin (BTO) role to test Limited (BTO) role...")
             user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="remove")
             print(f"Current roles for {username} after removing System Admin (BTO) role:")
             for r in user.roles:
@@ -259,9 +261,7 @@ def test_sample_rework(page, expected=True):
             print("Filling in metadata fields before finalizing rework...")
 
             # Fill in dropdowns
-            print("Selecting default options from multiselect fields...")
-
-            print("Selecting default options from multiselect fields...")
+            print("Selecting 'NA, Lot: NA' from multiselect fields...")
 
             if not select_multiselect_option_by_id(page, "rw_1", "NA, Lot: NA"):
                 # capture screenshot for debugging and raise so outer retry logic can handle it
@@ -324,22 +324,25 @@ def test_sample_rework(page, expected=True):
 
             # Select workflow and confirm rework
             print("Selecting workflow and verifying rework...")
+            # Click workflow in tree view
+            page.locator("#treeview-1076").get_by_text("Aneuploidy - Automated cfDNA").click()
+            page.wait_for_timeout(500)  # small pause for UI
+
+            # Wait for the dropdown to appear
             try:
-                # Click the workflow in the tree view
-                page.locator("#treeview-1076").get_by_text("Aneuploidy - Automated cfDNA").click()
-                page.wait_for_timeout(500)  # small pause for UI
+                dropdown = page.locator("div.select2-drop")
+                dropdown.wait_for(state="visible", timeout=10000)
 
-                # Wait for Select2 dropdown to appear
-                page.wait_for_selector("div.select2-dropdown", state="visible", timeout=10000)
-
-                # Click the 'Rework from an earlier step' option inside the dropdown
-                option = page.locator("div.select2-dropdown li div", has_text="Rework from an earlier step").first
+                # Click the desired option
+                option = dropdown.locator("div.iconcombobox-item", has_text="Rework from an earlier step")
+                if option.count() == 0:
+                    raise Exception("Could not find 'Rework from an earlier step' option in Select2 dropdown.")
                 option.click()
                 page.wait_for_timeout(500)
                 print("Selected 'Rework from an earlier step'")
             except Exception as e:
-                print(f"Failed to select workflow and verify rework: {e}")
-                raise Exception(f"Failed to select workflow and verify rework: {e}")
+                ss, _ = capture_screenshot(page, "select2_dropdown_fail", "fail")
+                raise Exception(f"Failed to select workflow option: {e}. Screenshot: {ss}")
 
             # Wait for rework dialog to appear
             try:

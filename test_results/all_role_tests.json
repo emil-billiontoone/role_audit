@@ -1,49 +1,27 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-21 13:15:16",
+  "timestamp": "2025-10-21 15:15:19",
   "tests": {
     "System Admin (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 8.2,
+        "execution_time": 7.9,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_123058.png"
+        "screenshot": "screenshots/clarity_login_20251021_151319.png"
       },
       {
-        "test_name": "Sample Rework",
-        "description": "Checks if role can rework a sample in Clarity LIMS.",
-        "execution_time": 99.0,
-        "expected": false,
-        "passed": true,
-        "result": "fail",
-        "error": null,
-        "screenshot": "screenshots/sample_rework_pass_20251021_123227.png"
-      }
-    ],
-    "Limited (BTO)": [
-      {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 7.8,
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 112.6,
         "expected": true,
-        "passed": true,
-        "result": "pass",
-        "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_131328.png"
-      },
-      {
-        "test_name": "Sample Rework",
-        "description": "Checks if role can rework a sample in Clarity LIMS.",
-        "execution_time": 101.2,
-        "expected": false,
         "passed": false,
-        "result": "pass",
-        "error": "Failed to select workflow and verify rework: Page.wait_for_selector: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"div.select2-dropdown\") to be visible\n",
-        "screenshot": "screenshots/sample_rework_fail_20251021_131500.png"
+        "result": "fail",
+        "error": "User does NOT have permission to review escalated samples",
+        "screenshot": "screenshots/review_escalated_samples_fail_20251021_151458.png"
       }
     ]
   }
