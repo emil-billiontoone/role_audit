@@ -1,72 +1,46 @@
 # Quick Start Guide
 
-## Installation
+## Setup (One-Time)
 
 ```bash
-# Install dependencies (including reportlab for PDF generation)
+cd /Users/edeguzman/projects/code/2025/role_audit
+
+# Install dependencies
 pip install -r requirements.txt
 
 # Store credentials
 python store_creds.py
 ```
 
-## Running Tests
+## Run Tests
 
-### Option 1: Test All Roles (Recommended)
-
+### Test All Roles (Recommended)
 ```bash
 python run_all_roles.py "Emil" "Test"
 ```
 
-**This will:**
-1. ✅ Initialize user to Lab Operator (BTO) only
-2. ✅ Test each MAIN role (Lab Operator, System Admin, etc.)
-3. ✅ For each MAIN role, test with ALL ADD_ON combinations
-4. ✅ Automatically generate professional PDF report
-5. ✅ Prompt after each MAIN role completes
+This will:
+- Test each MAIN role (Lab Operator, System Admin, etc.)
+- Test each with ALL add-on combinations
+- Auto-generate PDF report
+- Save everything to `test_results/`
 
-**Example flow:**
-- Lab Operator (BTO) BASE
-- Lab Operator (BTO) + Sample Creation (BTO)
-- Lab Operator (BTO) + Editor
-- Lab Operator (BTO) + Reagent Manufacturing (BTO)
-- Lab Operator (BTO) + ReviewEscalations
-- Lab Operator (BTO) + ReWork
-- → **PROMPT: Continue to System Admin?**
-- System Admin (BTO) BASE
-- ... (repeat for all MAIN roles)
-
-### Option 2: Test Single Role
-
+### Test Single Role
 ```bash
 python run_role_tests.py "Lab Operator"
+python run_role_tests.py "System Admin" --server staging
 ```
 
 ## Results
 
-### JSON Results
-Automatically saved to: `test_results/all_role_tests.json`
+- **JSON**: `test_results/all_role_tests.json`
+- **PDF**: `test_results/role_test_report_*.pdf`
+- **Screenshots**: `test_results/screenshots/`
 
-### PDF Reports
-Automatically generated: `test_results/role_test_report_YYYYMMDD_HHMMSS.pdf`
-
-**PDF includes:**
-- 📊 Summary statistics
-- 📋 Detailed results for each role
-- 🎨 Color-coded pass/fail indicators
-- 🔍 Error details
-
-### Screenshots
-Saved to: `screenshots/`
-
-## Generate PDF from Existing Results
+## Generate PDF Manually
 
 ```bash
-# Regenerate PDF from JSON
 python generate_pdf_report.py
-
-# Custom files
-python generate_pdf_report.py -i results.json -o my_report.pdf
 ```
 
 ## Common Options
@@ -75,33 +49,49 @@ python generate_pdf_report.py -i results.json -o my_report.pdf
 # Different server
 python run_all_roles.py "Emil" "Test" --server staging
 
-# Skip PDF generation
+# Skip PDF
 python run_all_roles.py "Emil" "Test" --no-pdf
 
 # Help
 python run_all_roles.py --help
-python generate_pdf_report.py --help
 ```
 
 ## What Gets Tested
 
-With 5 MAIN roles and 5 ADD_ON roles:
-- **Total combinations**: 30 (5 MAIN × 6 configs each)
-- **Configs per MAIN**: BASE + 5 ADD_ONs
-- **Prompts**: 4 (after each MAIN role except last)
+**5 MAIN Roles:**
+- Lab Operator (BTO)
+- System Admin (BTO)
+- Lab Admin (BTO)
+- Limited (BTO)
+- BTO API
 
-## Documentation
+**5 ADD_ON Roles:**
+- Sample Creation (BTO)
+- Editor
+- Reagent Manufacturing (BTO)
+- ReviewEscalations
+- ReWork
 
-- **README.md** - Full documentation
-- **PDF_REPORT_GUIDE.md** - PDF generation details
-- **TEST_FLOW_SUMMARY.md** - Complete test sequence
-- **ROLE_LOOP_GUIDE.md** - Loop functionality details
+**= 30 total combinations** (5 MAIN × 6 configs each)
 
-## That's It!
+## Stopping Mid-Test
+
+Press `n` when prompted after each MAIN role completes.
+
+## Troubleshooting
 
 ```bash
-python run_all_roles.py "Emil" "Test"
+# Credentials
+python store_creds.py
+
+# Dependencies
+pip install -r requirements.txt
+
+# Check results
+ls test_results/
 ```
 
-Sit back and let it run. PDF report will be ready when done! ✨
+## Full Documentation
+
+See [README.md](README.md) for complete documentation.
 
