@@ -1,33 +1,446 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-21 22:44:54",
+  "timestamp": "2025-10-22 01:47:51",
   "tests": {
-    "Not Logged In": [],
-    "Lab Operator (BTO) (BASE)": [
+    "Not Logged In": [
       {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 12.5,
+        "test_name": "Url Check",
+        "description": "For each URL:",
+        "execution_time": 21.0,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_222556.png"
+        "screenshot": "test_results/screenshots/url_check_20251021_233713.png"
+      }
+    ],
+    "Lab Operator (BTO) (BASE)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 11.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251021_233727.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251021_233733.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 11.1,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-21_23-37-46.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 15.7,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"div.project-list-item:has(div[data-qtip='Emil Project Test'])\").first to be visible\n",
+        "screenshot": "test_results/screenshots/delete_project_1761115089.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 9.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251021_233826.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761115118.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 54.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.delete-btn[data-sample-id='47269198']\").first\n",
+        "screenshot": "test_results/screenshots/sample_workflow_removal_pass_20251021_233937.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251021_233947.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/overview_dashboard_20251021_233954.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 4.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251021_234005.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 6.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251021_234018.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 42.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251021_234104.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 38.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_user_pass_20251021_234148.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 7.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251021_234202.png"
       }
     ],
     "Lab Operator (BTO) + Sample Creation (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 11.5,
+        "execution_time": 12.1,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_222609.png"
+        "screenshot": "test_results/screenshots/clarity_login_20251021_234218.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251021_234225.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 9.7,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_project_20251021_234241.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 37.0,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#project-button-bar-delete-button-btnEl\")\n    - locator resolved to <button type=\"button\" role=\"button\" hidefocus=\"true\" autocomplete=\"off\" disabled=\"disabled\" class=\"btn v2 small abort\" id=\"project-button-bar-delete-button-btnEl\">\u2026</button>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not enabled\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not enabled\n    - retrying click action\n      - waiting 100ms\n    58 \u00d7 waiting for element to be visible, enabled and stable\n       - element is not enabled\n     - retrying click action\n       - waiting 500ms\n",
+        "screenshot": "test_results/screenshots/delete_project_1761115401.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 8.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251021_234337.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761115430.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 12.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_removal_pass_20251021_234407.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251021_234417.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/overview_dashboard_20251021_234425.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 4.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251021_234436.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 7.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251021_234449.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 43.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251021_234536.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 116.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Phone is '1234567890123456789012345678901234567890' \u2014 permission denied.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251021_234741.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 6.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251021_234754.png"
       }
     ],
     "Lab Operator (BTO) + Editor": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 10.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251021_234808.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251021_234814.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.8,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-21_23-48-28.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 12.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"#project-button-bar-delete-button-btnEl\") to be visible\n    15 \u00d7 locator resolved to hidden <button type=\"button\" role=\"button\" hidefocus=\"true\" autocomplete=\"off\" disabled=\"disabled\" class=\"btn v2 small abort\" id=\"project-button-bar-delete-button-btnEl\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/delete_project_1761115726.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 8.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251021_234903.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761115757.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 12.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_removal_pass_20251021_234934.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 3.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251021_234945.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/overview_dashboard_20251021_234952.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 4.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251021_235004.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 6.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251021_235016.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 42.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251021_235104.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 118.4,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Phone is '1234567890123456789012345678901234567890123456789012345678901234567890' \u2014 permission denied.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251021_235311.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 7.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251021_235322.png"
+      }
+    ],
+    "Lab Operator (BTO) + Reagent Manufacturing (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
@@ -36,193 +449,793 @@
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_222623.png"
+        "screenshot": "test_results/screenshots/clarity_login_20251021_235338.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251021_235345.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.9,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-21_23-53-58.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 12.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"#project-button-bar-delete-button-btnEl\") to be visible\n    15 \u00d7 locator resolved to hidden <button type=\"button\" role=\"button\" hidefocus=\"true\" autocomplete=\"off\" disabled=\"disabled\" class=\"btn v2 small abort\" id=\"project-button-bar-delete-button-btnEl\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/delete_project_1761116057.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 8.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251021_235434.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761116087.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 12.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_removal_pass_20251021_235504.png"
       },
       {
         "test_name": "Edit Completed Steps",
         "description": "No description available",
-        "execution_time": 3.5,
-        "expected": true,
-        "passed": true,
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/edit_completed_steps_20251021_222633.png"
-      }
-    ],
-    "Lab Operator (BTO) + Reagent Manufacturing (BTO)": [
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251021_235514.png"
+      },
       {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 13.4,
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.8,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_222648.png"
+        "screenshot": "test_results/screenshots/overview_dashboard_20251021_235522.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 4.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251021_235533.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 6.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251021_235546.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 42.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251021_235633.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 119.2,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Phone is '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890' \u2014 permission denied.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251021_235841.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 6.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251021_235853.png"
       },
       {
         "test_name": "Create Control",
         "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 23.0,
+        "execution_time": 20.6,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/create_control_pass_20251021_222713.png"
+        "screenshot": "test_results/screenshots/create_control_pass_20251021_235920.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 18.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_control_pass_20251021_235944.png"
       },
       {
         "test_name": "Delete Control",
         "description": "Checks if role can delete a control in Clarity LIMS.",
-        "execution_time": 18.4,
+        "execution_time": 19.3,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/delete_control_pass_20251021_222741.png"
+        "screenshot": "test_results/screenshots/delete_control_pass_20251022_000010.png"
+      },
+      {
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 24.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_reagent_kit_pass_20251022_000040.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 24.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_reagent_kit_pass_20251022_000111.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 22.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_reagent_kit_pass_20251022_000139.png"
       }
     ],
     "Lab Operator (BTO) + ReviewEscalations": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 12.7,
+        "execution_time": 12.2,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_222758.png"
+        "screenshot": "test_results/screenshots/clarity_login_20251022_000157.png"
       },
       {
-        "test_name": "Review Escalated Samples",
-        "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 118.5,
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/review_escalated_samples_pass_20251021_222933.png"
-      }
-    ],
-    "System Admin (BTO) (BASE)": [],
-    "System Admin (BTO) + Sample Creation (BTO)": [],
-    "System Admin (BTO) + Editor": [
+        "screenshot": "test_results/screenshots/api_login_20251022_000204.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 11.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_00-02-17.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 14.1,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"#project-button-bar-delete-button-btnEl\") to be visible\n    15 \u00d7 locator resolved to hidden <button type=\"button\" role=\"button\" hidefocus=\"true\" autocomplete=\"off\" disabled=\"disabled\" class=\"btn v2 small abort\" id=\"project-button-bar-delete-button-btnEl\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/delete_project_1761116556.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 11.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251022_000258.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 7.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761116595.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 132.9,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.delete-btn[data-sample-id='47269196']\").first\n",
+        "screenshot": "test_results/screenshots/sample_workflow_removal_fail_20251022_000532.png"
+      },
       {
         "test_name": "Edit Completed Steps",
         "description": "No description available",
-        "execution_time": 3.8,
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_000545.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/overview_dashboard_20251022_000553.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 5.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251022_000604.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 6.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251022_000617.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 43.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251022_000703.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 118.9,
         "expected": true,
         "passed": false,
         "result": "fail",
+        "error": "Phone is '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890' \u2014 permission denied.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251022_000911.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 7.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
         "error": null,
-        "screenshot": "screenshots/edit_completed_steps_20251021_223510.png"
+        "screenshot": "test_results/screenshots/update_sample_pass_20251022_000923.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 138.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/review_escalated_samples_pass_20251022_001118.png"
       }
     ],
-    "System Admin (BTO) + Reagent Manufacturing (BTO)": [
+    "System Admin (BTO) (BASE)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 13.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_001207.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_001216.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_001222.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_project_20251022_001238.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 17.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": "Project 'Emil Project Test' still exists after deletion",
+        "screenshot": "test_results/screenshots/delete_project_1761117171.png"
+      },
+      {
+        "test_name": "Create Sample",
+        "description": "Checks if role can create a sample in Clarity LIMS.",
+        "execution_time": 9.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_sample_pass_20251022_001315.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 6.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251022_001331.png"
+      },
+      {
+        "test_name": "Delete Sample",
+        "description": "Checks if role can delete a sample in Clarity LIMS.",
+        "execution_time": 9.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_sample_pass_20251022_001345.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 9.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251022_001401.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761117255.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 13.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_removal_pass_20251022_001432.png"
+      },
+      {
+        "test_name": "Sample Rework",
+        "description": "Checks if role can rework a sample in Clarity LIMS.",
+        "execution_time": 108.0,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Failed to select workflow option: Locator.wait_for: Error: strict mode violation: locator(\"div.select2-drop\") resolved to 3 elements:\n    1) <div class=\"select2-drop\">\u2026</div> aka locator(\"#iconcombobox-1080-bodyEl div\").nth(3)\n    2) <div class=\"select2-drop\">\u2026</div> aka get_by_role(\"row\", name=\"Select this sample's next step\").locator(\"div\").nth(2)\n    3) <div class=\"select2-drop\">\u2026</div> aka locator(\"#iconcombobox-1095-bodyEl div\").filter(has_text=\"Aneuploidy - Automated cfDNA\").nth(2)\n\nCall log:\n  - waiting for locator(\"div.select2-drop\") to be visible\n. Screenshot: test_results/screenshots/select2_dropdown_fail_fail_20251022_001613.png",
+        "screenshot": "test_results/screenshots/sample_rework_fail_20251022_001613.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 138.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/review_escalated_samples_pass_20251022_001823.png"
+      },
       {
         "test_name": "Create Control",
         "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 18.5,
+        "execution_time": 21.1,
         "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Consumables tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/create_control_fail_20251021_223531.png"
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_control_pass_20251022_001919.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 21.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_control_pass_20251022_001946.png"
       },
       {
         "test_name": "Delete Control",
         "description": "Checks if role can delete a control in Clarity LIMS.",
-        "execution_time": 15.5,
+        "execution_time": 21.2,
         "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Consumables tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/delete_control_fail_20251021_223549.png"
-      }
-    ],
-    "System Admin (BTO) + ReviewEscalations": [
-      {
-        "test_name": "Review Escalated Samples",
-        "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 62.9,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
-        "screenshot": "screenshots/review_escalated_samples_fail_20251021_223623.png"
-      }
-    ],
-    "Lab Admin (BTO) (BASE)": [],
-    "Lab Admin (BTO) + Sample Creation (BTO)": [],
-    "Lab Admin (BTO) + Editor": [
-      {
-        "test_name": "Edit Completed Steps",
-        "description": "No description available",
-        "execution_time": 3.6,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
+        "passed": true,
+        "result": "pass",
         "error": null,
-        "screenshot": "screenshots/edit_completed_steps_20251021_223724.png"
-      }
-    ],
-    "Lab Admin (BTO) + Reagent Manufacturing (BTO)": [
-      {
-        "test_name": "Create Control",
-        "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 17.6,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": "Consumables tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/create_control_fail_20251021_223744.png"
+        "screenshot": "test_results/screenshots/delete_control_pass_20251022_002013.png"
       },
       {
-        "test_name": "Delete Control",
-        "description": "Checks if role can delete a control in Clarity LIMS.",
-        "execution_time": 15.5,
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 25.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_reagent_kit_pass_20251022_002044.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 26.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_reagent_kit_pass_20251022_002117.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 24.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_reagent_kit_pass_20251022_002148.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.8,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "test_results/screenshots/overview_dashboard_20251022_002158.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 4.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251022_002210.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 7.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251022_002225.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 42.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251022_002312.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 119.7,
         "expected": true,
         "passed": false,
         "result": "fail",
-        "error": "Consumables tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/delete_control_fail_20251021_223803.png"
+        "error": "Phone is '1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890' \u2014 permission denied.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251022_002520.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 34.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_user_pass_20251022_002558.png"
+      },
+      {
+        "test_name": "Create Process",
+        "description": "Checks if role can create a process in Clarity LIMS.",
+        "execution_time": 19.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_process_pass_20251022_002624.png"
+      },
+      {
+        "test_name": "Read Process",
+        "description": "Checks if role can read a process in Clarity LIMS.",
+        "execution_time": 9.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/read_process_pass_20251022_002640.png"
+      },
+      {
+        "test_name": "Update Process",
+        "description": "Checks if role can update a process in Clarity LIMS.",
+        "execution_time": 19.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_process_pass_20251022_002705.png"
+      },
+      {
+        "test_name": "Delete Process",
+        "description": "Checks if role can delete a process in Clarity LIMS.",
+        "execution_time": 19.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_process_pass_20251022_002730.png"
       }
     ],
-    "Lab Admin (BTO) + ReviewEscalations": [
+    "System Admin (BTO) + Sample Creation (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 20.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_002757.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 3.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_002806.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_002813.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_project_20251022_002829.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 16.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_project_20251022_002852.png"
+      },
+      {
+        "test_name": "Create Sample",
+        "description": "Checks if role can create a sample in Clarity LIMS.",
+        "execution_time": 8.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_sample_pass_20251022_002904.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 7.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251022_002918.png"
+      },
+      {
+        "test_name": "Delete Sample",
+        "description": "Checks if role can delete a sample in Clarity LIMS.",
+        "execution_time": 8.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_sample_pass_20251022_002933.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 9.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251022_002948.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761118202.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 12.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_removal_pass_20251022_003019.png"
+      },
+      {
+        "test_name": "Sample Rework",
+        "description": "Checks if role can rework a sample in Clarity LIMS.",
+        "execution_time": 95.3,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.scroll_into_view_if_needed: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"span.qtip-value[data-qtip='V_251014L0001-5']\")\n",
+        "screenshot": "test_results/screenshots/sample_rework_fail_20251022_003132.png"
+      },
       {
         "test_name": "Review Escalated Samples",
         "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 61.9,
+        "execution_time": 62.0,
         "expected": true,
         "passed": false,
         "result": "fail",
         "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
-        "screenshot": "screenshots/review_escalated_samples_fail_20251021_223836.png"
-      }
-    ],
-    "Limited (BTO) (BASE)": [],
-    "Limited (BTO) + Sample Creation (BTO)": [],
-    "Limited (BTO) + Editor": [
-      {
-        "test_name": "Edit Completed Steps",
-        "description": "No description available",
-        "execution_time": 4.8,
-        "expected": true,
-        "passed": false,
-        "result": "fail",
-        "error": null,
-        "screenshot": "screenshots/edit_completed_steps_20251021_223923.png"
-      }
-    ],
-    "Limited (BTO) + Reagent Manufacturing (BTO)": [
+        "screenshot": "test_results/screenshots/review_escalated_samples_fail_20251022_003238.png"
+      },
       {
         "test_name": "Create Control",
         "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 18.2,
+        "execution_time": 15.7,
         "expected": true,
         "passed": false,
         "result": "fail",
         "error": "Consumables tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/create_control_fail_20251021_223943.png"
+        "screenshot": "test_results/screenshots/create_control_fail_20251022_003327.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 15.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_control_fail_20251022_003346.png"
       },
       {
         "test_name": "Delete Control",
@@ -232,55 +1245,1859 @@
         "passed": false,
         "result": "fail",
         "error": "Consumables tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/delete_control_fail_20251021_224002.png"
+        "screenshot": "test_results/screenshots/delete_control_fail_20251022_003405.png"
+      },
+      {
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 15.8,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_reagent_kit_fail_20251022_003424.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 15.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_reagent_kit_fail_20251022_003442.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 15.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_reagent_kit_fail_20251022_003501.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 31.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"li.dropdown a.dropdown-toggle\").filter(has_text=\"Dashboards\")\n",
+        "screenshot": "test_results/screenshots/overview_dashboard_fail_1.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 68.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.detail-toggle\").first\n",
+        "screenshot": "test_results/screenshots/requeue_sample_fail_1761118606.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 14.4,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/read_user_permission_fail_1761118624.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 15.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_user_fail_20251022_003723.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 15.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251022_003742.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 15.9,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_user_fail_20251022_003801.png"
+      },
+      {
+        "test_name": "Create Process",
+        "description": "Checks if role can create a process in Clarity LIMS.",
+        "execution_time": 15.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Lab Work tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_process_fail_20251022_003820.png"
+      },
+      {
+        "test_name": "Read Process",
+        "description": "Checks if role can read a process in Clarity LIMS.",
+        "execution_time": 15.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Lab Work tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/read_process_fail_20251022_003838.png"
+      },
+      {
+        "test_name": "Update Process",
+        "description": "Checks if role can update a process in Clarity LIMS.",
+        "execution_time": 15.9,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Lab Work tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_process_fail_20251022_003857.png"
+      },
+      {
+        "test_name": "Delete Process",
+        "description": "Checks if role can delete a process in Clarity LIMS.",
+        "execution_time": 15.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Lab Work tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_process_fail_20251022_003916.png"
+      }
+    ],
+    "System Admin (BTO) + Editor": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 12.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_003931.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 3.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_003941.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_003947.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 11.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_project_20251022_004005.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 8.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_project_20251022_004021.png"
+      },
+      {
+        "test_name": "Create Sample",
+        "description": "Checks if role can create a sample in Clarity LIMS.",
+        "execution_time": 8.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_sample_pass_20251022_004033.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 7.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251022_004047.png"
+      },
+      {
+        "test_name": "Delete Sample",
+        "description": "Checks if role can delete a sample in Clarity LIMS.",
+        "execution_time": 8.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_sample_pass_20251022_004102.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 8.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251022_004117.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.4,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"span.qtip-value\").filter(has_text=\"V_251014L0001-5\").first to be visible\n",
+        "screenshot": "test_results/screenshots/move_to_next_step_1761118899.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 67.0,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"div.x-mask-full-page\") to be hidden\n    25 \u00d7 locator resolved to visible <div id=\"ext-gen1446\" class=\"x-mask x-mask-full-page\"></div>\n",
+        "screenshot": "test_results/screenshots/sample_workflow_removal_fail_20251022_004250.png"
+      },
+      {
+        "test_name": "Sample Rework",
+        "description": "Checks if role can rework a sample in Clarity LIMS.",
+        "execution_time": 76.9,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"V_251014L0001-5\")\n",
+        "screenshot": "test_results/screenshots/sample_rework_fail_20251022_004344.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 69.3,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"V_251014L0001-5\")\n",
+        "screenshot": "test_results/screenshots/review_escalated_samples_fail_20251022_004508.png"
+      },
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 20.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_control_pass_20251022_004555.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 21.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_control_pass_20251022_004622.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 20.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_control_pass_20251022_004649.png"
+      },
+      {
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 25.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_reagent_kit_pass_20251022_004721.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 26.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_reagent_kit_pass_20251022_004753.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 24.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_reagent_kit_pass_20251022_004824.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.8,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "test_results/screenshots/overview_dashboard_20251022_004834.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 5.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251022_004847.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 7.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251022_004901.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 42.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251022_004948.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 39.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_user_pass_20251022_005033.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 34.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_user_pass_20251022_005114.png"
+      },
+      {
+        "test_name": "Create Process",
+        "description": "Checks if role can create a process in Clarity LIMS.",
+        "execution_time": 19.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_process_pass_20251022_005139.png"
+      },
+      {
+        "test_name": "Read Process",
+        "description": "Checks if role can read a process in Clarity LIMS.",
+        "execution_time": 9.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/read_process_pass_20251022_005155.png"
+      },
+      {
+        "test_name": "Update Process",
+        "description": "Checks if role can update a process in Clarity LIMS.",
+        "execution_time": 18.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_process_pass_20251022_005220.png"
+      },
+      {
+        "test_name": "Delete Process",
+        "description": "Checks if role can delete a process in Clarity LIMS.",
+        "execution_time": 18.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_process_pass_20251022_005245.png"
+      }
+    ],
+    "System Admin (BTO) + Reagent Manufacturing (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 15.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_005306.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.6,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_005314.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_005321.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 9.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_project_20251022_005337.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 7.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_project_20251022_005353.png"
+      },
+      {
+        "test_name": "Create Sample",
+        "description": "Checks if role can create a sample in Clarity LIMS.",
+        "execution_time": 7.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_sample_pass_20251022_005405.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 7.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251022_005419.png"
+      },
+      {
+        "test_name": "Delete Sample",
+        "description": "Checks if role can delete a sample in Clarity LIMS.",
+        "execution_time": 8.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_sample_pass_20251022_005434.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 9.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251022_005449.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.1,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"span.qtip-value\").filter(has_text=\"V_251014L0001-5\").first to be visible\n",
+        "screenshot": "test_results/screenshots/move_to_next_step_1761119711.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 86.1,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"div.x-mask-full-page\") to be hidden\n    25 \u00d7 locator resolved to visible <div id=\"ext-gen1446\" class=\"x-mask x-mask-full-page\"></div>\n",
+        "screenshot": "test_results/screenshots/sample_workflow_removal_fail_20251022_005642.png"
+      },
+      {
+        "test_name": "Sample Rework",
+        "description": "Checks if role can rework a sample in Clarity LIMS.",
+        "execution_time": 77.1,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"V_251014L0001-5\")\n",
+        "screenshot": "test_results/screenshots/sample_rework_fail_20251022_005735.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 68.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"V_251014L0001-5\")\n",
+        "screenshot": "test_results/screenshots/review_escalated_samples_fail_20251022_005859.png"
+      },
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 20.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_control_pass_20251022_005946.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 21.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_control_pass_20251022_010014.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 20.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_control_pass_20251022_010041.png"
+      },
+      {
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 25.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_reagent_kit_pass_20251022_010113.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 25.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_reagent_kit_pass_20251022_010145.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 24.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_reagent_kit_pass_20251022_010216.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.7,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "test_results/screenshots/overview_dashboard_20251022_010226.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 4.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251022_010238.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 7.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251022_010252.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 42.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251022_010338.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 39.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_user_pass_20251022_010424.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 34.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_user_pass_20251022_010504.png"
+      },
+      {
+        "test_name": "Create Process",
+        "description": "Checks if role can create a process in Clarity LIMS.",
+        "execution_time": 19.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_process_pass_20251022_010529.png"
+      },
+      {
+        "test_name": "Read Process",
+        "description": "Checks if role can read a process in Clarity LIMS.",
+        "execution_time": 9.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/read_process_pass_20251022_010545.png"
+      },
+      {
+        "test_name": "Update Process",
+        "description": "Checks if role can update a process in Clarity LIMS.",
+        "execution_time": 18.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_process_pass_20251022_010610.png"
+      },
+      {
+        "test_name": "Delete Process",
+        "description": "Checks if role can delete a process in Clarity LIMS.",
+        "execution_time": 18.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_process_pass_20251022_010635.png"
+      }
+    ],
+    "System Admin (BTO) + ReviewEscalations": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 14.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_010654.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_010702.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_010709.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_project_20251022_010725.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 6.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_project_20251022_010739.png"
+      },
+      {
+        "test_name": "Create Sample",
+        "description": "Checks if role can create a sample in Clarity LIMS.",
+        "execution_time": 7.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_sample_pass_20251022_010752.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 7.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_sample_pass_20251022_010806.png"
+      },
+      {
+        "test_name": "Delete Sample",
+        "description": "Checks if role can delete a sample in Clarity LIMS.",
+        "execution_time": 8.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_sample_pass_20251022_010821.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 9.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251022_010838.png"
+      },
+      {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.4,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"span.qtip-value\").filter(has_text=\"V_251014L0001-5\").first to be visible\n",
+        "screenshot": "test_results/screenshots/move_to_next_step_1761120539.png"
+      },
+      {
+        "test_name": "Sample Workflow Removal",
+        "description": "Checks if role can remove samples from a workflow in Clarity LIMS.",
+        "execution_time": 68.4,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"div.x-mask-full-page\") to be hidden\n    25 \u00d7 locator resolved to visible <div id=\"ext-gen1446\" class=\"x-mask x-mask-full-page\"></div>\n",
+        "screenshot": "test_results/screenshots/sample_workflow_removal_fail_20251022_011012.png"
+      },
+      {
+        "test_name": "Sample Rework",
+        "description": "Checks if role can rework a sample in Clarity LIMS.",
+        "execution_time": 77.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"V_251014L0001-5\")\n",
+        "screenshot": "test_results/screenshots/sample_rework_fail_20251022_011107.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 69.5,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"V_251014L0001-5\")\n",
+        "screenshot": "test_results/screenshots/review_escalated_samples_fail_20251022_011231.png"
+      },
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 21.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_control_pass_20251022_011319.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 22.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_control_pass_20251022_011347.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 20.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_control_pass_20251022_011414.png"
+      },
+      {
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 25.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_reagent_kit_pass_20251022_011446.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 26.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_reagent_kit_pass_20251022_011518.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 24.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_reagent_kit_pass_20251022_011548.png"
+      },
+      {
+        "test_name": "Overview Dashboard",
+        "description": "Checks if role can view the Overview Dashboard in Clarity LIMS.",
+        "execution_time": 1.7,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "test_results/screenshots/overview_dashboard_20251022_011558.png"
+      },
+      {
+        "test_name": "Requeue Sample",
+        "description": "Checks if a user can see the Requeue button for a sample in Clarity LIMS.",
+        "execution_time": 4.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/requeue_sample_20251022_011610.png"
+      },
+      {
+        "test_name": "Permissions Read User",
+        "description": "Checks if a user with the 'permissions_read_user' role can view the",
+        "execution_time": 7.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/permissions_read_user_20251022_011625.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 42.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251022_011711.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 39.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_user_pass_20251022_011756.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 34.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_user_pass_20251022_011836.png"
+      },
+      {
+        "test_name": "Create Process",
+        "description": "Checks if role can create a process in Clarity LIMS.",
+        "execution_time": 19.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_process_pass_20251022_011901.png"
+      },
+      {
+        "test_name": "Read Process",
+        "description": "Checks if role can read a process in Clarity LIMS.",
+        "execution_time": 9.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/read_process_pass_20251022_011917.png"
+      },
+      {
+        "test_name": "Update Process",
+        "description": "Checks if role can update a process in Clarity LIMS.",
+        "execution_time": 18.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_process_pass_20251022_011942.png"
+      },
+      {
+        "test_name": "Delete Process",
+        "description": "Checks if role can delete a process in Clarity LIMS.",
+        "execution_time": 18.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_process_pass_20251022_012006.png"
+      }
+    ],
+    "Lab Admin (BTO) (BASE)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 12.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_012026.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_012034.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_012041.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 11.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_01-20-54.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 15.8,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"div.project-list-item:has(div[data-qtip='Emil Project Test'])\").first to be visible\n",
+        "screenshot": "test_results/screenshots/delete_project_1761121277.png"
+      }
+    ],
+    "Lab Admin (BTO) + Sample Creation (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 12.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_012134.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_012143.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_012149.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 9.4,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_project_20251022_012204.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 37.1,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#project-button-bar-delete-button-btnEl\")\n    - locator resolved to <button type=\"button\" role=\"button\" hidefocus=\"true\" autocomplete=\"off\" disabled=\"disabled\" class=\"btn v2 small abort\" id=\"project-button-bar-delete-button-btnEl\">\u2026</button>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not enabled\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not enabled\n    - retrying click action\n      - waiting 100ms\n    57 \u00d7 waiting for element to be visible, enabled and stable\n       - element is not enabled\n     - retrying click action\n       - waiting 500ms\n",
+        "screenshot": "test_results/screenshots/delete_project_1761121366.png"
+      }
+    ],
+    "Lab Admin (BTO) + Editor": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 10.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_012301.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 3.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_012311.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_012317.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 11.5,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_01-23-31.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 12.5,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"#project-button-bar-delete-button-btnEl\") to be visible\n    15 \u00d7 locator resolved to hidden <button type=\"button\" role=\"button\" hidefocus=\"true\" autocomplete=\"off\" disabled=\"disabled\" class=\"btn v2 small abort\" id=\"project-button-bar-delete-button-btnEl\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/delete_project_1761121430.png"
+      }
+    ],
+    "Lab Admin (BTO) + Reagent Manufacturing (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 11.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_012407.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_012416.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_012422.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.9,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_01-24-35.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 11.9,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"#project-button-bar-delete-button-btnEl\") to be visible\n    15 \u00d7 locator resolved to hidden <button type=\"button\" role=\"button\" hidefocus=\"true\" autocomplete=\"off\" disabled=\"disabled\" class=\"btn v2 small abort\" id=\"project-button-bar-delete-button-btnEl\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/delete_project_1761121494.png"
+      },
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 19.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_control_pass_20251022_012521.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 19.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_control_pass_20251022_012546.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 19.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_control_pass_20251022_012612.png"
+      },
+      {
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 23.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_reagent_kit_pass_20251022_012642.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 24.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_reagent_kit_pass_20251022_012712.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 22.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_reagent_kit_pass_20251022_012741.png"
+      }
+    ],
+    "Lab Admin (BTO) + ReviewEscalations": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 12.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_012757.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_012806.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_012812.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 11.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_01-28-25.png"
+      },
+      {
+        "test_name": "Delete Project",
+        "description": "Checks if user can delete a new project in Clarity LIMS",
+        "execution_time": 11.8,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"#project-button-bar-delete-button-btnEl\") to be visible\n    15 \u00d7 locator resolved to hidden <button type=\"button\" role=\"button\" hidefocus=\"true\" autocomplete=\"off\" disabled=\"disabled\" class=\"btn v2 small abort\" id=\"project-button-bar-delete-button-btnEl\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/delete_project_1761121725.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 69.1,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"V_251014L0001-5\")\n",
+        "screenshot": "test_results/screenshots/review_escalated_samples_fail_20251022_012941.png"
+      }
+    ],
+    "Limited (BTO) (BASE)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 14.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_013022.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_013031.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_013042.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.8,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_01-30-56.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 39.6,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.rw-input\").filter(has_text=\"Assign To Workflow\")\n    - locator resolved to <div class=\"rw-input\">Assign To Workflow</div>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    57 \u00d7 waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n",
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_fail_20251022_013141.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 3.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_user_fail_20251022_013154.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 3.5,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251022_013204.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 3.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_user_fail_20251022_013213.png"
+      }
+    ],
+    "Limited (BTO) + Sample Creation (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 12.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_013227.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_013236.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_013247.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 11.0,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_project_20251022_013305.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 9.5,
+        "expected": false,
+        "passed": true,
+        "result": "fail",
+        "error": null,
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_pass_20251022_013324.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 3.6,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_user_fail_20251022_013340.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 3.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251022_013350.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 3.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_user_fail_20251022_013359.png"
+      }
+    ],
+    "Limited (BTO) + Editor": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 11.2,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_013413.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 4.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_013423.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_013429.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 11.6,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_01-34-43.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 39.6,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.rw-input\").filter(has_text=\"Assign To Workflow\")\n    - locator resolved to <div class=\"rw-input\">Assign To Workflow</div>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    56 \u00d7 waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_fail_20251022_013530.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 3.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_user_fail_20251022_013547.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 3.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251022_013557.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 3.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_user_fail_20251022_013606.png"
+      }
+    ],
+    "Limited (BTO) + Reagent Manufacturing (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 11.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_013620.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_013629.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_013640.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.8,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_01-36-53.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 39.5,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.rw-input\").filter(has_text=\"Assign To Workflow\")\n    - locator resolved to <div class=\"rw-input\">Assign To Workflow</div>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    57 \u00d7 waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n",
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_fail_20251022_013740.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 3.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_user_fail_20251022_013753.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 3.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251022_013802.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 3.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_user_fail_20251022_013812.png"
+      },
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 19.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_control_pass_20251022_013835.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 18.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_control_pass_20251022_013900.png"
+      },
+      {
+        "test_name": "Delete Control",
+        "description": "Checks if role can delete a control in Clarity LIMS.",
+        "execution_time": 17.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_control_pass_20251022_013928.png"
+      },
+      {
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 23.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_reagent_kit_pass_20251022_014001.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 23.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_reagent_kit_pass_20251022_014031.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 22.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_reagent_kit_pass_20251022_014059.png"
       }
     ],
     "Limited (BTO) + ReviewEscalations": [
       {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 11.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251022_014116.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 2.3,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_014125.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.5,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/api_login_20251022_014135.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.8,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"button\").filter(has_text=\"NEW PROJECT\") to be visible\n    15 \u00d7 locator resolved to hidden <button class=\"\" tabindex=\"-1\" type=\"button\" data-focus=\"true\">\u2026</button>\n",
+        "screenshot": "test_results/screenshots/create_project_2025-10-22_01-41-50.png"
+      },
+      {
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 39.5,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"div.rw-input\").filter(has_text=\"Assign To Workflow\")\n    - locator resolved to <div class=\"rw-input\">Assign To Workflow</div>\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is not visible\n    - retrying click action\n      - waiting 100ms\n    57 \u00d7 waiting for element to be visible, enabled and stable\n       - element is not visible\n     - retrying click action\n       - waiting 500ms\n",
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_fail_20251022_014240.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 3.2,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_user_fail_20251022_014253.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 3.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251022_014303.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 3.4,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_user_fail_20251022_014312.png"
+      },
+      {
         "test_name": "Review Escalated Samples",
         "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 62.0,
+        "execution_time": 68.9,
         "expected": true,
         "passed": false,
         "result": "fail",
-        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
-        "screenshot": "screenshots/review_escalated_samples_fail_20251021_224036.png"
+        "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_text(\"V_251014L0001-5\")\n",
+        "screenshot": "test_results/screenshots/review_escalated_samples_fail_20251022_014404.png"
       }
     ],
     "BTO - API (BASE)": [
       {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 16.0,
-        "expected": false,
-        "passed": false,
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_224158.png"
+        "screenshot": "test_results/screenshots/api_login_20251022_014432.png"
       }
     ],
     "BTO - API + Sample Creation (BTO)": [
       {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 15.0,
-        "expected": false,
-        "passed": false,
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_224215.png"
+        "screenshot": "test_results/screenshots/api_login_20251022_014434.png"
       }
     ],
     "BTO - API + Editor": [
       {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 16.6,
-        "expected": false,
-        "passed": false,
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_224234.png"
+        "screenshot": "test_results/screenshots/api_login_20251022_014436.png"
       },
       {
         "test_name": "Edit Completed Steps",
@@ -290,29 +3107,39 @@
         "passed": false,
         "result": "fail",
         "error": null,
-        "screenshot": "screenshots/edit_completed_steps_20251021_224238.png"
+        "screenshot": "test_results/screenshots/edit_completed_steps_20251022_014442.png"
       }
     ],
     "BTO - API + Reagent Manufacturing (BTO)": [
       {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 14.7,
-        "expected": false,
-        "passed": false,
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_224255.png"
+        "screenshot": "test_results/screenshots/api_login_20251022_014444.png"
       },
       {
         "test_name": "Create Control",
         "description": "Checks if role can create a control in Clarity LIMS.",
-        "execution_time": 15.7,
+        "execution_time": 15.8,
         "expected": true,
         "passed": false,
         "result": "fail",
         "error": "Consumables tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/create_control_fail_20251021_224314.png"
+        "screenshot": "test_results/screenshots/create_control_fail_20251022_014506.png"
+      },
+      {
+        "test_name": "Update Control",
+        "description": "Checks if role can update a control in Clarity LIMS.",
+        "execution_time": 15.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_control_fail_20251022_014525.png"
       },
       {
         "test_name": "Delete Control",
@@ -322,29 +3149,59 @@
         "passed": false,
         "result": "fail",
         "error": "Consumables tab not found \u2014 permission denied or hidden.",
-        "screenshot": "screenshots/delete_control_fail_20251021_224332.png"
+        "screenshot": "test_results/screenshots/delete_control_fail_20251022_014543.png"
+      },
+      {
+        "test_name": "Create Reagent Kit",
+        "description": "Checks if role can create a reagent kit in Clarity LIMS.",
+        "execution_time": 15.8,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_reagent_kit_fail_20251022_014602.png"
+      },
+      {
+        "test_name": "Update Reagent Kit",
+        "description": "Checks if role can update a reagent kit in Clarity LIMS.",
+        "execution_time": 15.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_reagent_kit_fail_20251022_014621.png"
+      },
+      {
+        "test_name": "Delete Reagent Kit",
+        "description": "Checks if role can delete a reagent kit in Clarity LIMS.",
+        "execution_time": 15.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Consumables tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_reagent_kit_fail_20251022_014639.png"
       }
     ],
     "BTO - API + ReviewEscalations": [
       {
-        "test_name": "Clarity Login",
-        "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 14.1,
-        "expected": false,
-        "passed": false,
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_224349.png"
+        "screenshot": "test_results/screenshots/api_login_20251022_014642.png"
       },
       {
         "test_name": "Review Escalated Samples",
         "description": "Checks if role can review escalated samples in Clarity LIMS.",
-        "execution_time": 62.0,
+        "execution_time": 62.8,
         "expected": true,
         "passed": false,
         "result": "fail",
         "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
-        "screenshot": "screenshots/review_escalated_samples_fail_20251021_224424.png"
+        "screenshot": "test_results/screenshots/review_escalated_samples_fail_20251022_014719.png"
       }
     ]
   }

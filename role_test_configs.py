@@ -8,54 +8,54 @@ Define which tests to run for each role.
 MAIN_ROLE_TEST_SUITES = {
     "Lab Operator (BTO)": {
         "permissions_clarity_login": True,
-        # "permissions_API_login": True,
-        # "permissions_create_project": False, 
-        # "permissions_delete_project": False, 
-        # "permissions_sample_workflow_assignment": True, # needs to be in this order 1
-        # "permissions_move_to_next_step": True,  # 2
-        # "permissions_remove_sample_from_workflow": True, # 3
-        # "permissions_edit_completed_steps": False,
-        # "permissions_overview_dashboard": True, 
-        # "permissions_requeue_sample": True,
-        # "permissions_read_user": True, 
-        # "permissions_create_user": True, 
-        # "permissions_update_user": True, 
-        # "permissions_update_sample": True, 
+        "permissions_API_login": True,
+        "permissions_create_project": False, 
+        "permissions_delete_project": False, 
+        "permissions_sample_workflow_assignment": True, # needs to be in this order 1
+        "permissions_move_to_next_step": True,  # 2
+        "permissions_remove_sample_from_workflow": True, # 3
+        "permissions_edit_completed_steps": False,
+        "permissions_overview_dashboard": True, 
+        "permissions_requeue_sample": True,
+        "permissions_read_user": True, 
+        "permissions_create_user": True, 
+        "permissions_update_user": True, 
+        "permissions_update_sample": True, 
     },
     
     "System Admin (BTO)": {
-        # "permissions_clarity_login": True,
-        # "permissions_edit_completed_steps": False,
-        # "permissions_API_login": True,
+        "permissions_clarity_login": True,
+        "permissions_edit_completed_steps": False,
+        "permissions_API_login": True,
         # "permissions_collaborations_login": True, # Don't worry about this test
         # "permissions_operations_login": True, # Don't worry about this test
-        # "permissions_create_project": True, 
-        # "permissions_delete_project": True, 
-        # "permissions_create_sample": True, 
-        # "permissions_update_sample": True, 
-        # "permissions_delete_sample": True, 
-        # "permissions_sample_workflow_assignment": True, 
-        # "permissions_move_to_next_step": True, 
-        # "permissions_remove_sample_from_workflow": True, 
-        # "permissions_sample_rework": True, 
-        # "permissions_review_escalated_samples": True,
-        # "permissions_create_control": True,
-        # "permissions_update_control": True,
-        # "permissions_delete_control": True, 
-        # "permissions_create_reagent_kit": True, 
-        # "permissions_update_reagent_kit": True, 
-        # "permissions_delete_reagent_kit": True,
-        # "permissions_overview_dashboard": False, 
+        "permissions_create_project": True, 
+        "permissions_delete_project": True, 
+        "permissions_create_sample": True, 
+        "permissions_update_sample": True, 
+        "permissions_delete_sample": True, 
+        "permissions_sample_workflow_assignment": True, 
+        "permissions_move_to_next_step": True, 
+        "permissions_remove_sample_from_workflow": True, 
+        "permissions_sample_rework": True, 
+        "permissions_review_escalated_samples": True,
+        "permissions_create_control": True,
+        "permissions_update_control": True,
+        "permissions_delete_control": True, 
+        "permissions_create_reagent_kit": True, 
+        "permissions_update_reagent_kit": True, 
+        "permissions_delete_reagent_kit": True,
+        "permissions_overview_dashboard": False, 
         # "permissions_update_configuration": True, # still need to create this test ???
-        # "permissions_requeue_sample": True,
-        # "permissions_read_user": True,
-        # "permissions_create_user": True, 
-        # "permissions_update_user": True,
-        # "permissions_delete_user": True, 
-        # "permissions_create_process": True, 
-        # "permissions_read_process": True, 
-        # "permissions_update_process": True, 
-        # "permissions_delete_process": True, 
+        "permissions_requeue_sample": True,
+        "permissions_read_user": True,
+        "permissions_create_user": True, 
+        "permissions_update_user": True,
+        "permissions_delete_user": True, 
+        "permissions_create_process": True, 
+        "permissions_read_process": True, 
+        "permissions_update_process": True, 
+        "permissions_delete_process": True, 
         # "permissions_esignature_signing": True, # still need to create this test ???
         # "permissions_create_role": True, # still need to create this test
         # "permissions_update_role": True, # still need to create this test
@@ -69,11 +69,11 @@ MAIN_ROLE_TEST_SUITES = {
     },
     
     "Lab Admin (BTO)": {
-        # "permissions_clarity_login": True,
-        # "permissions_edit_completed_steps": False,
-        # "permissions_API_login": True,
-        # "permissions_create_project": False, 
-        # "permissions_delete_project": False, 
+        "permissions_clarity_login": True,
+        "permissions_edit_completed_steps": False,
+        "permissions_API_login": True,
+        "permissions_create_project": False, 
+        "permissions_delete_project": False, 
         # "permissions_create_sample": True, # still need to create this test
         # "permissions_delete_sample": True, # still need to create this test
         # "permissions_sample_workflow_assignment": True, 
@@ -97,11 +97,11 @@ MAIN_ROLE_TEST_SUITES = {
     },
 
     "Limited (BTO)": {
-        # "permissions_clarity_login": True,
-        # "permissions_edit_completed_steps": False,
-        # "permissions_API_login": False,
-        # "permissions_create_project": False, 
-        # "permissions_sample_workflow_assignment": False,
+        "permissions_clarity_login": True,
+        "permissions_edit_completed_steps": False,
+        "permissions_API_login": False,
+        "permissions_create_project": False, 
+        "permissions_sample_workflow_assignment": False,
         # "permissions_review_escalated_samples": True, # still need to create this test
         # "permissions_update_control": True, # still need to create this test
         # "permissions_update_reagent_kit": True, # still need to create this test
@@ -125,9 +125,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_reagent_kit": False, 
         # "permissions_update_reagent_kit": False, 
         # "permissions_delete_reagent_kit": False,
-        # "permissions_create_user": False, 
-        # "permissions_update_user": False,
-        # "permissions_delete_user": False, 
+        "permissions_create_user": False, 
+        "permissions_update_user": False,
+        "permissions_delete_user": False, 
         # "permissions_create_process": True, 
         # "permissions_update_process": True, 
         # "permissions_delete_process": True, 
@@ -142,7 +142,7 @@ MAIN_ROLE_TEST_SUITES = {
     },  
 
     "Not Logged In": {
-        # "permissions_url_check": True,
+        "permissions_url_check": True,
     },
 }
 
@@ -160,11 +160,11 @@ ADD_ON_ROLE_TEST_SUITES = {
 
     "Reagent Manufacturing (BTO)": {
         "permissions_create_control": True,
-        # "permissions_update_control": True,
+        "permissions_update_control": True,
         "permissions_delete_control": True,
-        # "permissions_create_reagent_kit": True,
-        # "permissions_update_reagent_kit": True,
-        # "permissions_delete_reagent_kit": True,
+        "permissions_create_reagent_kit": True,
+        "permissions_update_reagent_kit": True,
+        "permissions_delete_reagent_kit": True,
     },
 
     "ReviewEscalations": {
@@ -173,12 +173,12 @@ ADD_ON_ROLE_TEST_SUITES = {
 
     "ReWork": {
         "permissions_clarity_login": True,
-        # "permissiosn_api_login": True,
-        # "permissions_sample_rework": True,
-        # "permissions_move_to_next_step": True,
-        # "permissions_create_user": True,
-        # "permissions_update_user": True,
-        # "permissions_read_user": True,
+        "permissiosn_api_login": True,
+        "permissions_sample_rework": True,
+        "permissions_move_to_next_step": True,
+        "permissions_create_user": True,
+        "permissions_update_user": True,
+        "permissions_read_user": True,
     },
 }
 

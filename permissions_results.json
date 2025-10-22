@@ -48,5 +48,105 @@
         "result": "pass",
         "error": null,
         "screenshot": "screenshots/move_to_next_step_1761072686.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.62,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761115118.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.56,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761115430.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.61,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761115757.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.91,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761116087.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 7.49,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761116595.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.63,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761117255.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.66,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761118202.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.36,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"span.qtip-value\").filter(has_text=\"V_251014L0001-5\").first to be visible\n",
+        "screenshot": "test_results/screenshots/move_to_next_step_1761118899.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.1,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"span.qtip-value\").filter(has_text=\"V_251014L0001-5\").first to be visible\n",
+        "screenshot": "test_results/screenshots/move_to_next_step_1761119711.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 14.38,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"span.qtip-value\").filter(has_text=\"V_251014L0001-5\").first to be visible\n",
+        "screenshot": "test_results/screenshots/move_to_next_step_1761120539.png"
     }
 ]
