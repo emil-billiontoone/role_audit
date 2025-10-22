@@ -524,8 +524,8 @@ def test_review_escalated_samples(page, expected=True):
                     # Click delete
                     delete_btn.click()
 
-                    # Wait until workflow is removed
-                    workflow_locator = sample.locator("div.workflow-name")
+                    # Wait until the workflow name for this sample is gone
+                    workflow_locator = page.locator(f"div.sample-row[data-sample-id='{sample_id}'] div.workflow-name")
                     try:
                         workflow_locator.wait_for(state="detached", timeout=10000)
                     except:

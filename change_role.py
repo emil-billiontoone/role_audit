@@ -40,7 +40,7 @@ def modify_user_role(lims, user_firstname, user_lastname, role_name, action="add
 
 lims, username = get_lims_connection()
 
-user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="add")
+user = modify_user_role(lims, "Emil", "Test", "Reagent Manufacturing (BTO)", action="remove")
 
 print(f"Current roles for {username}:")
 for r in user.roles:

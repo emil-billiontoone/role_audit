@@ -1,29 +1,29 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-21 21:36:30",
+  "timestamp": "2025-10-21 22:08:50",
   "tests": {
     "Not Logged In": [
       {
         "test_name": "Url Check",
         "description": "For each URL:",
-        "execution_time": 20.8,
+        "execution_time": 20.4,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/url_check_20251021_213504.png"
+        "screenshot": "screenshots/url_check_20251021_214430.png"
       }
     ],
     "Lab Operator (BTO) (BASE)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 14.2,
+        "execution_time": 12.7,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_213534.png"
+        "screenshot": "screenshots/clarity_login_20251021_214444.png"
       },
       {
         "test_name": "Api Login",
@@ -33,19 +33,19 @@
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/api_login_20251021_213541.png"
+        "screenshot": "screenshots/api_login_20251021_214451.png"
       }
     ],
     "Lab Operator (BTO) + Sample Creation (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 16.8,
+        "execution_time": 12.3,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/clarity_login_20251021_213604.png"
+        "screenshot": "screenshots/clarity_login_20251021_214505.png"
       },
       {
         "test_name": "Api Login",
@@ -55,17 +55,191 @@
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/api_login_20251021_213610.png"
+        "screenshot": "screenshots/api_login_20251021_214511.png"
       },
       {
         "test_name": "Create Project",
         "description": "Checks if user can create a new project in Clarity LIMS",
-        "execution_time": 12.9,
+        "execution_time": 10.2,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "screenshots/create_project_20251021_213630.png"
+        "screenshot": "screenshots/create_project_20251021_214528.png"
+      }
+    ],
+    "Lab Operator (BTO) + Editor": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 15.1,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_214545.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/api_login_20251021_214552.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 3.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/edit_completed_steps_20251021_214602.png"
+      }
+    ],
+    "Lab Operator (BTO) + Reagent Manufacturing (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 11.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_214616.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/api_login_20251021_214623.png"
+      },
+      {
+        "test_name": "Create Control",
+        "description": "Checks if role can create a control in Clarity LIMS.",
+        "execution_time": 20.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/create_control_pass_20251021_214647.png"
+      }
+    ],
+    "Lab Operator (BTO) + ReviewEscalations": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 14.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_214707.png"
+      },
+      {
+        "test_name": "Api Login",
+        "description": "Checks if user can login to Clarity API",
+        "execution_time": 0.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/api_login_20251021_214713.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 139.6,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Timed out waiting for ExtJS mask to disappear.",
+        "screenshot": "screenshots/review_escalated_samples_fail_20251021_214827.png"
+      }
+    ],
+    "System Admin (BTO) (BASE)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 14.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_215149.png"
+      }
+    ],
+    "System Admin (BTO) + Sample Creation (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 13.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_215205.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 10.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/create_project_20251021_215221.png"
+      }
+    ],
+    "System Admin (BTO) + Editor": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 17.3,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_215242.png"
+      },
+      {
+        "test_name": "Edit Completed Steps",
+        "description": "No description available",
+        "execution_time": 3.9,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/edit_completed_steps_20251021_215252.png"
+      }
+    ],
+    "System Admin (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 17.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/clarity_login_20251021_220637.png"
+      },
+      {
+        "test_name": "Review Escalated Samples",
+        "description": "Checks if role can review escalated samples in Clarity LIMS.",
+        "execution_time": 125.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "screenshots/review_escalated_samples_pass_20251021_220820.png"
       }
     ]
   }

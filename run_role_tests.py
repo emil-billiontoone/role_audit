@@ -8,7 +8,7 @@ Simple script to run role-based permission tests.
 import sys
 import argparse
 from role_permission_tester import RolePermissionTester
-from role_test_configs import MAIN_ROLE_TEST_SUITES, ADD_ON_ROLE_TEST_SUITES, QUICK_TEST, FULL_TEST_SUITE
+from role_test_configs import MAIN_ROLE_TEST_SUITES, ADD_ON_ROLE_TEST_SUITES
 
 def main():
     """Main entry point for role testing."""
@@ -29,7 +29,6 @@ Examples:
   python run_role_tests.py "Lab Operator"
   python run_role_tests.py "Lab Operator" --server dev
   python run_role_tests.py "System Admin" -s test
-  python run_role_tests.py quick
 """.format("\n".join(f"  - {role}" for role in MAIN_ROLE_TEST_SUITES.keys()))
     )
     
@@ -46,31 +45,7 @@ Examples:
     server = args.server
     
     # Determine which tests to run
-    if role_name.lower() == "quick":
-        # Convert list to dict with expected outcomes
-        if isinstance(QUICK_TEST, list):
-            test_suite = {}
-            for test in QUICK_TEST:
-                if isinstance(test, tuple):
-                    test_suite[test] = True
-                else:
-                    test_suite[test] = True
-        else:
-            test_suite = QUICK_TEST
-        role_name = "Quick Test"
-    elif role_name.lower() == "full":
-        # Convert list to dict with expected outcomes
-        if isinstance(FULL_TEST_SUITE, list):
-            test_suite = {}
-            for test in FULL_TEST_SUITE:
-                if isinstance(test, tuple):
-                    test_suite[test] = True
-                else:
-                    test_suite[test] = True
-        else:
-            test_suite = FULL_TEST_SUITE
-        role_name = "Full Test"
-    elif role_name in MAIN_ROLE_TEST_SUITES:
+    if role_name in MAIN_ROLE_TEST_SUITES:
         test_suite = MAIN_ROLE_TEST_SUITES[role_name]
     elif role_name in ADD_ON_ROLE_TEST_SUITES:
         test_suite = ADD_ON_ROLE_TEST_SUITES[role_name]

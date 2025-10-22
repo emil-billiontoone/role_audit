@@ -38,7 +38,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_move_to_next_step": True, 
         # "permissions_remove_sample_from_workflow": True, 
         # "permissions_sample_rework": True, 
-        # "permissions_review_escalated_samples": True,
+        "permissions_review_escalated_samples": True,
         # "permissions_create_control": True,
         # "permissions_update_control": True,
         # "permissions_delete_control": True, 

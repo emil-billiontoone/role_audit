@@ -174,7 +174,7 @@ class RolePermissionTester:
                 traceback.print_exc()
             
             finally:
-                input("\nPress Enter to close browser...")
+                print("\nClosing browser...")
                 browser.close()
     
     def print_summary(self):
