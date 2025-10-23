@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-23 11:38:27",
+  "timestamp": "2025-10-23 11:49:07",
   "tests": {
     "Not Logged In": [
       {
@@ -3230,64 +3230,84 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 19.4,
+        "execution_time": 15.6,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "test_results/screenshots/clarity_login_20251023_105756.png"
+        "screenshot": "test_results/screenshots/clarity_login_20251023_114439.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 64.0,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/create_user_pass_20251023_114523.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 103.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_user_pass_20251023_114714.png"
       },
       {
         "test_name": "Delete User",
         "description": "Checks if role can delete a user in Clarity LIMS.",
-        "execution_time": 74.5,
+        "execution_time": 81.6,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "test_results/screenshots/delete_user_pass_20251023_105915.png"
+        "screenshot": "test_results/screenshots/delete_user_pass_20251023_114904.png"
       }
     ],
     "Limited (BTO)": [
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 11.7,
+        "execution_time": 14.9,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "test_results/screenshots/clarity_login_20251023_113503.png"
+        "screenshot": "test_results/screenshots/clarity_login_20251023_114050.png"
       },
       {
         "test_name": "Create User",
         "description": "Checks if role can create a user in Clarity LIMS.",
-        "execution_time": 18.2,
-        "expected": true,
+        "execution_time": 3.4,
+        "expected": false,
         "passed": false,
-        "result": "fail",
+        "result": "pass",
         "error": "User Management tab not found \u2014 permission denied or hidden.",
-        "screenshot": "test_results/screenshots/create_user_fail_20251023_113528.png"
+        "screenshot": "test_results/screenshots/create_user_fail_20251023_114101.png"
       },
       {
         "test_name": "Update User",
         "description": "Checks if role can update a user in Clarity LIMS.",
-        "execution_time": 80.5,
-        "expected": true,
+        "execution_time": 64.7,
+        "expected": false,
         "passed": false,
-        "result": "fail",
+        "result": "pass",
         "error": "User Management tab not found \u2014 permission denied or hidden.",
-        "screenshot": "test_results/screenshots/update_user_fail_20251023_113630.png"
+        "screenshot": "test_results/screenshots/update_user_fail_20251023_114148.png"
       },
       {
         "test_name": "Delete User",
         "description": "Checks if role can delete a user in Clarity LIMS.",
-        "execution_time": 85.8,
-        "expected": true,
+        "execution_time": 65.6,
+        "expected": false,
         "passed": false,
-        "result": "fail",
+        "result": "pass",
         "error": "User Management tab not found \u2014 permission denied or hidden.",
-        "screenshot": "test_results/screenshots/delete_user_fail_20251023_113803.png"
+        "screenshot": "test_results/screenshots/delete_user_fail_20251023_114300.png"
       }
     ]
   }

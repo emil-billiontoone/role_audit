@@ -30,7 +30,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_API_login": True,
         # "permissions_collaborations_login": True, # Don't worry about this test
         # "permissions_operations_login": True, # Don't worry about this test
-        # "permissions_create_project": True, 
+        "permissions_create_project": True, 
         # "permissions_delete_project": True, 
         # "permissions_create_sample": True, 
         # "permissions_update_sample": True, 
@@ -126,9 +126,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_create_reagent_kit": False, 
         # "permissions_update_reagent_kit": False, 
         # "permissions_delete_reagent_kit": False,
-        "permissions_create_user": True, # expected is false
-        "permissions_update_user": True, # expected is false
-        "permissions_delete_user": True, # expected is false
+        # "permissions_create_user": False, # expected is false
+        # "permissions_update_user": False, # expected is false
+        # "permissions_delete_user": False, # expected is false
         # "permissions_create_process": True, 
         # "permissions_update_process": True, 
         # "permissions_delete_process": True, 

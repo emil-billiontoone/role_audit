@@ -156,9 +156,9 @@ class PDFReportGenerator:
         total_roles = len(self.data.get('tests', {}))
         
         metadata = [
-            ['<b>Server:</b>', server],
-            ['<b>Test Date:</b>', timestamp],
-            ['<b>Total Role Configurations:</b>', str(total_roles)]
+            ['Server:', server],
+            ['Test Date:', timestamp],
+            ['Total Role Configurations:', str(total_roles)]
         ]
         
         metadata_table = Table(metadata, colWidths=[2*inch, 4*inch])
@@ -302,7 +302,7 @@ class PDFReportGenerator:
         
         # Create summary table
         summary_data = [
-            ['<b>Metric</b>', '<b>Count</b>'],
+            ['Metric', 'Count'],
             ['Role Configurations Tested', str(len(tests))],
             ['Total Test Executions', str(total_tests)],
             ['Tests Passed (as expected)', str(total_passed)],
