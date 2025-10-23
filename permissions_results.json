@@ -148,5 +148,55 @@
         "result": "fail",
         "error": "TimeoutError: Locator.wait_for: Timeout 10000ms exceeded.\nCall log:\n  - waiting for locator(\"span.qtip-value\").filter(has_text=\"V_251014L0001-5\").first to be visible\n",
         "screenshot": "test_results/screenshots/move_to_next_step_1761120539.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 0.08,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Workflow step not found",
+        "screenshot": "test_results/screenshots/move_to_next_step_1761164848.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 6.03,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761164975.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.75,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761165340.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.86,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761166217.png"
+    },
+    {
+        "test_name": "Permissions Move To Next Step",
+        "description": "Checks if a user can move to the next step in Clarity LIMS.",
+        "execution_time": 5.58,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/move_to_next_step_1761166684.png"
     }
 ]

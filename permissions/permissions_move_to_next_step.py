@@ -87,7 +87,7 @@ def test_permissions_move_to_next_step(page):
 
         # 3. Click on a sample
         print("Selecting sample...")
-        sample = page.locator("span.qtip-value", has_text="V_251014L0001-5")
+        sample = page.locator("span.qtip-value", has_text="V_251014L0001-4")
         sample.first.wait_for(state="visible", timeout=10000)
         sample.first.click()
 

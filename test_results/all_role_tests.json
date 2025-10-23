@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-22 01:47:51",
+  "timestamp": "2025-10-23 11:38:27",
   "tests": {
     "Not Logged In": [
       {
@@ -3202,6 +3202,92 @@
         "result": "fail",
         "error": "Locator.click: Timeout 30000ms exceeded.\nCall log:\n  - waiting for get_by_role(\"link\", name=re.compile(r\"PROJECTS & Samples\", re.IGNORECASE))\n",
         "screenshot": "test_results/screenshots/review_escalated_samples_fail_20251022_014719.png"
+      }
+    ],
+    "Lab Operator (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 13.6,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251023_111212.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 101.8,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/update_user_pass_20251023_111336.png"
+      }
+    ],
+    "System Admin (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 19.4,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251023_105756.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 74.5,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/delete_user_pass_20251023_105915.png"
+      }
+    ],
+    "Limited (BTO)": [
+      {
+        "test_name": "Clarity Login",
+        "description": "Checks if user can login to Clarity LIMS",
+        "execution_time": 11.7,
+        "expected": true,
+        "passed": true,
+        "result": "pass",
+        "error": null,
+        "screenshot": "test_results/screenshots/clarity_login_20251023_113503.png"
+      },
+      {
+        "test_name": "Create User",
+        "description": "Checks if role can create a user in Clarity LIMS.",
+        "execution_time": 18.2,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/create_user_fail_20251023_113528.png"
+      },
+      {
+        "test_name": "Update User",
+        "description": "Checks if role can update a user in Clarity LIMS.",
+        "execution_time": 80.5,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/update_user_fail_20251023_113630.png"
+      },
+      {
+        "test_name": "Delete User",
+        "description": "Checks if role can delete a user in Clarity LIMS.",
+        "execution_time": 85.8,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "User Management tab not found \u2014 permission denied or hidden.",
+        "screenshot": "test_results/screenshots/delete_user_fail_20251023_113803.png"
       }
     ]
   }

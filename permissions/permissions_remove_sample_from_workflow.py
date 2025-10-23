@@ -109,12 +109,13 @@ def test_sample_workflow_removal(page, expected=True):
                 # Click delete
                 delete_btn.first.click()
 
-                # Wait until the workflow name for this sample is gone
-                workflow_locator = page.locator(f"div.sample-row[data-sample-id='{sample_id}'] div.workflow-name")
+                # Wait until the delete button for this sample is gone (indicating successful removal)
+                delete_btn_check = page.locator(f"div.delete-btn[data-sample-id='{sample_id}']")
                 try:
-                    workflow_locator.wait_for(state="detached", timeout=10000)
+                    delete_btn_check.wait_for(state="detached", timeout=10000)
+                    print(f"Sample {sample_id} successfully removed from workflow.")
                 except:
-                    print(f"Warning: workflow for sample {sample_id} did not disappear within timeout")
+                    print(f"Warning: delete button for sample {sample_id} did not disappear within timeout")
 
                 removed_count += 1
                 page.wait_for_timeout(500)  # optional small buffer
