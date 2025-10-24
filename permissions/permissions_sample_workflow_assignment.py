@@ -118,7 +118,6 @@ def test_sample_workflow_assignment(page, expected=True):
             result["error"] = error_str
             result["passed"] = False
             result["result"] = "fail"
-            result["screenshot"], _ = capture_screenshot(page, "sample_workflow_assignment", "fail")
 
             print(f"Attempt {attempt} failed: {error_str}")
             if attempt < max_attempts:
@@ -209,12 +208,23 @@ def test_sample_workflow_assignment(page, expected=True):
             else:
                 print(f"Warning: {remaining_samples} sample(s) still assigned to workflows after removal.")
 
+
         # Navigate back to base URL
         page.goto(BASE_URL)
         print("Returned to main page.")
     except Exception as cleanup_error:
         print(f"Cleanup encountered an issue: {cleanup_error}")
         result["screenshot"], _ = capture_screenshot(page, "sample_workflow_assignment", "fail")
+
+    # --- Take one final screenshot at the end (pass or fail) ---
+    try:
+        status = "pass" if result["passed"] else "fail"
+        result["screenshot"], _ = capture_screenshot(page, "sample_workflow_assignment", status)
+        print(f"Final screenshot captured: {result['screenshot']}")
+    except Exception as screenshot_error:
+        print(f"Warning: could not capture final screenshot: {screenshot_error}")
+        result["screenshot"] = None
+
 
     end_time = time.time()
     result["execution_time"] = round(end_time - start_time, 2)

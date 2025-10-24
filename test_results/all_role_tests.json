@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-24 12:10:48",
+  "timestamp": "2025-10-24 13:40:56",
   "tests": {
     "Not Logged In": [
       {
@@ -3252,22 +3252,52 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 27.8,
+        "execution_time": 11.3,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "test_results/screenshots/clarity_login_20251024_120959.png"
+        "screenshot": "test_results/screenshots/clarity_login_20251024_133727.png"
       },
       {
         "test_name": "Sample Workflow Assignment",
         "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
-        "execution_time": 42.6,
-        "expected": false,
+        "execution_time": 111.7,
+        "expected": true,
         "passed": false,
-        "result": "pass",
+        "result": "fail",
         "error": "Locator.click: Timeout 30000ms exceeded.",
-        "screenshot": "test_results/screenshots/sample_workflow_assignment_fail_20251024_121040.png"
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_fail_20251024_133925.png"
+      },
+      {
+        "test_name": "Create Sample",
+        "description": "Checks if role can create a sample in Clarity LIMS.",
+        "execution_time": 31.1,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Locator.wait_for: Timeout 5000ms exceeded.",
+        "screenshot": "test_results/screenshots/create_sample_fail_20251024_134002.png"
+      },
+      {
+        "test_name": "Update Sample",
+        "description": "Checks if role can update a sample in Clarity LIMS.",
+        "execution_time": 16.7,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Modify sample button not found \u2014 user only has Download Sample List permission.",
+        "screenshot": "test_results/screenshots/update_sample_fail_20251024_134025.png"
+      },
+      {
+        "test_name": "Delete Sample",
+        "description": "Checks if role can delete a sample in Clarity LIMS.",
+        "execution_time": 18.0,
+        "expected": true,
+        "passed": false,
+        "result": "fail",
+        "error": "Delete button is not visible \u2014 permission denied.",
+        "screenshot": "test_results/screenshots/delete_sample_fail_20251024_134056.png"
       }
     ]
   }
