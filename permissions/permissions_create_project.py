@@ -13,7 +13,7 @@ Compatible with RolePermissionTester framework.
 import os
 import re
 import time
-from .test_utils import capture_screenshot
+from .test_utils import capture_screenshot, clean_error_message
 from change_role import modify_user_role, get_lims_connection
 
 BASE_URL = "https://clarity-dev.btolims.com"
@@ -119,8 +119,7 @@ def test_create_project(page, expected=True):
                 break
 
             except Exception as e:
-                print(f"Attempt {attempt} failed: {e}")
-                result["error"] = str(e)
+                result["error"] = clean_error_message(e)
                 result["passed"] = False
                 result["result"] = "fail"
 
@@ -138,8 +137,8 @@ def test_create_project(page, expected=True):
                     pass
 
     except Exception as e:
-        print(f"Test execution failed: {e}")
-        result["error"] = str(e)
+        print(f"Test execution failed: {clean_error_message(e)}")
+        result["error"] = clean_error_message(e)
         result["passed"] = False
         result["result"] = "fail"
 

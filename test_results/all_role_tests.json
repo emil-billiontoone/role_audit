@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-24 12:02:08",
+  "timestamp": "2025-10-24 12:10:48",
   "tests": {
     "Not Logged In": [
       {
@@ -3252,42 +3252,22 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 17.9,
+        "execution_time": 27.8,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "test_results/screenshots/clarity_login_20251024_111323.png"
+        "screenshot": "test_results/screenshots/clarity_login_20251024_120959.png"
       },
       {
-        "test_name": "Create Sample",
-        "description": "Checks if role can create a sample in Clarity LIMS.",
-        "execution_time": 8.7,
+        "test_name": "Sample Workflow Assignment",
+        "description": "Checks if role can assign a sample to a workflow in Clarity LIMS.",
+        "execution_time": 42.6,
         "expected": false,
         "passed": false,
         "result": "pass",
-        "error": "Locator.wait_for: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator(\"#upload-sample-sheet-button\") to be visible\n    15 \u00d7 locator resolved to hidden <div id=\"upload-sample-sheet-button\" class=\"isis-btn ext-btn isis-btn-default-small x-noicon isis-btn-noicon isis-btn-default-small-noicon\">\u2026</div>\n",
-        "screenshot": "test_results/screenshots/create_sample_fail_20251024_111338.png"
-      },
-      {
-        "test_name": "Update Sample",
-        "description": "Checks if role can update a sample in Clarity LIMS.",
-        "execution_time": 5.7,
-        "expected": false,
-        "passed": false,
-        "result": "pass",
-        "error": "Modify sample button not found \u2014 user only has Download Sample List permission.",
-        "screenshot": "test_results/screenshots/update_sample_fail_20251024_111350.png"
-      },
-      {
-        "test_name": "Delete Sample",
-        "description": "Checks if role can delete a sample in Clarity LIMS.",
-        "execution_time": 4.5,
-        "expected": false,
-        "passed": false,
-        "result": "pass",
-        "error": "Delete button is not visible \u2014 permission denied.",
-        "screenshot": "test_results/screenshots/delete_sample_fail_20251024_111402.png"
+        "error": "Locator.click: Timeout 30000ms exceeded.",
+        "screenshot": "test_results/screenshots/sample_workflow_assignment_fail_20251024_121040.png"
       }
     ]
   }

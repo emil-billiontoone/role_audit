@@ -8,7 +8,7 @@ Compatible with RolePermissionTester framework.
 import os
 import re
 import time
-from .test_utils import capture_screenshot
+from .test_utils import capture_screenshot, clean_error_message
 
 BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "ED_TEST"
@@ -113,12 +113,14 @@ def test_sample_workflow_assignment(page, expected=True):
             break  # Exit retry loop if successful
 
         except Exception as e:
-            result["error"] = str(e)
+            # Clean up error message for cleaner reporting
+            error_str = clean_error_message(e)
+            result["error"] = error_str
             result["passed"] = False
             result["result"] = "fail"
             result["screenshot"], _ = capture_screenshot(page, "sample_workflow_assignment", "fail")
 
-            print(f"Attempt {attempt} failed: {e}")
+            print(f"Attempt {attempt} failed: {error_str}")
             if attempt < max_attempts:
                 print("Retrying in 1 second...")
                 time.sleep(1)

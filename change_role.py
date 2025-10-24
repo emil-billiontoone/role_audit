@@ -39,12 +39,12 @@ def modify_user_role(lims, user_firstname, user_lastname, role_name, action="add
     return user
 
 
-# # Uncomment this to add or remove a role
-# lims, username = get_lims_connection()
+# Uncomment this to add or remove a role
+lims, username = get_lims_connection()
 
-# user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="remove")
+user = modify_user_role(lims, "Emil", "Test", "Lab Operator (BTO)", action="remove")
 
-# print(f"Current roles for {username}:")
-# for r in user.roles:
-#     print(f"  - {r.name}")
+print(f"Current roles for {username}:")
+for r in user.roles:
+    print(f"  - {r.name}")
 

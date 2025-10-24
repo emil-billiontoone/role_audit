@@ -8,7 +8,7 @@ Compatible with RolePermissionTester framework.
 import os
 import re
 import time
-from .test_utils import capture_screenshot
+from .test_utils import capture_screenshot, clean_error_message
 
 BASE_URL = "https://clarity-dev.btolims.com"
 PROJECT_NAME = "ED_TEST"
@@ -94,11 +94,11 @@ def test_update_sample(page, expected=True):
 
 
         except Exception as e:
-            result["error"] = str(e)
+            result["error"] = clean_error_message(e)
             result["passed"] = False
             result["result"] = "fail"
 
-            print(f"Attempt {attempt} failed: {e}")
+            print(f"Attempt {attempt} failed: {clean_error_message(e)}")
             if attempt < max_attempts:
                 print("Retrying in 1 second...")
                 time.sleep(1)

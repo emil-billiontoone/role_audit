@@ -11,7 +11,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_API_login": True,
         # "permissions_create_project": False, 
         # "permissions_delete_project": False, 
-        "permissions_sample_workflow_assignment": False, # needs to be in this order 1
+        "permissions_sample_workflow_assignment": True, # needs to be in this order 1
         # "permissions_move_to_next_step": True,  # 2
         # "permissions_remove_sample_from_workflow": True, # 3
         # "permissions_edit_completed_steps": False,
@@ -103,7 +103,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_API_login": False,
         # "permissions_create_project": False, 
         # "permissions_delete_project": False, 
-        # "permissions_sample_workflow_assignment": False,
+        "permissions_sample_workflow_assignment": False,
         # "permissions_review_escalated_samples": True, # still need to create this test
         # "permissions_update_control": True, # still need to create this test
         # "permissions_update_reagent_kit": True, # still need to create this test
