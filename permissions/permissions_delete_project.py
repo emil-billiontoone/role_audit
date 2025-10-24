@@ -283,6 +283,18 @@ def test_delete_project(page, expected=True):
                 print(f"Cleanup encountered an issue: {cleanup_error}")
         else:
             print("\n--- CLEANUP: Test project already deleted, no cleanup needed ---")
+        
+        # ALWAYS remove System Admin role at the end, regardless of test outcome
+        print("\n--- FINAL CLEANUP: Removing System Admin (BTO) role ---")
+        try:
+            lims, username = get_lims_connection()
+            user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="remove")
+            print(f"Removed System Admin (BTO) role")
+            print(f"Current roles for {username}:")
+            for r in user.roles:
+                print(f"  - {r.name}")
+        except Exception as e:
+            print(f"Warning: Could not remove System Admin (BTO) role: {e}")
 
     end_time = time.time()
     result["execution_time"] = round(end_time - start_time, 2)

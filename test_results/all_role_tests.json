@@ -1,6 +1,6 @@
 {
   "server": "dev",
-  "timestamp": "2025-10-24 00:13:09",
+  "timestamp": "2025-10-24 10:16:58",
   "tests": {
     "Not Logged In": [
       {
@@ -3252,22 +3252,32 @@
       {
         "test_name": "Clarity Login",
         "description": "Checks if user can login to Clarity LIMS",
-        "execution_time": 22.6,
+        "execution_time": 37.5,
         "expected": true,
         "passed": true,
         "result": "pass",
         "error": null,
-        "screenshot": "test_results/screenshots/clarity_login_20251024_001207.png"
+        "screenshot": "test_results/screenshots/clarity_login_20251024_101533.png"
+      },
+      {
+        "test_name": "Create Project",
+        "description": "Checks if user can create a new project in Clarity LIMS",
+        "execution_time": 3.9,
+        "expected": false,
+        "passed": false,
+        "result": "pass",
+        "error": "NEW PROJECT button not visible \u2014 permission denied.",
+        "screenshot": "test_results/screenshots/create_project_fail_20251024_101545.png"
       },
       {
         "test_name": "Delete Project",
         "description": "Checks if role can delete a project in Clarity LIMS.",
-        "execution_time": 52.8,
+        "execution_time": 64.9,
         "expected": false,
         "passed": false,
         "result": "pass",
         "error": "Delete button not visible \u2014 permission denied.",
-        "screenshot": "test_results/screenshots/delete_project_fail_20251024_001247.png"
+        "screenshot": "test_results/screenshots/delete_project_fail_20251024_101630.png"
       }
     ]
   }

@@ -38,11 +38,13 @@ def modify_user_role(lims, user_firstname, user_lastname, role_name, action="add
     user.commit()
     return user
 
-lims, username = get_lims_connection()
 
-user = modify_user_role(lims, "Emil", "Test", "System Admin (BTO)", action="add")
+# # Uncomment this to add or remove a role
+# lims, username = get_lims_connection()
 
-print(f"Current roles for {username}:")
-for r in user.roles:
-    print(f"  - {r.name}")
+# user = modify_user_role(lims, "Emil", "Test", "Limited (BTO)", action="remove")
+
+# print(f"Current roles for {username}:")
+# for r in user.roles:
+#     print(f"  - {r.name}")
 
