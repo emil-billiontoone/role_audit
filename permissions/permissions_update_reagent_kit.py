@@ -136,7 +136,7 @@ def test_update_reagent_kit(page, expected=True):
     print(f"\n===== TEST RESULT: {'PASS' if result['passed'] else 'FAIL'} =====")
     print(f"Execution time: {result['execution_time']}s")
     if result["error"]:
-        print(f"Error: {result['error']}")
+        print(f"{result['error']}")
     if result["screenshot"]:
         print(f"Screenshot: {result['screenshot']}")
 

@@ -216,7 +216,7 @@ def test_create_user(page, expected=True):
     result["execution_time"] = round(end_time - start_time, 2)
     print(f"\n===== TEST RESULT: {'PASS' if result['passed'] else 'FAIL'} =====")
     if result["error"]:
-        print(f"Error: {result['error']}")
+        print(f"{result['error']}")
     if result["screenshot"]:
         print(f"Screenshot: {result['screenshot']}")
     return result

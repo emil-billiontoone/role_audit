@@ -201,7 +201,7 @@ class RolePermissionTester:
             passed = "✓" if test.get("passed") else "✗"
             print(f"  [{result_status}] {name} ({time_taken:.1f}s) Expected:{expected} Actual:{passed}")
             if test.get("error"):
-                print(f"        Error: {test['error']}")
+                print(f"        {test['error']}")
         
         overall = "ALL TESTS PASSED" if failed_tests == 0 and (passed_tests + failed_tests == total_tests) else "SOME TESTS FAILED"
         print(f"\nOverall Result: {overall}")

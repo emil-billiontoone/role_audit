@@ -96,12 +96,9 @@ def test_create_control(page, expected=True):
             result["passed"] = True
             result["result"] = "pass"
 
-            # Take screenshot before leaving page
-            result["screenshot"], _ = capture_screenshot(page, "create_control", "pass")
-
             print("Returning to main page...")
             page.goto(BASE_URL)
-            page.wait_for_timeout(1000)
+            page.wait_for_timeout(500)
             break  # success, exit retry loop
 
         except Exception as e:
@@ -110,26 +107,30 @@ def test_create_control(page, expected=True):
             result["passed"] = False
             result["result"] = "fail"
 
-            result["screenshot"], _ = capture_screenshot(page, "create_control", "fail")
-
             if attempt < max_attempts:
-                print("Retrying in 2 seconds...")
+                print("Retrying in 1 second...")
                 try:
                     page.goto(BASE_URL)
-                    page.wait_for_timeout(1000)
+                    page.wait_for_timeout(500)
                 except:
                     pass
-                time.sleep(2)
+                time.sleep(1)
             else:
                 print("Max retries reached. Failing test.")
                 break
+
+    # Take screenshot once at the end
+    if result["passed"]:
+        result["screenshot"], _ = capture_screenshot(page, "create_control", "pass")
+    else:
+        result["screenshot"], _ = capture_screenshot(page, "create_control", "fail")
 
     end_time = time.time()
     result["execution_time"] = round(end_time - start_time, 2)
     print(f"\n===== TEST RESULT: {'PASS' if result['passed'] else 'FAIL'} =====")
     print(f"Execution time: {result['execution_time']}s")
     if result["error"]:
-        print(f"Error: {result['error']}")
+        print(f"{result['error']}")
     if result["screenshot"]:
         print(f"Screenshot: {result['screenshot']}")
 

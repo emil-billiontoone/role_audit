@@ -53,29 +53,29 @@ def test_update_sample(page, expected=True):
         try:
             print(f"\nAttempt {attempt}: Navigating to Projects & Samples...")
             page.get_by_role("link", name=re.compile("PROJECTS & Samples", re.I)).click()
-            page.wait_for_timeout(1500)
+            page.wait_for_timeout(800)
 
             print(f"Filtering for project '{PROJECT_NAME}'...")
             filter_box = page.get_by_role("textbox", name="Filter...")
-            filter_box.wait_for(state="visible", timeout=5000)
-            filter_box.type(PROJECT_NAME, delay=100)
-            page.wait_for_timeout(1000)
+            filter_box.wait_for(state="visible", timeout=8000)
+            filter_box.type(PROJECT_NAME, delay=50)
+            page.wait_for_timeout(500)
 
             print("Waiting for project row to appear...")
             project_row = page.locator(f"div.project-list-item:has(div[data-qtip='{PROJECT_NAME}'])").first
-            project_row.wait_for(state="visible", timeout=15000)
+            project_row.wait_for(state="visible", timeout=8000)
 
             if project_row.count() == 0:
                 raise Exception(f"Project '{PROJECT_NAME}' not found")
 
             print("Project found — clicking on it...")
             project_row.click()
-            page.wait_for_timeout(1500)
+            page.wait_for_timeout(800)
 
             # Check for Modify Samples button
             # Locate the button
             sample_button = page.locator("#modify-sample-sheet-button a")
-            sample_button.wait_for(state="visible", timeout=10000)
+            sample_button.wait_for(state="visible", timeout=5000)
 
             # Get button text
             button_text = sample_button.inner_text().strip().upper()
@@ -85,7 +85,6 @@ def test_update_sample(page, expected=True):
                 print("Modify sample button found — permission confirmed.")
                 result["passed"] = True
                 result["result"] = "pass"
-                result["screenshot"], _ = capture_screenshot(page, "update_sample", "pass")
             elif "DOWNLOAD" in button_text:
                 raise Exception("Modify sample button not found — user only has Download Sample List permission.")
             else:
@@ -95,15 +94,14 @@ def test_update_sample(page, expected=True):
 
 
         except Exception as e:
-            result["screenshot"], _ = capture_screenshot(page, "update_sample", "fail")
             result["error"] = str(e)
             result["passed"] = False
             result["result"] = "fail"
 
             print(f"Attempt {attempt} failed: {e}")
-            if attempt <= RETRIES:
-                print("Retrying in 2 seconds...")
-                time.sleep(2)
+            if attempt < max_attempts:
+                print("Retrying in 1 second...")
+                time.sleep(1)
             else:
                 print("Max retries reached. Failing test.")
                 break
@@ -115,12 +113,18 @@ def test_update_sample(page, expected=True):
             except:
                 pass
 
+    # Take screenshot once at the end
+    if result["passed"]:
+        result["screenshot"], _ = capture_screenshot(page, "update_sample", "pass")
+    else:
+        result["screenshot"], _ = capture_screenshot(page, "update_sample", "fail")
+
     end_time = time.time()
     result["execution_time"] = round(end_time - start_time, 2)
     print(f"\n===== TEST RESULT: {'PASS' if result['passed'] else 'FAIL'} =====")
     print(f"Execution time: {result['execution_time']}s")
     if result["error"]:
-        print(f"Error: {result['error']}")
+        print(f"{result['error']}")
     if result["screenshot"]:
         print(f"Screenshot: {result['screenshot']}")
     return result

@@ -116,7 +116,6 @@ def test_create_project(page, expected=True):
                 project_created = True
                 result["passed"] = True
                 result["result"] = "pass"
-                result["screenshot"], _ = capture_screenshot(page, "create_project", "pass")
                 break
 
             except Exception as e:
@@ -126,12 +125,10 @@ def test_create_project(page, expected=True):
                 result["result"] = "fail"
 
                 if attempt < max_attempts:
-                    print("Retrying in 2 seconds...")
-                    time.sleep(2)
+                    print("Retrying in 1 second...")
+                    time.sleep(1)
                 else:
                     print("Max retries reached. Failing test.")
-                    # Take screenshot only once at the end
-                    result["screenshot"], _ = capture_screenshot(page, "create_project", "fail")
                     break
 
             finally:
@@ -145,8 +142,12 @@ def test_create_project(page, expected=True):
         result["error"] = str(e)
         result["passed"] = False
         result["result"] = "fail"
-        if not result.get("screenshot"):
-            result["screenshot"], _ = capture_screenshot(page, "create_project", "fail")
+
+    # Take screenshot once at the end
+    if result["passed"]:
+        result["screenshot"], _ = capture_screenshot(page, "create_project", "pass")
+    else:
+        result["screenshot"], _ = capture_screenshot(page, "create_project", "fail")
 
     end_time = time.time()
     result["execution_time"] = round(end_time - start_time, 2)
@@ -212,7 +213,7 @@ def test_create_project(page, expected=True):
     print(f"\n===== TEST RESULT: {'PASS' if result['passed'] else 'FAIL'} =====")
     print(f"Execution time: {result['execution_time']}s")
     if result["error"]:
-        print(f"Error: {result['error']}")
+        print(f"{result['error']}")
     if result["screenshot"]:
         print(f"Screenshot: {result['screenshot']}")
     return result

@@ -486,7 +486,7 @@ def test_sample_rework(page, expected=True):
     print(f"Status: {'PASS' if result['passed'] else 'FAIL'}")
     print(f"Execution time: {result['execution_time']}s")
     if result["error"]:
-        print(f"Error: {result['error']}")
+        print(f"{result['error']}")
     if result["screenshot"]:
         print(f"Screenshot saved at: {result['screenshot']}")
     print("=================================\n")

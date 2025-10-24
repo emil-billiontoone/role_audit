@@ -11,7 +11,7 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_API_login": True,
         # "permissions_create_project": False, 
         # "permissions_delete_project": False, 
-        # "permissions_sample_workflow_assignment": True, # needs to be in this order 1
+        "permissions_sample_workflow_assignment": False, # needs to be in this order 1
         # "permissions_move_to_next_step": True,  # 2
         # "permissions_remove_sample_from_workflow": True, # 3
         # "permissions_edit_completed_steps": False,
@@ -32,10 +32,10 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_operations_login": True, # Don't worry about this test
         # "permissions_create_project": True, 
         # "permissions_delete_project": True, 
-        "permissions_create_sample": True, 
-        "permissions_update_sample": True, 
-        "permissions_delete_sample": True, 
-        # "permissions_sample_workflow_assignment": True, 
+        # "permissions_create_sample": True, 
+        # "permissions_update_sample": True, 
+        # "permissions_delete_sample": True, 
+        "permissions_sample_workflow_assignment": True, 
         # "permissions_move_to_next_step": True, 
         # "permissions_remove_sample_from_workflow": True, 
         # "permissions_sample_rework": True, 
@@ -117,9 +117,9 @@ MAIN_ROLE_TEST_SUITES = {
         # "permissions_read_user": False, 
         # "permissions_create_user": False,
         # "permissions_update_user": False,
-        # "permissions_update_sample": False, 
         # "permissions_move_to_next_step": False, 
         # "permissions_create_sample": False, 
+        # "permissions_update_sample": False, 
         # "permissions_delete_sample": False, 
         # "permissions_create_control": False,
         # "permissions_update_control": False,
